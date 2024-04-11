@@ -65,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/FollowMouse.cs" />
+    <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
+    <Compile Include="Assets/Scripts/MoveBoat.cs" />
     <Compile Include="Assets/Scripts/FollowPlayer.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>
