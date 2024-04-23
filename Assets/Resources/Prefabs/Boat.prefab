@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 1748037826295152409}
   - component: {fileID: 7083884806135071295}
   - component: {fileID: 8144409263203488860}
-  - component: {fileID: 8425611109038197297}
+  - component: {fileID: 1935935869679625676}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8425611109038197297
+--- !u!114 &1935935869679625676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,61 +145,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5291267464881854199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8e9c33fdf21ac64809bc7cfd049171, type: 3}
+  m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1000
-  turnRate: 0.1
-  rudderDecayRate: 0.1
-  maxTurnRadius: 0.99
-  increaseThrust:
-    m_Name: Increase Thrust
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d863ec6d-921c-45ce-8d2f-7e0e961075fb
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: a19912a1-e206-4c34-bd48-925069cc5b24
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Increase Thrust
-      m_Flags: 0
-    m_Flags: 0
-  rudderLeft:
-    m_Name: Rudder Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c7ce9841-f0c4-4305-ac9e-0a5ef8afe590
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 21e74edf-345d-4e67-a4ae-ffbfb70ef61e
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rudder Left
-      m_Flags: 0
-    m_Flags: 0
-  rudderRight:
-    m_Name: Rudder Right
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 6ca9363a-b6e3-48d7-91c1-c6441caa069d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: b2f0334d-332f-4519-9426-0b71c4332693
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rudder Right
-      m_Flags: 0
-    m_Flags: 0

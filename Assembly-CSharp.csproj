@@ -64,11 +64,14 @@
     <Analyzer Include="/home/ryan/Unity/Hub/Editor/2023.2.14f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/RyanScripts/PlayerBehavior.cs" />
     <Compile Include="Assets/Scripts/FollowMouse.cs" />
     <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
     <Compile Include="Assets/Scripts/MoveBoat.cs" />
+    <Compile Include="Assets/Scripts/RyanScripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/FollowPlayer.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
+    <Compile Include="Assets/Scripts/RyanScripts/GameController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
