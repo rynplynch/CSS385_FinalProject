@@ -95,7 +95,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5291267464881854199}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: eb6a1b79aae06ed04ba08ea4e8b9bfc7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -148,3 +148,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardSpeed: 20
+  rotationalSpeed: 20
+  maxThrustForce: 10
+  maxRotationalForce: 10
+  forward:
+    m_Name: Forward
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 053fb6bf-7e8e-4e5b-a72d-90f24d29f841
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 62ca6406-f769-4d5d-9d0b-8ea954cbb378
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Forward
+      m_Flags: 0
+    m_Flags: 0
+  backward:
+    m_Name: Backward
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6085dda7-494c-43f3-aaa8-930498a81a12
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 52c28ce7-6412-4868-9c66-2dc2b3f06102
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Backward
+      m_Flags: 0
+    m_Flags: 0
+  right:
+    m_Name: Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 39dc891c-550c-438d-afd5-8e12fbcab948
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 86fbfe3a-0b2e-4bea-a2e0-8df6102d5fb2
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right
+      m_Flags: 0
+    m_Flags: 0
+  left:
+    m_Name: Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a15339ec-6309-4e38-9363-3ee7b836cd52
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0d8fbf90-f6f5-434e-a8ae-5f0c5eae4658
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left
+      m_Flags: 0
+    m_Flags: 0

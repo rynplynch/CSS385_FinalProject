@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     // make the PlayerController Singleton referable globally
     public static PlayerController Instance { get; private set; }
 
-    public InputAction spawn;
-
     // used to create new players
+    public InputAction spawn;
     private GameObject boatPrefab;
+
     // used to keep track of instantiated GameObjects
     private List<GameObject> players = new List<GameObject>();
 
@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (spawn.WasPerformedThisFrame()){
-            // spawn player at origin
-            SpawnPlayer(new Vector3());
+            // spawn player at origin w/ rotation info
+            SpawnPlayer(new Vector3(), new Quaternion());
         }
     }
 
@@ -41,10 +41,22 @@ public class PlayerController : MonoBehaviour
     }
 
     // spawn the player at the specified vector
-    public void SpawnPlayer(Vector3 spawnPos){
-        Instantiate(boatPrefab, spawnPos, new Quaternion());
+    public void SpawnPlayer(Vector3 spawnPos, Quaternion spawnRot){
+        Instantiate(boatPrefab, spawnPos, spawnRot);
     }
 
+    public bool DeletePlayer(GameObject player){
+        // remove the player from our list of instantiated objects
+        if (players.Remove(player)){
+            // remove object from game world
+            Destroy(player);
+
+            // action succeeded
+            return true;
+        }
+
+        return false;
+    }
     // set the reference to the boat prefab we use
     // should be set when the player controller is loaded in
     public void SetBoatPrefab(GameObject p) => boatPrefab = p;
