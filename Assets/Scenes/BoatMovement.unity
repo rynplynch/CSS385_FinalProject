@@ -792,9 +792,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1434102359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5291267464881854199, guid: 11aae62e99406a20c9e7ad8d1ad05ffc, type: 3}
+--- !u!4 &1434102365 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2409472869162258410, guid: 11aae62e99406a20c9e7ad8d1ad05ffc, type: 3}
   m_PrefabInstance: {fileID: 3050110058638717277}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1485749050
@@ -1006,11 +1006,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1702843907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22424950dea2b5b499f57189f0042d84, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ae859bbc5ae43df2b18e62e9c57e4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1434102359}
-  offset: {x: 0, y: 10, z: -30}
+  player: {fileID: 1434102365}
+  cameraDistance: 30
+  cameraHeight: 10
 --- !u!1001 &3050110058638717277
 PrefabInstance:
   m_ObjectHideFlags: 0
