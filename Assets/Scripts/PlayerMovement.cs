@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float thrust;
-    public float horizontalInput;
-    public float verticalInput;
+    public Vector2 wasdInput;
+    //public float verticalInput;
     public Vector2 mouseMove;
 
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed;
     public float yawSpeed;
 
-    
+
     public float drag;
     /*
     public float pitchDrag;
@@ -28,10 +28,19 @@ public class PlayerMovement : MonoBehaviour
 
     public float timer;
 
+    public bool isBoat;
+
+    public float boatThrust;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //Sets player rigidbody
         rb = gameObject.GetComponent<Rigidbody>();
+        //Locks the cursor so it doesn't go off screen
+        //Can be commented out
         Cursor.lockState = CursorLockMode.Locked;
 
     }
@@ -39,12 +48,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gets horizontal and vertical input
+        wasdInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-
-        mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        //Gets mouse movement, only useful for the realistic controls
+        //mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        //mouseMove.Normalize();
 
         float deltaTime = Time.deltaTime;
 
@@ -52,73 +61,107 @@ public class PlayerMovement : MonoBehaviour
 
         //mouseMove.x = 0;
 
+        //Resets the player to the origin
         if (Input.GetKeyDown(KeyCode.R))
         {
             transform.position = new Vector3(0, 0, 0);
         }
 
-        //Vector2 mouseMove = new Vector2(mouseX, mouseY);
-
-        mouseMove.Normalize();
-
+        //Debug to get the magnitude of the velocity
+        /*
         if (timer % 1 - deltaTime < 0 && timer % 1 + deltaTime > 0)
         {
             Debug.Log(rb.velocity.magnitude);
             //timer = 0;
         }
+        */
 
-        Move(deltaTime);
+        //I just wanted to switch between the two easily
+        if (isBoat)
+        {
+            BoatMove();
+        }
+        else
+        {
+            PlaneMove();
+        }
+
+        //Draws the direction of velocity for the vehicle
+        Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
+
     }
 
 
-    void Move(float deltaTime)
+    void PlaneMove()
     {
         //Force/Torque method
+        float deltaTime = Time.deltaTime;
 
-        float clampedVerticalInput = verticalInput;
-
+        //This clamps the input from the player
+        float clampedVerticalInput = wasdInput.y;
+        //Limits the value from 0-1 to 0-0.5
         clampedVerticalInput /= 2;
+        //Changes the range to 0.5-1
         clampedVerticalInput += 0.5f;
 
+        //This is the thrust force imparted by the engines
         rb.AddForce(transform.forward * deltaTime * (clampedVerticalInput * thrust));
+        //This is the drag force from the air
         rb.AddForce(-rb.velocity * deltaTime * rb.velocity.magnitude * rb.velocity.magnitude * drag);
 
-
-        Vector3 velocityNormalized = rb.velocity;
-        velocityNormalized.Normalize();
-
+        //Makes the plane look at the target
         transform.LookAt(mouseTarget.transform);
 
+        //Just debug lines that show the direction of the transform directions
+        Debug.DrawLine(transform.forward, transform.forward * 10, Color.green);
+        Debug.DrawLine(transform.up, transform.up * 10, Color.blue);
+        Debug.DrawLine(transform.right, transform.right * 10, Color.red);
+
+        //I still want to experiment with this but it's not really important
+
         /*
+        //transform.forward = mouseTarget.transform.forward;
+        //transform.TransformDirection(mouseTarget.transform);
+
+        
         if (velocityNormalized != transform.forward)
         {
             //Point plane velocity in the transform.forward direction
         }
-        
-        rb.AddTorque(Vector3.forward * deltaTime * mouseMove.x * rollSpeed);
-        rb.AddTorque(-Vector3.forward * deltaTime * rollDrag * rb.angularVelocity.z);
+        rb.AddTorque(Vector3.forward * deltaTime * horizontalInput * rollSpeed);
+        //rb.AddTorque(-Vector3.forward * deltaTime * rollDrag * rb.angularVelocity.z);
         
         
         rb.AddTorque(Vector3.right * deltaTime * mouseMove.y * pitchSpeed);
-        rb.AddTorque(-Vector3.right * deltaTime * pitchDrag * rb.angularVelocity.x);
+        //rb.AddTorque(-Vector3.right * deltaTime * pitchDrag * rb.angularVelocity.x);
         
         
         //rb.AddTorque(Vector3.forward * Time.deltaTime * (mouseMove.x * yawSpeed - yawDrag * rb.angularVelocity.y));
-        rb.AddTorque(Vector3.up * deltaTime * horizontalInput * yawSpeed);
-        rb.AddTorque(-Vector3.up * deltaTime * yawDrag * rb.angularVelocity.y);
+        rb.AddTorque(Vector3.up * deltaTime * mouseMove.x * yawSpeed);
+        //rb.AddTorque(-Vector3.up * deltaTime * yawDrag * rb.angularVelocity.y);
         
         
         if(transform.rotation != Quaternion.identity && mouseMove == Vector2.zero && horizontalInput == 0)
         {
             //transform.rotation = Quaternion.identity;
         }
-        */
+        
         //Transform method
         //transform.Translate(Vector3.forward * thrust * Time.deltaTime * verticalInput);
         //transform.Rotate(Vector3.forward * Time.deltaTime * mouseX * rollSpeed);
         //transform.Rotate(Vector3.right * Time.deltaTime * mouseY * pitchSpeed);
         //transform.Rotate(Vector3.up * Time.deltaTime * horizontalInput * yawSpeed);
+        */
     }
+    void BoatMove()
+    {
+        float deltaTime = Time.deltaTime;
 
+        rb.AddForce(transform.forward * deltaTime * boatThrust * wasdInput.y * 100000);
+        //rb.AddForce(-transform.forward * rb.velocity);
+
+        rb.AddTorque(transform.up * deltaTime * boatThrust * wasdInput.x);
+
+    }
 
 }
