@@ -53,11 +53,70 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 3476096a-be77-4438-80f2-897ee4c55832
+      m_Id: 7fe83081-ac6d-4b0b-b7bf-c037baebcb2f
       m_Path: <Keyboard>/p
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Spawn
+      m_Flags: 0
+    m_Flags: 0
+  spawnAsPlane:
+    m_Name: Spawn As Plane
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bb99eab2-d5d4-448a-b43b-fde53f22daa3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4764417e-649f-477b-88e7-d1a26f78c125
+      m_Path: <Keyboard>/v
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Spawn As Plane
+      m_Flags: 0
+    m_Flags: 0
+  spawnAsBoat:
+    m_Name: Spawn As Boat
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a51eab53-58e8-4bd8-986f-b4d3be4ec3ba
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: df4ebe3e-a0c4-4d23-9136-6cb3d310f05b
+      m_Path: <Keyboard>/b
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Spawn As Boat
+      m_Flags: 0
+    m_Flags: 0
+  despawnAll:
+    m_Name: Despawn All
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4c3fc14b-951f-4d92-b4db-3b61c94a9b15
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 350ce05b-8c3b-45a0-8cc1-b09c1a77ec42
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Despawn All
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a296c10f-b308-4919-a5f3-2ca42031995b
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Despawn All
       m_Flags: 0
     m_Flags: 0

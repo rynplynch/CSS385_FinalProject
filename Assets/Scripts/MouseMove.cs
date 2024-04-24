@@ -7,7 +7,6 @@ public class MouseMove : MonoBehaviour
 
     public float mouseSensitivity = 200f;
     public Transform playerBody;
-    public Rigidbody playerBodyRigid;
     public Vector2 mouseMove;
     float xRotation = 0f;
     float yRotation = 0f;

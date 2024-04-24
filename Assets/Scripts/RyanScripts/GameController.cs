@@ -40,18 +40,23 @@ public class GameController : MonoBehaviour
 
         // we will grab this reference while looping
         GameObject boatPrefab = null;
+        GameObject planePrefab = null;
+        GameObject planeHelper = null;
 
         // loop through all the Objects returned from prefab dir.
         // if more prefabs are added, add them here
         foreach (GameObject p in allPrefabs)
         {
             // based upon what the tag is do different things
-            if (p.tag.Equals("PlayerController")) {
+            if (p.tag.Equals("PlayerController"))
                 // instantiate the player controller
                 Instantiate(p, new Vector3(0,0,0), new  Quaternion());
-            } else if (p.tag.Equals("Boat")){
+            else if (p.tag.Equals("Boat"))
                 boatPrefab = p;
-                                            }
+            else if (p.tag.Equals("Plane"))
+                planePrefab = p;
+            else if (p.tag.Equals("PlaneHelper"))
+                planeHelper = p;
         }
 
         // grab the Singleton reference to PlayerController
@@ -59,11 +64,20 @@ public class GameController : MonoBehaviour
 
         // check if the playerController & boatPrefab references exist
         // if this fails then resources did not load correctly
-        if (playerController && boatPrefab) {
-            playerController.SetBoatPrefab(boatPrefab);
-        } else {
+        if (playerController && boatPrefab)
+            playerController.setBoatPrefab(boatPrefab);
+        else
             throw new UnityException();
-        }
+
+        if (playerController && planePrefab)
+            playerController.setPlanePrefab(planePrefab);
+        else
+            throw new UnityException();
+
+        if (playerController && planeHelper)
+            playerController.setPlaneHelper(planeHelper);
+        else
+            throw new UnityException();
     }
     // Update is called once per frame
     void Update()
