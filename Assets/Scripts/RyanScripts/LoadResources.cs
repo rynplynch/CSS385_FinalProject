@@ -4,42 +4,61 @@ using UnityEngine;
 
 public class LoadResources : MonoBehaviour
 {
+
     // delegate used to subsribe to our event system
-    public Interact loadFromInteraction;
+    public EventSystem loadFromEventSystem;
+
+    // list with all Objects in resource folder
+    UnityEngine.Object[] allPrefabs;
+
+
+    void Start(){
+        // grab all the prefabs in the prefab folder
+        try{
+            allPrefabs = Resources.LoadAll("Prefabs") as UnityEngine.Object[];
+        } catch(UnityException e){
+            throw e;
+        }
+    }
 
     private void OnEnable()
     {
-        Interact check = GetComponent<Interact>();
+        EventSystem check = GetComponent<EventSystem>();
 
         if (check)
         {
-            loadFromInteraction = check;
-            loadFromInteraction.GetInteractEvent.HasInteracted += InteractLoad;
+            loadFromEventSystem = check;
+            loadFromEventSystem.GetLoadEvent.HasInteracted += EventSystemLoad;
         }
         else
         {
-            Interact addComp = this.gameObject.AddComponent<Interact>();
-            loadFromInteraction = addComp;
-            loadFromInteraction.GetInteractEvent.HasInteracted += InteractLoad;
+            EventSystem addComp = this.gameObject.AddComponent<EventSystem>();
+            loadFromEventSystem = addComp;
+            loadFromEventSystem.GetLoadEvent.HasInteracted += EventSystemLoad;
         }
     }
 
     private void OnDisable()
     {
-        if (loadFromInteraction)
+        if (loadFromEventSystem)
         {
-            loadFromInteraction.GetInteractEvent.HasInteracted -= InteractLoad;
+            loadFromEventSystem.GetLoadEvent.HasInteracted -= EventSystemLoad;
         }
     }
 
-    public void InteractLoad()
+    public void EventSystemLoad()
     {
-        LoadPlayerPrefab(loadFromInteraction.GetResources);
+        LoadRedBoatPrefab(loadFromEventSystem.GameLogic);
     }
 
-    public void LoadPlayerPrefab(GameResources player){
-        // load the resource
-        Debug.Log("Hello");
-        player.prefab = new GameObject();
+    public void LoadRedBoatPrefab(GameLogic gameLogic){
+        // prefab reference to be set by loop
+        foreach (GameObject p in allPrefabs)
+        {
+            if (p.tag.Equals("red-boat")){
+                gameLogic.RedBoat = p;
+                return;
+            }
+        }
     }
 }
