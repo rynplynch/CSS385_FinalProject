@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class BoatBehavior : MonoBehaviour
 {
+    public GameObject bulletPrefab;
+    private Transform cameraFirePoint;
+    public float fireRate = 0.5f;
+    private float nextFireTime = 0f;
+
     // used to manipulate the force applied to the player
     [Tooltip("Recommend settings\nAcceleration: [0-10]\nMaxThrust: [0-10]")]
     public float forwardSpeed;
@@ -18,6 +23,7 @@ public class BoatBehavior : MonoBehaviour
     public InputAction backward;
     public InputAction right;
     public InputAction left;
+    public InputAction fire;
 
     // used to apply force to the boat
     private Rigidbody rb;
@@ -25,10 +31,12 @@ public class BoatBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraFirePoint = Camera.main.transform;
         forward.Enable();
         backward.Enable();
         left.Enable();
         right.Enable();
+        fire.Enable();
 
         // grab reference to attached rigid body component
         rb = this.GetComponent<Rigidbody>();
@@ -74,5 +82,12 @@ public class BoatBehavior : MonoBehaviour
     void Update()
     {
         MovePlayer();
+
+        // fire on cooldown if left mb is pressed and the boat is in firing mode
+        if (fire.IsPressed() && FollowCamera3D.Instance.isFollowingMouse && Time.time >= nextFireTime)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, cameraFirePoint.position + cameraFirePoint.forward * 2, cameraFirePoint.rotation);
+            nextFireTime = Time.time + fireRate;
+        }
     }
 }

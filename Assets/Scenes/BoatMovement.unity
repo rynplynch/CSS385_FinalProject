@@ -962,6 +962,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraDistance: 30
   cameraHeight: 10
+  isFollowingMouse: 0
+  toggleCameraMode:
+    m_Name: Toggle Camera Mode
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 40b157f5-3c4e-4867-ad00-cccffa6a0d19
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 872a2fce-6046-49dc-bdf2-75bbab2f7a89
+      m_Path: <Keyboard>/c
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle Camera Mode
+      m_Flags: 0
+    m_Flags: 0
+  pitchSensitivity: 0.05
+  yawSensitivity: 0.05
 --- !u!1001 &4760685211103630794
 PrefabInstance:
   m_ObjectHideFlags: 0
