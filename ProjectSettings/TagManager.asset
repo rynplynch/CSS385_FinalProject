@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerController
   - red-boat
+  - sea
   layers:
   - Default
   - TransparentFX

@@ -64,7 +64,7 @@
     <Analyzer Include="/home/ryan/Unity/Hub/Editor/2023.2.14f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/RyanScripts/EventSystem.cs" />
+    <Compile Include="Assets/Scripts/Events/LoadListener.cs" />
     <Compile Include="Assets/Scripts/FollowMouse.cs" />
     <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/LoadResources.cs" />
@@ -73,10 +73,12 @@
     <Compile Include="Assets/Scripts/RyanScripts/GameLogic.cs" />
     <Compile Include="Assets/Scripts/FollowPlayer.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/GameController.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/BoatController.cs" />
+    <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
+    <Compile Include="Assets/Scripts/Events/SpawnListener.cs" />
     <Compile Include="Assets/Scripts/MouseMove.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/BoatBehavior.cs" />
+    <Compile Include="Assets/Scripts/Events/SpawnEvent.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/Player.cs" />
   </ItemGroup>
   <ItemGroup>

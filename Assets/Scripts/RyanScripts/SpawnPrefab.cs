@@ -1,46 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SpawnPrefab : MonoBehaviour
+public class ExampleEvent : UnityEvent
 {
-    // delegate used to subsribe to our event system
-    public EventSystem spawnFromInteraction;
-
+}
+public class SpawnPrefab : SpawnListener
+{
     void Start(){
+        // method called when event triggered
+        Response = new UnityEvent<GameObject, object>();
+        Response.AddListener(ToCall);
     }
 
-    private void OnEnable()
-    {
-        EventSystem check = GetComponent<EventSystem>();
+    public void ToCall(GameObject caller, object data){
+        // cast plain object into SpawnData
+        SpawnData d = data as SpawnData;
 
-        if (check)
-        {
-            spawnFromInteraction = check;
-            spawnFromInteraction.GetSpawnEvent.HasInteracted += InteractSpawn;
-        }
-        else
-        {
-            EventSystem addComp = this.gameObject.AddComponent<EventSystem>();
-            spawnFromInteraction = addComp;
-            spawnFromInteraction.GetSpawnEvent.HasInteracted += InteractSpawn;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (spawnFromInteraction)
-        {
-            spawnFromInteraction.GetSpawnEvent.HasInteracted -= InteractSpawn;
-        }
-    }
-
-    public void InteractSpawn()
-    {
-        SpawnRedBoatPrefab(spawnFromInteraction.GameLogic);
-    }
-
-    public void SpawnRedBoatPrefab(GameLogic resources){
-        Instantiate(resources.RedBoat, resources.RedSpawn, new Quaternion());
+        // if the data exists
+        if (d != null) Instantiate(d.Prefab, d.Position, d.Rotation);
     }
 }

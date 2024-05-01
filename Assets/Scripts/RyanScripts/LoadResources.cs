@@ -1,16 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class LoadResources : MonoBehaviour
+public class LoadResources : LoadListener
 {
-
-    // delegate used to subsribe to our event system
-    public EventSystem loadFromEventSystem;
-
     // list with all Objects in resource folder
     UnityEngine.Object[] allPrefabs;
-
 
     void Start(){
         // grab all the prefabs in the prefab folder
@@ -19,45 +13,29 @@ public class LoadResources : MonoBehaviour
         } catch(UnityException e){
             throw e;
         }
+
+        // instantiate new unity event
+        Response = new UnityEvent<GameObject, object>();
+
+        // tells the event to call this function
+        Response.AddListener(FindPrefab);
     }
 
-    private void OnEnable()
-    {
-        EventSystem check = GetComponent<EventSystem>();
+    public void FindPrefab(GameObject caller, object data){
+        // take data from caller, we expect it to be spawn data
+        SpawnData d = data as SpawnData;
 
-        if (check)
+        // safety check for cast success
+        if (d != null)
         {
-            loadFromEventSystem = check;
-            loadFromEventSystem.GetLoadEvent.HasInteracted += EventSystemLoad;
-        }
-        else
-        {
-            EventSystem addComp = this.gameObject.AddComponent<EventSystem>();
-            loadFromEventSystem = addComp;
-            loadFromEventSystem.GetLoadEvent.HasInteracted += EventSystemLoad;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (loadFromEventSystem)
-        {
-            loadFromEventSystem.GetLoadEvent.HasInteracted -= EventSystemLoad;
-        }
-    }
-
-    public void EventSystemLoad()
-    {
-        LoadRedBoatPrefab(loadFromEventSystem.GameLogic);
-    }
-
-    public void LoadRedBoatPrefab(GameLogic gameLogic){
-        // prefab reference to be set by loop
-        foreach (GameObject p in allPrefabs)
-        {
-            if (p.tag.Equals("red-boat")){
-                gameLogic.RedBoat = p;
-                return;
+            // loop until we find a matching tag
+            foreach (GameObject p in allPrefabs)
+            {
+                if (p.tag.Equals(d.Tag))
+                {
+                    d.Prefab = p;
+                    return;
+                }
             }
         }
     }

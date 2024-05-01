@@ -180,6 +180,23 @@ MonoBehaviour:
       m_Action: Spawn
       m_Flags: 0
     m_Flags: 0
+  load:
+    m_Name: Load
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c9e24a59-61f7-49de-ba93-c48a86e231e6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 65860fe1-0e6a-4b4a-8ad6-669cea90dd68
+      m_Path: <Keyboard>/l
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Load
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1198842792
 GameObject:
   m_ObjectHideFlags: 0
