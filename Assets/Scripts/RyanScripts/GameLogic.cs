@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 // this class should be the only object in our hierarchy
 public class GameLogic : MonoBehaviour
 {
+    // make the GameLogic Singleton referable globally
+    public static GameLogic Instance { get; private set; }
+
     // used to track the different state of the game
     private Dictionary<string, bool> gameStates = new Dictionary<string, bool>
     {
@@ -17,36 +20,31 @@ public class GameLogic : MonoBehaviour
     // componets attached to this object
     private LoadResources loader;
     private SpawnPrefab spawner;
+    private DestroyObject destroyer;
 
-    // data for prefabs
-    SpawnData redBoat;
-    SpawnData sea;
-
-    // actions used to handle inputs
-    public InputAction spawn;
-    public InputAction load;
+    // data for spawning objects
+    private SpawnData player = new SpawnData();
+    private SpawnData sea = new SpawnData();
+    public SpawnData mainCamera = new SpawnData();
 
     // used to trigger events
-    SpawnEvent spawnEvent;
-    LoadEvent loadEvent;
+    public SpawnEvent spawnEvent;
+    public LoadEvent loadEvent;
+    public DestroyEvent destroyEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        // will hold all the data for spawning a red boat
-        redBoat = new SpawnData();
-        sea = new SpawnData();
-
         // instantiates event handlers
         spawnEvent = ScriptableObject.CreateInstance("SpawnEvent") as SpawnEvent;
         loadEvent = ScriptableObject.CreateInstance("LoadEvent") as LoadEvent;
+        destroyEvent = ScriptableObject.CreateInstance("DestroyEvent") as DestroyEvent;
 
         // components that react when an event is triggered
         loader = this.gameObject.AddComponent<LoadResources>();
         spawner = this.gameObject.AddComponent<SpawnPrefab>();
+        destroyer = this.gameObject.AddComponent<DestroyObject>();
 
-        spawn.Enable();
-        load.Enable();
     }
 
     // Update is called once per frame
@@ -54,8 +52,6 @@ public class GameLogic : MonoBehaviour
     {
         if (gameStates["GameStart"])
             StartCoroutine(GameStart());
-        else if (gameStates["GameRunning"])
-            Debug.Log("Running");
     }
 
     // Game Routines
@@ -73,11 +69,14 @@ public class GameLogic : MonoBehaviour
     private IEnumerator LoadPrefabs()
     {
         // this is how we find our prefab at load time
-        redBoat.Tag = "red-boat";
+        player.Tag = "Player";
         sea.Tag = "sea";
+        mainCamera.Tag = "MainCamera";
 
-        loadEvent.Raise(this.gameObject, redBoat);
+        // raise a load even for each prefab
+        loadEvent.Raise(this.gameObject, player);
         loadEvent.Raise(this.gameObject, sea);
+        loadEvent.Raise(this.gameObject, mainCamera);
 
         yield return null;
     }
@@ -85,15 +84,35 @@ public class GameLogic : MonoBehaviour
     // initialize starting game objects
     private IEnumerator InitialSpawn()
     {
+        spawnEvent.Raise(this.gameObject, mainCamera);
+        spawnEvent.Raise(this.gameObject, player);
         spawnEvent.Raise(this.gameObject, sea);
-        spawnEvent.Raise(this.gameObject, redBoat);
         yield return null;
     }
+
+    // this is here as a safety check
+    // it makes sure there is only ever 1 instance of this class
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+           Instance = this;
+        }
+     }
 }
 
-// variables and properties for spawning red boats
+// variables and properties for spawning objects
 public class SpawnData
 {
+    // used to save reference to Instantiated GameObject
+    // will always start out as null, set by SpawnPrefab class
+    private GameObject reference = null;
+    public GameObject Reference { get => reference; set => reference = value; }
     private string tag;
     public string Tag { get => tag; set => tag = value; }
     private GameObject prefab;

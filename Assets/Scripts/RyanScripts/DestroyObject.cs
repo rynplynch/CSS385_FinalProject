@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SpawnPrefab : SpawnListener
+public class DestroyObject : DestroyListener
 {
     void Start(){
         // method called when event triggered
@@ -15,12 +15,13 @@ public class SpawnPrefab : SpawnListener
         // cast plain object into SpawnData
         SpawnData d = data as SpawnData;
 
-        // if the data exists
-        if (d != null)
-        {
-            // spawn the game object into world space
-            // save reference to this spawned object
-            d.Reference = Instantiate(d.Prefab, d.Position, d.Rotation);
+        // if the data exists and there is a reference to instantiated object
+        if (d != null && d.Reference != null){
+            // destroy the reference
+            Destroy(d.Reference);
+
+            // be sure to set reference back to null
+            d.Reference = null;
         }
     }
 }

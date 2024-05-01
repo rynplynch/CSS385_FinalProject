@@ -75,10 +75,13 @@
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/BoatController.cs" />
     <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
+    <Compile Include="Assets/Scripts/Events/DestroyListener.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnListener.cs" />
     <Compile Include="Assets/Scripts/MouseMove.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/BoatBehavior.cs" />
+    <Compile Include="Assets/Scripts/RyanScripts/DestroyObject.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnEvent.cs" />
+    <Compile Include="Assets/Scripts/Events/DestroyEvent.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/Player.cs" />
   </ItemGroup>
   <ItemGroup>

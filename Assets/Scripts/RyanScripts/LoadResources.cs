@@ -34,6 +34,8 @@ public class LoadResources : LoadListener
                 if (p.tag.Equals(d.Tag))
                 {
                     d.Prefab = p;
+                    d.Position = p.transform.position;
+                    d.Rotation = p.transform.rotation;
                     return;
                 }
             }
