@@ -121,9 +121,10 @@ GameObject:
   - component: {fileID: 1369242081011302550}
   - component: {fileID: 2548579690006374005}
   - component: {fileID: 3980654114652725010}
+  - component: {fileID: 839635853610892214}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: Plane
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,19 +259,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34f0f46fc545be4d99dba0fe138ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8444168485448582755, guid: e510c7667521d3a4c915171b95137a90, type: 3}
   thrust: 10000
   wasdInput: {x: 0, y: 0}
   mouseMove: {x: 0, y: 0}
   pitchSpeed: 10
   rollSpeed: 10
   yawSpeed: 10
-  mouseSensitivity: 0
-  turnMagnitude: 0
+  mouseSensitivity: 500
+  turnMagnitude: 10
   drag: 0.01
   rb: {fileID: 0}
   timer: 0
   isBoat: 0
   boatThrust: 0
+--- !u!114 &839635853610892214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936691286629156027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1884115802506b4e9f004ae9289101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
 --- !u!1 &8536050956803229267
 GameObject:
   m_ObjectHideFlags: 0

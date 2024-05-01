@@ -81,28 +81,15 @@ public class PlayerController : MonoBehaviour
 
     public void spawnPlayerAsPlane(Vector3 spawnPos, Quaternion spawnRot){
         // if the camera was following someone else delete them
-        deletePlayer(cam.getFollowedPlayer());
         deletePlayer(currentPlane);
         // create the new player
         GameObject newPlayer = Instantiate(planePrefab, spawnPos, spawnRot);
         currentPlane = newPlayer;
 
-        // plane also has a helper spawn in-front of plane
-        GameObject newHelper = Instantiate(planeHelper, spawnPos + new Vector3(0,0,10), spawnRot);
-
-        // planes movement script needs reference to PlaneHelper
-        PlayerMovement pm = newPlayer.GetComponent<PlayerMovement>();
-        pm.mouseTarget = newHelper.transform.GetChild(0).gameObject;
-
-        // planeHelper needs transform of player body
-        MouseMove mouse = newHelper.GetComponent<MouseMove>();
-        mouse.playerBody = newPlayer.transform;
-
         // add them to instantiated players list
         players.Add(newPlayer);
-        players.Add(newHelper);
 
-        cam.setFollowedPlayer(newHelper);
+        cam.setFollowedPlayer(newPlayer);
     }
 
     public bool deletePlayer(GameObject player){

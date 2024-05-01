@@ -73,11 +73,6 @@ public class GameController : MonoBehaviour
             playerController.setPlanePrefab(planePrefab);
         else
             throw new UnityException();
-
-        if (playerController && planeHelper)
-            playerController.setPlaneHelper(planeHelper);
-        else
-            throw new UnityException();
     }
     // Update is called once per frame
     void Update()

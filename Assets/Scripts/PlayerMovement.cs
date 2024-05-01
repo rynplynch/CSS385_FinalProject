@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public GameObject mouseTarget;
-
+    //public GameObject mouseTarget;
 
     public float thrust;
     public Vector2 wasdInput;
@@ -16,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed;
     public float yawSpeed;
 
+    public float mouseSensitivity;
+    [SerializeField]
+    private float turnMagnitude;
 
     public float drag;
     /*
@@ -32,11 +34,17 @@ public class PlayerMovement : MonoBehaviour
 
     public float boatThrust;
 
+    float xRotation = 0f;
+    float yRotation = 0f;
+    float zRotation = 0f;
 
+    private Vector3 oldVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
+        //planeShoot = GetComponent<PlaneShoot>();
+
         //Sets player rigidbody
         rb = gameObject.GetComponent<Rigidbody>();
         //Locks the cursor so it doesn't go off screen
@@ -50,6 +58,18 @@ public class PlayerMovement : MonoBehaviour
     {
         //Gets horizontal and vertical input
         wasdInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        //Gets mouse input
+        mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        //Increases the sensitivity to movement
+        mouseMove *= mouseSensitivity * Time.deltaTime;
+
+        //Clamps the value of the mouse movement if above a certain magnitude
+        if (mouseMove.magnitude > turnMagnitude)
+        {
+            mouseMove.Normalize();
+            mouseMove *= turnMagnitude;
+        }
 
         //Gets mouse movement, only useful for the realistic controls
         //mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -88,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Draws the direction of velocity for the vehicle
         Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
-
     }
 
 
@@ -110,12 +129,34 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(-rb.velocity * deltaTime * rb.velocity.magnitude * rb.velocity.magnitude * drag);
 
         //Makes the plane look at the target
-        transform.LookAt(mouseTarget.transform);
+        //transform.LookAt(mouseTarget.transform);
 
         //Just debug lines that show the direction of the transform directions
         Debug.DrawLine(transform.forward, transform.forward * 10, Color.green);
         Debug.DrawLine(transform.up, transform.up * 10, Color.blue);
         Debug.DrawLine(transform.right, transform.right * 10, Color.red);
+
+        //Converts the movement into rotation for the quaternion
+        xRotation -= mouseMove.y;
+        yRotation += mouseMove.x;
+
+
+        zRotation -= wasdInput.x;
+
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+        //transform.Rotate(Vector3.up * mouseMove.x);
+        //transform.Rotate(Vector3.right * mouseMove.y);
+        //transform.Rotate(Vector3.forward * wasdInput.x);
+
+        //rb.velocity = (rb.velocity * 0.2f) + (oldVelocity * 0.8f);
+
+
+
+
+
+
+
+        //oldVelocity = rb.velocity;
 
         //I still want to experiment with this but it's not really important
 
@@ -163,5 +204,4 @@ public class PlayerMovement : MonoBehaviour
         rb.AddTorque(transform.up * deltaTime * boatThrust * wasdInput.x);
 
     }
-
 }
