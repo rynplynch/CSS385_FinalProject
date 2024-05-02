@@ -36,7 +36,7 @@ public class FollowCamera3D : MonoBehaviour
         }
 
         // Follow mouse for boat or default for either
-        if (player)
+        if (player != null)
         {
             if (player.CompareTag("Boat") && isFollowingMouse)
             {
@@ -46,6 +46,13 @@ public class FollowCamera3D : MonoBehaviour
             {
                 SetDefaultCamera();
             }
+            // set camera position equal to players forward position
+            transform.position = player.transform.position - player.transform.forward * cameraDistance;
+
+            // change camera height in relation to player
+            transform.position += new Vector3(0, cameraHeight, 0);
+
+            transform.LookAt(player.transform);
         }
     }
 

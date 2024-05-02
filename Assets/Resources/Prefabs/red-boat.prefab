@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8144409263203488860}
   - component: {fileID: 1935935869679625676}
   m_Layer: 0
-  m_Name: Boat
-  m_TagString: Boat
+  m_Name: red-boat
+  m_TagString: red-boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
