@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Boat
-  - PlayerController
   - PlaneHelper
-  - Plane
+  - red-boat
+  - PlayerController
+  - player-camera
+  - blue-boat
+  - sea
   layers:
   - Default
   - TransparentFX

@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Start(){
-        cam = FollowCamera3D.Instance;
     }
 
     // Start is called before the first frame update
