@@ -10,6 +10,9 @@ TagManager:
   - player-camera
   - blue-boat
   - sea
+  - Plane
+  - blue-plane
+  - red-plane
   layers:
   - Default
   - TransparentFX

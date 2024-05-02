@@ -123,8 +123,8 @@ GameObject:
   - component: {fileID: 3980654114652725010}
   - component: {fileID: 839635853610892214}
   m_Layer: 0
-  m_Name: Plane
-  m_TagString: Plane
+  m_Name: red-plane
+  m_TagString: red-plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34f0f46fc545be4d99dba0fe138ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8444168485448582755, guid: e510c7667521d3a4c915171b95137a90, type: 3}
   thrust: 10000
   wasdInput: {x: 0, y: 0}
   mouseMove: {x: 0, y: 0}
@@ -285,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1884115802506b4e9f004ae9289101f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  maxHealth: 0
 --- !u!1 &8536050956803229267
 GameObject:
   m_ObjectHideFlags: 0

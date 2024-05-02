@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public InputAction spawnAsRedBoat;
+    public InputAction spawnAsRedPlane;
     public InputAction spawnAsBlueBoat;
 
     // how we reference our game logic and events
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
 
     // objects the player can spawn as
     SpawnData redBoat = new SpawnData();
+    SpawnData redPlane = new SpawnData();
     SpawnData blueBoat = new SpawnData();
 
     // player camera that follows spawned objects
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
 
         spawnAsRedBoat.Enable();
         spawnAsBlueBoat.Enable();
+        spawnAsRedPlane.Enable();
     }
 
     void Update(){
@@ -43,6 +46,9 @@ public class Player : MonoBehaviour
         if (spawnAsBlueBoat.WasPerformedThisFrame()){
             StartCoroutine(SpawnRoutine(blueBoat));
         }
+        if (spawnAsRedPlane.WasPerformedThisFrame()){
+            StartCoroutine(SpawnRoutine(redPlane));
+        }
     }
 
     // make sure the player can not spawn as multiple GameObjects at once
@@ -50,6 +56,9 @@ public class Player : MonoBehaviour
         if (redBoat.Reference != null)
             yield return DetachCamera();
             yield return DeleteObject(redBoat);
+        if (redPlane.Reference != null)
+            yield return DetachCamera();
+            yield return DeleteObject(redPlane);
         if (blueBoat.Reference != null)
             yield return DetachCamera();
             yield return DeleteObject(blueBoat);
@@ -98,8 +107,10 @@ public class Player : MonoBehaviour
         // must match tag assigned to prefab
         redBoat.Tag = "red-boat";
         blueBoat.Tag = "blue-boat";
+        redPlane.Tag = "red-plane";
         playerCamera.Tag = "player-camera";
 
+        lEvent.Raise(this.gameObject, redPlane);
         lEvent.Raise(this.gameObject, redBoat);
         lEvent.Raise(this.gameObject, blueBoat);
         lEvent.Raise(this.gameObject, playerCamera);
