@@ -25,6 +25,10 @@ public class GameLogic : MonoBehaviour
     // data for spawning objects
     private SpawnData player = new SpawnData();
     private SpawnData sea = new SpawnData();
+    private SpawnData blueSpawn = new SpawnData();
+    public SpawnData BlueSpawn { get => blueSpawn; private set => blueSpawn = value;}
+    private SpawnData redSpawn = new SpawnData();
+    public SpawnData RedSpawn { get => redSpawn; private set => redSpawn = value;}
     public SpawnData mainCamera = new SpawnData();
 
     // used to trigger events
@@ -72,11 +76,15 @@ public class GameLogic : MonoBehaviour
         player.Tag = "Player";
         sea.Tag = "sea";
         mainCamera.Tag = "MainCamera";
+        redSpawn.Tag = "red-spawn";
+        blueSpawn.Tag = "blue-spawn";
 
         // raise a load even for each prefab
         loadEvent.Raise(this.gameObject, player);
         loadEvent.Raise(this.gameObject, sea);
         loadEvent.Raise(this.gameObject, mainCamera);
+        loadEvent.Raise(this.gameObject, blueSpawn);
+        loadEvent.Raise(this.gameObject, redSpawn);
 
         yield return null;
     }
@@ -86,7 +94,8 @@ public class GameLogic : MonoBehaviour
     {
         spawnEvent.Raise(this.gameObject, mainCamera);
         spawnEvent.Raise(this.gameObject, player);
-        spawnEvent.Raise(this.gameObject, sea);
+        spawnEvent.Raise(this.gameObject, blueSpawn);
+        spawnEvent.Raise(this.gameObject, redSpawn);
         yield return null;
     }
 
@@ -106,19 +115,3 @@ public class GameLogic : MonoBehaviour
      }
 }
 
-// variables and properties for spawning objects
-public class SpawnData
-{
-    // used to save reference to Instantiated GameObject
-    // will always start out as null, set by SpawnPrefab class
-    private GameObject reference = null;
-    public GameObject Reference { get => reference; set => reference = value; }
-    private string tag;
-    public string Tag { get => tag; set => tag = value; }
-    private GameObject prefab;
-    public GameObject Prefab { get => prefab; set => prefab = value; }
-    private Vector3 position;
-    public Vector3 Position { get => position; set => position = value; }
-    private Quaternion rotation;
-    public Quaternion Rotation { get => rotation; set => rotation = value; }
-}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlaneMovement : MonoBehaviour
 {
 
     //public GameObject mouseTarget;
@@ -164,29 +164,29 @@ public class PlayerMovement : MonoBehaviour
         //transform.forward = mouseTarget.transform.forward;
         //transform.TransformDirection(mouseTarget.transform);
 
-        
+
         if (velocityNormalized != transform.forward)
         {
             //Point plane velocity in the transform.forward direction
         }
         rb.AddTorque(Vector3.forward * deltaTime * horizontalInput * rollSpeed);
         //rb.AddTorque(-Vector3.forward * deltaTime * rollDrag * rb.angularVelocity.z);
-        
-        
+
+
         rb.AddTorque(Vector3.right * deltaTime * mouseMove.y * pitchSpeed);
         //rb.AddTorque(-Vector3.right * deltaTime * pitchDrag * rb.angularVelocity.x);
-        
-        
+
+
         //rb.AddTorque(Vector3.forward * Time.deltaTime * (mouseMove.x * yawSpeed - yawDrag * rb.angularVelocity.y));
         rb.AddTorque(Vector3.up * deltaTime * mouseMove.x * yawSpeed);
         //rb.AddTorque(-Vector3.up * deltaTime * yawDrag * rb.angularVelocity.y);
-        
-        
+
+
         if(transform.rotation != Quaternion.identity && mouseMove == Vector2.zero && horizontalInput == 0)
         {
             //transform.rotation = Quaternion.identity;
         }
-        
+
         //Transform method
         //transform.Translate(Vector3.forward * thrust * Time.deltaTime * verticalInput);
         //transform.Rotate(Vector3.forward * Time.deltaTime * mouseX * rollSpeed);

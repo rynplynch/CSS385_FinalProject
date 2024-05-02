@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DestroyListener : MonoBehaviour
+public class DamageListener : MonoBehaviour
 {
     [Tooltip("Event to register with.")]
-    public DestroyEvent Event;
+    public DamageEvent Event;
 
     [Tooltip("Response to invoke when Event is raised.")]
-    public UnityEvent<GameObject, DestoryData> Response;
+    public UnityEvent<GameObject, GameObject> Response;
 
     private void OnEnable()
     {
         // register with the spawn event
-        Event = FindFirstObjectByType<DestroyEvent>() as DestroyEvent;
+        Event = FindFirstObjectByType<DamageEvent>() as DamageEvent;
 
         Event.RegisterListener(this);
     }
@@ -24,7 +24,7 @@ public class DestroyListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(GameObject caller, DestoryData data){
+    public void OnEventRaised(GameObject caller, GameObject data){
         Response.Invoke(caller, data);
     }
 }

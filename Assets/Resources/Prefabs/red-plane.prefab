@@ -120,7 +120,6 @@ GameObject:
   - component: {fileID: 8762329161358443213}
   - component: {fileID: 1369242081011302550}
   - component: {fileID: 2548579690006374005}
-  - component: {fileID: 3980654114652725010}
   - component: {fileID: 839635853610892214}
   m_Layer: 0
   m_Name: red-plane
@@ -247,31 +246,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3980654114652725010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936691286629156027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34f0f46fc545be4d99dba0fe138ef16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 10000
-  wasdInput: {x: 0, y: 0}
-  mouseMove: {x: 0, y: 0}
-  pitchSpeed: 10
-  rollSpeed: 10
-  yawSpeed: 10
-  mouseSensitivity: 500
-  turnMagnitude: 10
-  drag: 0.01
-  rb: {fileID: 0}
-  timer: 0
-  isBoat: 0
-  boatThrust: 0
 --- !u!114 &839635853610892214
 MonoBehaviour:
   m_ObjectHideFlags: 0

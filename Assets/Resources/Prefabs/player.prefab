@@ -95,3 +95,37 @@ MonoBehaviour:
       m_Action: Spawn As Blue Boat
       m_Flags: 0
     m_Flags: 0
+  spawnAsRedPlane:
+    m_Name: Spawn As Red Plane
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a0af3fc5-b606-4b20-9e18-aae93b04398c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fb1fbe87-9792-4e7c-8dd6-6b5509874ee6
+      m_Path: <Keyboard>/3
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Spawn As Red Plane
+      m_Flags: 0
+    m_Flags: 0
+  spawnAsBluePlane:
+    m_Name: Spawn As Blue Plane
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 47b82f00-ac5f-4cb3-aab7-e644f6c03945
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: eecd3b61-a0d6-4b0b-8d87-f75f2280f277
+      m_Path: <Keyboard>/4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Spawn As Blue Plane
+      m_Flags: 0
+    m_Flags: 0

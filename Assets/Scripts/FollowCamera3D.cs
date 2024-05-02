@@ -21,7 +21,7 @@ public class FollowCamera3D : MonoBehaviour
     
     private float defaultCameraDistance;
     private float defaultCameraHeight;
-    private GameObject player;
+    public GameObject player;
     private bool togglePressed = false;
     private float maxPitchAngle = 20f;
     private float minPitchAngle = -60f;
@@ -109,7 +109,7 @@ public class FollowCamera3D : MonoBehaviour
     // Toggle between boat fire mode camera and follow camera
     private void HandleCameraToggle()
     {
-        if (player && (player.CompareTag("red-boat")||player.CompareTag("blue-boat")))
+        if (player && (player.CompareTag("red-boat") | player.CompareTag("blue-boat")))
         {
             isFollowingMouse = !isFollowingMouse;
         }

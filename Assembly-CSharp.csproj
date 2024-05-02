@@ -66,28 +66,29 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Events/LoadListener.cs" />
     <Compile Include="Assets/Scripts/FollowMouse.cs" />
-    <Compile Include="Assets/Scripts/BoatBullet.cs" />
     <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/LoadResources.cs" />
-    <Compile Include="Assets/Scripts/MoveBoat.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/SpawnPrefab.cs" />
+    <Compile Include="Assets/Scripts/SpawnPrefab.cs" />
+    <Compile Include="Assets/Scripts/LoadResources.cs" />
+    <Compile Include="Assets/Scripts/GameLogic.cs" />
     <Compile Include="Assets/Scripts/MissileBehavior.cs" />
     <Compile Include="Assets/Scripts/BulletBehavior.cs" />
     <Compile Include="Assets/Scripts/Health.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/PlayerController.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/GameLogic.cs" />
-    <Compile Include="Assets/Scripts/FollowPlayer.cs" />
-    <Compile Include="Assets/Scripts/PlayerMovement.cs" />
+    <Compile Include="Assets/Scripts/Events/DamageListener.cs" />
+    <Compile Include="Assets/Scripts/ApplyDamage.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/BoatBullet.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/BoatMovement.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/PlaneMovement.cs" />
+    <Compile Include="Assets/Scripts/Events/DamageEvent.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/BoatBehavior.cs" />
     <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
+    <Compile Include="Assets/Scripts/DestroyObject.cs" />
     <Compile Include="Assets/Scripts/Events/DestroyListener.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnListener.cs" />
     <Compile Include="Assets/Scripts/MouseMove.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/BoatBehavior.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/DestroyObject.cs" />
+    <Compile Include="Assets/Scripts/Player.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnEvent.cs" />
     <Compile Include="Assets/Scripts/Events/DestroyEvent.cs" />
     <Compile Include="Assets/Scripts/PlaneShoot.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

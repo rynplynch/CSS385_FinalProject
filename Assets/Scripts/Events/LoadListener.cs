@@ -9,7 +9,7 @@ public class LoadListener : MonoBehaviour
     public LoadEvent Event;
 
     [Tooltip("Response to invoke when Event is raised.")]
-    public UnityEvent<GameObject, object> Response;
+    public UnityEvent<GameObject, SpawnData> Response;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class LoadListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(GameObject caller, object data){
+    public void OnEventRaised(GameObject caller, SpawnData data){
         Response.Invoke(caller, data);
     }
 }

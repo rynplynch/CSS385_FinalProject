@@ -15,16 +15,13 @@ public class LoadResources : LoadListener
         }
 
         // instantiate new unity event
-        Response = new UnityEvent<GameObject, object>();
+        Response = new UnityEvent<GameObject, SpawnData>();
 
         // tells the event to call this function
         Response.AddListener(FindPrefab);
     }
 
-    public void FindPrefab(GameObject caller, object data){
-        // take data from caller, we expect it to be spawn data
-        SpawnData d = data as SpawnData;
-
+    public void FindPrefab(GameObject caller, SpawnData d){
         // safety check for cast success
         if (d != null)
         {
