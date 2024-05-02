@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlaneHelper
+  - red-boat
+  - PlayerController
+  - player-camera
+  - blue-boat
+  - sea
   layers:
   - Default
   - TransparentFX
