@@ -105,6 +105,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae859bbc5ae43df2b18e62e9c57e4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   cameraDistance: 30
   cameraHeight: 10
+  toggleCameraMode:
+    m_Name: Toggle Camera Mode
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d1d14408-f89f-4e9c-bcfc-735d5e3cb12a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 98d077bc-eaa5-4c8b-9b83-43a6b72c24e8
+      m_Path: <Keyboard>/c
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle Camera Mode
+      m_Flags: 0
+    m_Flags: 0
+  pitchSensitivity: 0.1
+  yawSensitivity: 0.2
+  isFollowingMouse: 1
+  fireRate: 0.5
+  bulletPrefab: {fileID: 8313843009057268759, guid: e38215c8a9326f74aa8a8e57b39402ee, type: 3}
+  fire:
+    m_Name: Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 80e32430-dcf4-42b7-b1a9-b8d83ff945d9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 504e4ed3-dffe-4617-a9df-b6e23f3eaccf
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire
+      m_Flags: 0
+    m_Flags: 0

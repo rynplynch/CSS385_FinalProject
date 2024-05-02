@@ -5,13 +5,19 @@ using UnityEngine.InputSystem;
 
 public class FollowCamera3D : MonoBehaviour
 {
+    private GameLogic gCtrl;
+
     public float cameraDistance;
     public float cameraHeight;
     public InputAction toggleCameraMode;
     public float pitchSensitivity = 0.1f;
     public float yawSensitivity = 0.2f;
-    public static FollowCamera3D Instance { get; private set; }
     public bool isFollowingMouse = false;
+    public float fireRate = 0.5f;
+    private float nextFireTime = 0f;
+    public GameObject bulletPrefab;
+
+    public InputAction fire;
     
     private float defaultCameraDistance;
     private float defaultCameraHeight;
@@ -38,7 +44,7 @@ public class FollowCamera3D : MonoBehaviour
         // Follow mouse for boat or default for either
         if (player != null)
         {
-            if (player.CompareTag("Boat") && isFollowingMouse)
+            if (player.CompareTag("red-boat") && isFollowingMouse)
             {
                 SetMouseFollowCamera();
             }
@@ -46,28 +52,30 @@ public class FollowCamera3D : MonoBehaviour
             {
                 SetDefaultCamera();
             }
-            // set camera position equal to players forward position
-            transform.position = player.transform.position - player.transform.forward * cameraDistance;
-
-            // change camera height in relation to player
-            transform.position += new Vector3(0, cameraHeight, 0);
-
-            transform.LookAt(player.transform);
         }
-    }
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
+        // fire on cooldown if left mb is pressed and the boat is in firing mode
+        if (fire.WasPerformedThisFrame() && isFollowingMouse && Time.time >= nextFireTime)
         {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            defaultCameraDistance = cameraDistance;
-            defaultCameraHeight = cameraHeight;
-            toggleCameraMode.Enable();
+            // must pass in SpawnData to the spawn event
+            SpawnData bull = new SpawnData();
+
+            // set prefab value
+            bull.Prefab = bulletPrefab;
+
+            // set spawn position to location of ship
+            bull.Position = this.gameObject.transform.position;
+
+            // increase height to be that of camera
+            bull.Position += new Vector3(0,cameraHeight,0);
+
+            // apply rotation to bullet spawn
+            bull.Rotation = this.transform.rotation;
+
+            // Invoke the spawn event
+            gCtrl.spawnEvent.Raise(this.gameObject, bull);
+
+            nextFireTime = Time.time + fireRate;
         }
     }
 
@@ -75,6 +83,8 @@ public class FollowCamera3D : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        gCtrl = GameLogic.Instance;
+        fire.Enable();
     }
 
     // Fire mode, camera follows mouse movement
@@ -100,7 +110,7 @@ public class FollowCamera3D : MonoBehaviour
     // Toggle between boat fire mode camera and follow camera
     private void HandleCameraToggle()
     {
-        if (player && player.CompareTag("Boat"))
+        if (player && player.CompareTag("red-boat"))
         {
             isFollowingMouse = !isFollowingMouse;
         }
