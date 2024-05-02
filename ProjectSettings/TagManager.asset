@@ -4,12 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlaneHelper
   - red-boat
-  - PlayerController
   - player-camera
   - blue-boat
   - sea
+  - blue-spawn
+  - red-spawn
+  - marker
+  - red-plane
+  - blue-plane
   layers:
   - Default
   - TransparentFX

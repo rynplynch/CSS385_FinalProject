@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlaneMovement : MonoBehaviour
 {
 
-    public GameObject mouseTarget;
+    //public GameObject mouseTarget;
 
 
     public float thrust;
@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed;
     public float yawSpeed;
 
+    public float mouseSensitivity;
+    [SerializeField]
+    private float turnMagnitude;
 
     public float drag;
     /*
@@ -32,7 +35,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float boatThrust;
 
+    float xRotation = 0f;
+    float yRotation = 0f;
+    float zRotation = 0f;
 
+    private Vector3 oldVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +57,18 @@ public class PlayerMovement : MonoBehaviour
     {
         //Gets horizontal and vertical input
         wasdInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        //Gets mouse input
+        mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        //Increases the sensitivity to movement
+        mouseMove *= mouseSensitivity * Time.deltaTime;
+
+        //Clamps the value of the mouse movement if above a certain magnitude
+        if (mouseMove.magnitude > turnMagnitude)
+        {
+            mouseMove.Normalize();
+            mouseMove *= turnMagnitude;
+        }
 
         //Gets mouse movement, only useful for the realistic controls
         //mouseMove = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -110,12 +129,34 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(-rb.velocity * deltaTime * rb.velocity.magnitude * rb.velocity.magnitude * drag);
 
         //Makes the plane look at the target
-        transform.LookAt(mouseTarget.transform);
+        //transform.LookAt(mouseTarget.transform);
 
         //Just debug lines that show the direction of the transform directions
         Debug.DrawLine(transform.forward, transform.forward * 10, Color.green);
         Debug.DrawLine(transform.up, transform.up * 10, Color.blue);
         Debug.DrawLine(transform.right, transform.right * 10, Color.red);
+
+        //Converts the movement into rotation for the quaternion
+        xRotation -= mouseMove.y;
+        yRotation += mouseMove.x;
+
+
+        zRotation -= wasdInput.x;
+
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+        //transform.Rotate(Vector3.up * mouseMove.x);
+        //transform.Rotate(Vector3.right * mouseMove.y);
+        //transform.Rotate(Vector3.forward * wasdInput.x);
+
+        //rb.velocity = (rb.velocity * 0.2f) + (oldVelocity * 0.8f);
+
+
+
+
+
+
+
+        //oldVelocity = rb.velocity;
 
         //I still want to experiment with this but it's not really important
 
@@ -123,29 +164,29 @@ public class PlayerMovement : MonoBehaviour
         //transform.forward = mouseTarget.transform.forward;
         //transform.TransformDirection(mouseTarget.transform);
 
-        
+
         if (velocityNormalized != transform.forward)
         {
             //Point plane velocity in the transform.forward direction
         }
         rb.AddTorque(Vector3.forward * deltaTime * horizontalInput * rollSpeed);
         //rb.AddTorque(-Vector3.forward * deltaTime * rollDrag * rb.angularVelocity.z);
-        
-        
+
+
         rb.AddTorque(Vector3.right * deltaTime * mouseMove.y * pitchSpeed);
         //rb.AddTorque(-Vector3.right * deltaTime * pitchDrag * rb.angularVelocity.x);
-        
-        
+
+
         //rb.AddTorque(Vector3.forward * Time.deltaTime * (mouseMove.x * yawSpeed - yawDrag * rb.angularVelocity.y));
         rb.AddTorque(Vector3.up * deltaTime * mouseMove.x * yawSpeed);
         //rb.AddTorque(-Vector3.up * deltaTime * yawDrag * rb.angularVelocity.y);
-        
-        
+
+
         if(transform.rotation != Quaternion.identity && mouseMove == Vector2.zero && horizontalInput == 0)
         {
             //transform.rotation = Quaternion.identity;
         }
-        
+
         //Transform method
         //transform.Translate(Vector3.forward * thrust * Time.deltaTime * verticalInput);
         //transform.Rotate(Vector3.forward * Time.deltaTime * mouseX * rollSpeed);

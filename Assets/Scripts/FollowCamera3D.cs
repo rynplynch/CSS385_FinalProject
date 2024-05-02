@@ -21,7 +21,7 @@ public class FollowCamera3D : MonoBehaviour
     
     private float defaultCameraDistance;
     private float defaultCameraHeight;
-    private GameObject player;
+    public GameObject player;
     private bool togglePressed = false;
     private float maxPitchAngle = 20f;
     private float minPitchAngle = -60f;
@@ -44,7 +44,7 @@ public class FollowCamera3D : MonoBehaviour
         // Follow mouse for boat or default for either
         if (player != null)
         {
-            if (player.CompareTag("red-boat") && isFollowingMouse)
+            if ((player.CompareTag("red-boat") | player.CompareTag("blue-boat")) && isFollowingMouse)
             {
                 SetMouseFollowCamera();
             }
@@ -85,6 +85,7 @@ public class FollowCamera3D : MonoBehaviour
         Cursor.visible = false;
         gCtrl = GameLogic.Instance;
         fire.Enable();
+        toggleCameraMode.Enable();
     }
 
     // Fire mode, camera follows mouse movement
@@ -101,8 +102,6 @@ public class FollowCamera3D : MonoBehaviour
     // Default follow camera for boat and plane
     private void SetDefaultCamera()
     {
-        cameraDistance = defaultCameraDistance;
-        cameraHeight = defaultCameraHeight;
         transform.position = player.transform.position - player.transform.forward * cameraDistance + Vector3.up * cameraHeight;
         transform.LookAt(player.transform);
     }
@@ -110,7 +109,7 @@ public class FollowCamera3D : MonoBehaviour
     // Toggle between boat fire mode camera and follow camera
     private void HandleCameraToggle()
     {
-        if (player && player.CompareTag("red-boat"))
+        if (player && (player.CompareTag("red-boat") | player.CompareTag("blue-boat")))
         {
             isFollowingMouse = !isFollowingMouse;
         }

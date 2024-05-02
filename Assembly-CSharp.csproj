@@ -70,9 +70,12 @@
     <Compile Include="Assets/Scripts/SpawnPrefab.cs" />
     <Compile Include="Assets/Scripts/LoadResources.cs" />
     <Compile Include="Assets/Scripts/GameLogic.cs" />
+    <Compile Include="Assets/Scripts/Events/DamageListener.cs" />
+    <Compile Include="Assets/Scripts/ApplyDamage.cs" />
     <Compile Include="Assets/Scripts/Projectiles/BoatBullet.cs" />
     <Compile Include="Assets/Scripts/Vehicles/BoatMovement.cs" />
     <Compile Include="Assets/Scripts/Vehicles/PlaneMovement.cs" />
+    <Compile Include="Assets/Scripts/Events/DamageEvent.cs" />
     <Compile Include="Assets/Scripts/Vehicles/BoatBehavior.cs" />
     <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
     <Compile Include="Assets/Scripts/DestroyObject.cs" />

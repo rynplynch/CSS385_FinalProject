@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8313843009057268759, guid: e38215c8a9326f74aa8a8e57b39402ee, type: 3}
-  fireRate: 0.5
   forwardSpeed: 20
   rotationalSpeed: 20
   maxThrustForce: 10
@@ -220,30 +218,5 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Left
-      m_Flags: 0
-    m_Flags: 0
-  fire:
-    m_Name: Fire
-    m_Type: 0
-    m_ExpectedControlType: Button
-    m_Id: 7bae6fed-2930-4252-a7a4-3fecfd6de3b0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 834952c5-0882-4a33-a977-f62c2cf2fd24
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Fire
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 0b4b8dd4-1f46-453a-931d-d33694ffe34f
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Fire
       m_Flags: 0
     m_Flags: 0
