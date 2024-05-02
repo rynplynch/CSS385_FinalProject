@@ -86,7 +86,6 @@ public class GameLogic : MonoBehaviour
     {
         spawnEvent.Raise(this.gameObject, mainCamera);
         spawnEvent.Raise(this.gameObject, player);
-        spawnEvent.Raise(this.gameObject, sea);
         yield return null;
     }
 
