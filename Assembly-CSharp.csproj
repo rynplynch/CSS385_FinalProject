@@ -69,21 +69,14 @@
     <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/LoadResources.cs" />
     <Compile Include="Assets/Scripts/MoveBoat.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets/Scripts/RyanScripts/PlayerController.cs" />
-    <Compile Include="Assets/Scripts/FollowPlayer.cs" />
-    <Compile Include="Assets/Scripts/PlayerMovement.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/GameController.cs" />
-=======
     <Compile Include="Assets/Scripts/RyanScripts/SpawnPrefab.cs" />
+    <Compile Include="Assets/Scripts/RyanScripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/GameLogic.cs" />
     <Compile Include="Assets/Scripts/FollowPlayer.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
-    <Compile Include="Assets/Scripts/RyanScripts/BoatController.cs" />
     <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
     <Compile Include="Assets/Scripts/Events/DestroyListener.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnListener.cs" />
->>>>>>> ryan
     <Compile Include="Assets/Scripts/MouseMove.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/BoatBehavior.cs" />
     <Compile Include="Assets/Scripts/RyanScripts/DestroyObject.cs" />

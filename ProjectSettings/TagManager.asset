@@ -3,17 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PlayerController
-<<<<<<< HEAD
-  - PlaneHelper
-  - Plane
-=======
-  - red-boat
-  - sea
-  - blue-boat
-  - player-camera
->>>>>>> ryan
+  tags: []
   layers:
   - Default
   - TransparentFX

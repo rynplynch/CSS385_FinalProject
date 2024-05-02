@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         FollowCamera3D script = playerCamera.Reference.GetComponent<FollowCamera3D>();
 
         // set transform of script to spawned player object
-        script.player = o.Reference.transform;
+        script.setFollowedPlayer(o.Reference);
 
         yield return null;
     }

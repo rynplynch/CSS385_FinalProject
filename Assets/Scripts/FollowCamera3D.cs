@@ -11,25 +11,15 @@ public class FollowCamera3D : MonoBehaviour
 
     void LateUpdate()
     {
-<<<<<<< HEAD
-        if (player){
-        // set camera position equal to players forward position
-        transform.position = player.transform.position - player.transform.forward * cameraDistance;
-=======
         if (player != null)
         {
             // set camera position equal to players forward position
             transform.position = player.transform.position - player.transform.forward * cameraDistance;
->>>>>>> ryan
 
             // change camera height in relation to player
             transform.position += new Vector3(0, cameraHeight, 0);
 
-<<<<<<< HEAD
-        transform.LookAt(player.transform);
-=======
             transform.LookAt(player.transform);
->>>>>>> ryan
         }
     }
 
