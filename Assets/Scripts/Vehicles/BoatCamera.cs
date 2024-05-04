@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FollowCamera3D : MonoBehaviour
+public class BoatCamera : MonoBehaviour
 {
     private GameLogic gCtrl;
 
@@ -74,6 +74,13 @@ public class FollowCamera3D : MonoBehaviour
 
             // Invoke the spawn event
             gCtrl.spawnEvent.Raise(this.gameObject, bull);
+
+            // if coming from a red boat
+            if (player.CompareTag("red-boat"))
+                // set bullet tag on the bullet we just created
+                bull.Reference.tag = "red-projectile";
+            else if (player.CompareTag("blue-boat"))
+                bull.Reference.tag = "blue-projectile";
 
             nextFireTime = Time.time + fireRate;
         }

@@ -9,7 +9,7 @@ public class DamageListener : MonoBehaviour
     public DamageEvent Event;
 
     [Tooltip("Response to invoke when Event is raised.")]
-    public UnityEvent<GameObject, GameObject> Response;
+    public UnityEvent<GameObject, DamageData> Response;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class DamageListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(GameObject caller, GameObject data){
+    public void OnEventRaised(GameObject caller, DamageData data){
         Response.Invoke(caller, data);
     }
 }

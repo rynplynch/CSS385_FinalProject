@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     SpawnData bluePlane = new SpawnData();
 
     // player camera that follows spawned objects
-    SpawnData playerCamera = new SpawnData();
+    SpawnData boatCamera = new SpawnData();
+    SpawnData planeCamera = new SpawnData();
 
     void Start()
     {
@@ -105,14 +106,24 @@ public class Player : MonoBehaviour
         // deactivate main camera
         gCtrl.mainCamera.Reference.SetActive(false);
 
-        // spawn the player camera prefab
-        yield return SpawnObject(playerCamera);
+        // check what the spawn object is
+        if (o.Tag.Equals("blue-boat") | o.Tag.Equals("red-boat"))
+        {
+            // spawn a camera for a boat
+            yield return SpawnObject(boatCamera);
 
-        // grab the attached script
-        FollowCamera3D script = playerCamera.Reference.GetComponent<FollowCamera3D>();
+            // grab the boat camera script
+            BoatCamera script = boatCamera.Reference.GetComponent<BoatCamera>();
 
-        // set transform of script to spawned player object
-        script.setFollowedPlayer(o.Reference);
+            // pass in a refence so the camera can follow the boat
+            script.setFollowedPlayer(o.Reference);
+        }
+        else if (o.Tag.Equals("blue-plane") | o.Tag.Equals("red-plane"))
+        {
+            yield return SpawnObject(planeCamera);
+            PlaneCamera script = planeCamera.Reference.GetComponent<PlaneCamera>();
+            script.setFollowedPlayer(o.Reference);
+        }
 
         yield return null;
     }
@@ -120,8 +131,15 @@ public class Player : MonoBehaviour
     private IEnumerator DetachCamera()
     {
         DestoryData d = new DestoryData();
-        d.Reference = playerCamera.Reference;
+
+        // the camera that has a reference is the one that is live
+        if (boatCamera.Reference)
+            d.Reference = boatCamera.Reference;
+        else if (planeCamera.Reference)
+            d.Reference = planeCamera.Reference;
+
         d.LifeCycle = 0;
+
         // destroy camera
         yield return DeleteObject(d);
     }
@@ -145,13 +163,15 @@ public class Player : MonoBehaviour
         blueBoat.Tag = "blue-boat";
         bluePlane.Tag = "blue-plane";
         redPlane.Tag = "red-plane";
-        playerCamera.Tag = "player-camera";
+        boatCamera.Tag = "boat-camera";
+        planeCamera.Tag = "plane-camera";
 
 
         lEvent.Raise(this.gameObject, redPlane);
         lEvent.Raise(this.gameObject, bluePlane);
         lEvent.Raise(this.gameObject, redBoat);
         lEvent.Raise(this.gameObject, blueBoat);
-        lEvent.Raise(this.gameObject, playerCamera);
+        lEvent.Raise(this.gameObject, boatCamera);
+        lEvent.Raise(this.gameObject, planeCamera);
     }
 }

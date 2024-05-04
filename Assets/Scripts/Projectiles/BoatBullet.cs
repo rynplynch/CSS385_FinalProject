@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatBullet : MonoBehaviour
+public class BoatBullet : Projectile
 {
     public float speed = 20f;
     public float lifespan = 3f;
 
+    private GameLogic gCtrl;
+
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, lifespan);
+        gCtrl = GameLogic.Instance;
+
+        // pass in the caller, then the destroy data
+        gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, lifespan));
     }
 
     // Update is called once per frame
@@ -19,8 +24,13 @@ public class BoatBullet : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-       Destroy(gameObject);
+        // check if we are colliding with what fired us
+        if (!Object.ReferenceEquals(firedBy, other.gameObject))
+        {
+            // create damage event
+            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(other.gameObject, 10, this.gameObject.tag));
+        }
     }
 }

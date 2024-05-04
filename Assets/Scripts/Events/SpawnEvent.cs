@@ -11,7 +11,7 @@ public class SpawnEvent : ScriptableObject
     private readonly List<SpawnListener> eventListeners =
         new List<SpawnListener>();
 
-    public void Raise(GameObject caller, object data)
+    public void Raise(GameObject caller, SpawnData data)
     {
         for (int i = eventListeners.Count - 1; i >= 0; i--)
             eventListeners[i].OnEventRaised(caller, data);

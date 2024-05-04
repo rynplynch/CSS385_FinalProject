@@ -21,6 +21,7 @@ public class GameLogic : MonoBehaviour
     private LoadResources loader;
     private SpawnPrefab spawner;
     private DestroyObject destroyer;
+    private ApplyDamage damager;
 
     // data for spawning objects
     private SpawnData player = new SpawnData();
@@ -35,6 +36,7 @@ public class GameLogic : MonoBehaviour
     public SpawnEvent spawnEvent;
     public LoadEvent loadEvent;
     public DestroyEvent destroyEvent;
+    public DamageEvent damageEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +45,13 @@ public class GameLogic : MonoBehaviour
         spawnEvent = ScriptableObject.CreateInstance("SpawnEvent") as SpawnEvent;
         loadEvent = ScriptableObject.CreateInstance("LoadEvent") as LoadEvent;
         destroyEvent = ScriptableObject.CreateInstance("DestroyEvent") as DestroyEvent;
+        damageEvent = ScriptableObject.CreateInstance("DamageEvent") as DamageEvent;
 
         // components that react when an event is triggered
         loader = this.gameObject.AddComponent<LoadResources>();
         spawner = this.gameObject.AddComponent<SpawnPrefab>();
         destroyer = this.gameObject.AddComponent<DestroyObject>();
-
+        damager = this.gameObject.AddComponent<ApplyDamage>();
     }
 
     // Update is called once per frame

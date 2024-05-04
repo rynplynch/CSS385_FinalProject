@@ -33,10 +33,16 @@ public class DestroyEvent : ScriptableObject
 // variables and properties for spawning objects
 public class DestoryData
 {
-    // used to save reference to Instantiated GameObject
-    // will always start out as null, set by SpawnPrefab class
+    public DestoryData(){}
+    public DestoryData(GameObject toDestroy, float lifeTimer)
+        {
+            this.Reference = toDestroy;
+            this.LifeCycle = lifeTimer;
+        }
+    // reference is the game object you want to destroy
     private GameObject reference = null;
     public GameObject Reference { get => reference; set => reference = value; }
+    // how long till the object is destroyed
     private float lifeCycle;
     public float LifeCycle { get => lifeCycle; set => lifeCycle = value; }
 }

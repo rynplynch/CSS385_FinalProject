@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3046918195810458479}
   - component: {fileID: -8562057611545862808}
   - component: {fileID: -7063556679224900772}
+  - component: {fileID: -4914021257425257126}
   m_Layer: 0
   m_Name: BoatBullet
   m_TagString: Untagged
@@ -150,3 +151,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4914021257425257126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313843009057268759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc45ac9d9c5684bbbd9843d00456a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firedBy: {fileID: 0}

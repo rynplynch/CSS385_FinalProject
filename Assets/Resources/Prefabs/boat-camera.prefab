@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8623749092126901773}
   - component: {fileID: 6264541795127580070}
   - component: {fileID: 4732629782905878944}
-  - component: {fileID: 5860144416346931749}
+  - component: {fileID: -5832151884109306061}
   m_Layer: 0
-  m_Name: player-camera
-  m_TagString: player-camera
+  m_Name: boat-camera
+  m_TagString: boat-camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6682166977138065405}
   m_Enabled: 1
---- !u!114 &5860144416346931749
+--- !u!114 &-5832151884109306061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,12 +111,12 @@ MonoBehaviour:
     m_Name: Toggle Camera Mode
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: d1d14408-f89f-4e9c-bcfc-735d5e3cb12a
+    m_Id: ccb40fc3-6dd7-43c8-9460-0b279ebbbe65
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 98d077bc-eaa5-4c8b-9b83-43a6b72c24e8
+      m_Id: ae3cd825-c522-407b-92c4-ce2478743388
       m_Path: <Keyboard>/c
       m_Interactions: 
       m_Processors: 
@@ -126,19 +126,19 @@ MonoBehaviour:
     m_Flags: 0
   pitchSensitivity: 0.1
   yawSensitivity: 0.2
-  isFollowingMouse: 1
+  isFollowingMouse: 0
   fireRate: 0.5
   bulletPrefab: {fileID: 8313843009057268759, guid: e38215c8a9326f74aa8a8e57b39402ee, type: 3}
   fire:
     m_Name: Fire
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 80e32430-dcf4-42b7-b1a9-b8d83ff945d9
+    m_Id: 5eac8bdf-a82a-4c9c-8db9-dc10a64cffba
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 504e4ed3-dffe-4617-a9df-b6e23f3eaccf
+      m_Id: ec683df2-89af-42a2-91b4-2f9e366a561f
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -146,3 +146,4 @@ MonoBehaviour:
       m_Action: Fire
       m_Flags: 0
     m_Flags: 0
+  player: {fileID: 0}

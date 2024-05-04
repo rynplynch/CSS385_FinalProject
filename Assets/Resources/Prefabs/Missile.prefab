@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3816423970847322299}
   - component: {fileID: 4225778625304759292}
   - component: {fileID: 4973838398699182488}
+  - component: {fileID: -3707297444585844056}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -153,3 +154,16 @@ MonoBehaviour:
   planeDamage: 10000
   homingRadius: 250
   homingStrength: 2500
+--- !u!114 &-3707297444585844056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797213561299971884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc45ac9d9c5684bbbd9843d00456a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firedBy: {fileID: 0}

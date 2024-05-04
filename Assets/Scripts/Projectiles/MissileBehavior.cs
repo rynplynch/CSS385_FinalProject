@@ -60,6 +60,7 @@ public class MissileBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (isHoming && other.transform == target)
         {
             if (other.CompareTag("Boat"))

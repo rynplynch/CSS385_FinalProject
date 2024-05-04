@@ -64,20 +64,21 @@
     <Analyzer Include="/home/ryan/Unity/Hub/Editor/2023.2.14f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/Projectiles/Projectile.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/PlaneCamera.cs" />
     <Compile Include="Assets/Scripts/Events/LoadListener.cs" />
-    <Compile Include="Assets/Scripts/FollowMouse.cs" />
-    <Compile Include="Assets/Scripts/FollowCamera3D.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/BulletBehavior.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/Health.cs" />
     <Compile Include="Assets/Scripts/SpawnPrefab.cs" />
     <Compile Include="Assets/Scripts/LoadResources.cs" />
     <Compile Include="Assets/Scripts/GameLogic.cs" />
-    <Compile Include="Assets/Scripts/MissileBehavior.cs" />
-    <Compile Include="Assets/Scripts/BulletBehavior.cs" />
-    <Compile Include="Assets/Scripts/Health.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/MissileBehavior.cs" />
     <Compile Include="Assets/Scripts/Events/DamageListener.cs" />
     <Compile Include="Assets/Scripts/ApplyDamage.cs" />
     <Compile Include="Assets/Scripts/Projectiles/BoatBullet.cs" />
     <Compile Include="Assets/Scripts/Vehicles/BoatMovement.cs" />
     <Compile Include="Assets/Scripts/Vehicles/PlaneMovement.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/BoatCamera.cs" />
     <Compile Include="Assets/Scripts/Events/DamageEvent.cs" />
     <Compile Include="Assets/Scripts/Vehicles/BoatBehavior.cs" />
     <Compile Include="Assets/Scripts/Events/LoadEvent.cs" />
@@ -86,9 +87,10 @@
     <Compile Include="Assets/Scripts/Events/SpawnListener.cs" />
     <Compile Include="Assets/Scripts/MouseMove.cs" />
     <Compile Include="Assets/Scripts/Player.cs" />
+    <Compile Include="Assets/Scripts/Vehicles/FollowMouse.cs" />
     <Compile Include="Assets/Scripts/Events/SpawnEvent.cs" />
     <Compile Include="Assets/Scripts/Events/DestroyEvent.cs" />
-    <Compile Include="Assets/Scripts/PlaneShoot.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/PlaneShoot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

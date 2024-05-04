@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34f0f46fc545be4d99dba0fe138ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5000
+  thrust: 500
   wasdInput: {x: 1, y: 1}
   mouseMove: {x: 0, y: 0}
   pitchSpeed: 10
