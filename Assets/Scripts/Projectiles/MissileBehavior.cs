@@ -12,10 +12,12 @@ public class MissileBehavior : MonoBehaviour
     private Rigidbody rb;
     private Transform target; // Current target
     private bool isHoming = false;
+    private GameLogic gCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
+        gCtrl = GameLogic.Instance;
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * missileSpeed;
     }
@@ -39,11 +41,11 @@ public class MissileBehavior : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            // if (CheckTag.IsBoat(collider) || CheckTag.IsPlane(collider))
-            if (collider.CompareTag("blue-boat") || collider.CompareTag("red-boat") || collider.CompareTag("blue-plane") || collider.CompareTag("red-plane"))
+            GameObject o = collider.gameObject;
+            if ( o && (CheckTag.IsBoat(o) || CheckTag.IsPlane(o)))
             {
                 // Check if the target is of matching color
-                if (!CheckTag.MatchingColor(gameObject.tag, collider.tag))
+                if (!CheckTag.MatchingColor(this.gameObject.tag, collider.tag))
                 {
                     isHoming = true;
                     target = collider.transform;
@@ -65,18 +67,23 @@ public class MissileBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        GameObject o = other.gameObject;
         // Check if the other object is a boat or a plane
-        if (CheckTag.IsBoat(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
+        if (CheckTag.IsBoat(o) && !CheckTag.MatchingColor(this.gameObject.tag, o.tag))
         {
-            {
-                other.GetComponent<Health>().TakeDamage(boatDamage);
-                Destroy(gameObject);
-            }
+            // raise a new damage event
+            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(o, boatDamage, this.tag));
+
+            // raise a new destroy event
+            gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }
-        else if (CheckTag.IsPlane(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
+        else if (CheckTag.IsPlane(o) && !CheckTag.MatchingColor(this.gameObject.tag, o.tag))
         {
-                other.GetComponent<Health>().TakeDamage(planeDamage);
-                Destroy(gameObject);
+            // raise a new damage event
+            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(o, planeDamage, this.tag));
+
+            // raise a new destroy event
+            gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }
     }
 }

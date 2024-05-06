@@ -66,9 +66,6 @@ public class BoatCamera : MonoBehaviour
             // set spawn position to location of ship
             bull.Position = this.gameObject.transform.position;
 
-            // increase height to be that of camera
-            bull.Position += new Vector3(0,cameraHeight,0);
-
             // apply rotation to bullet spawn
             bull.Rotation = this.transform.rotation;
 

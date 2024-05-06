@@ -120,8 +120,8 @@ MonoBehaviour:
     y: 990
     width: 1715
     height: 398
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 12}
@@ -323,7 +323,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -333,16 +333,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /home/unity-projects/CSS385_FinalProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a7e0000
-    m_LastClickedID: 32410
-    m_ExpandedIDs: 00000000987e00009a7e00009c7e00009e7e0000a07e0000a27e0000a47e000000ca9a3b
+    m_SelectedIDs: 307f0000
+    m_LastClickedID: 32560
+    m_ExpandedIDs: 00000000247f0000267f0000287f00002a7f00002c7f00002e7f0000307f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -359,7 +359,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -371,7 +371,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000987e00009a7e00009c7e00009e7e0000a07e0000a27e0000a47e0000
+    m_ExpandedIDs: 00000000247f0000267f0000287f00002a7f00002c7f00002e7f0000307f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -397,24 +397,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f2ffffff
-    m_LastClickedInstanceID: -14
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 76450000
+    m_LastClickedInstanceID: 17782
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Prefabs
+      m_OriginalName: Prefabs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 33730
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 5}
@@ -517,9 +517,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f2ffffff
+      m_SelectedIDs: 76450000
       m_LastClickedID: 0
-      m_ExpandedIDs: 58ecffff40f3ffff2af5ffff2ef7ffff82f7ffffd6f7ffff64faffff
+      m_ExpandedIDs: 0afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1045,13 +1045,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.05126694, y: 0.948713, z: -0.22375925, w: -0.21736555}
+    m_Target: {x: -0.33799437, y: -0.19633536, z: 0.07231945, w: -0.91759735}
     speed: 2
-    m_Value: {x: -0.05126692, y: 0.94871265, z: -0.22375917, w: -0.21736547}
+    m_Value: {x: -0.3379939, y: -0.19633508, z: 0.07231934, w: -0.91759604}
   m_Size:
-    m_Target: 91.43272
+    m_Target: 133.54974
     speed: 2
-    m_Value: 91.43272
+    m_Value: 133.54974
   m_Ortho:
     m_Target: 0
     speed: 2

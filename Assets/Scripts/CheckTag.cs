@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CheckTag : MonoBehaviour
 {
+    List<string> teams = new List<string>(){
+        "red",
+        "blue"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -16,12 +20,12 @@ public class CheckTag : MonoBehaviour
         
     }
 
-    public static bool IsBoat(Collider other)
+    public static bool IsBoat(GameObject other)
     {
-        return other.CompareTag("blue-boat") || other.CompareTag("red-boat");
+        return other.tag.Contains("boat");
     }
 
-    public static bool IsPlane(Collider other)
+    public static bool IsPlane(GameObject other)
     {
         return other.CompareTag("blue-plane") || other.CompareTag("red-plane");
     }

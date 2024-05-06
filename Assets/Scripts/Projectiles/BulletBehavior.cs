@@ -68,37 +68,18 @@ public class BulletBehavior : Projectile
         d.Tag = this.gameObject.tag;
 
         // if the target is a boat
-        if (IsABoat(other))
+        if (CheckTag.IsBoat(other))
             // apply boat damage
             d.DamageToApply = boatDamage;
         // if the target is a plane
-        else if (IsAPlane(other))
+        else if (CheckTag.IsPlane(other))
             // apply boat damage
             d.DamageToApply = planeDamage;
 
-        Debug.Log(d.DamageToApply);
         // create damage event
         gCtrl.damageEvent.Raise(this.gameObject, d);
 
         // destroy this bullet
         gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
-    }
-
-    // did we hit a boat?!?!!
-    private bool IsABoat(GameObject o)
-    {
-        return (o.CompareTag("red-boat") ||
-                o.CompareTag("blue-boat") ||
-                o.CompareTag("blue-boat-bot") ||
-                o.CompareTag("red-boat-bot"));
-    }
-
-    // did we hit a plane?!?!??!
-    private bool IsAPlane(GameObject o)
-    {
-        return (o.CompareTag("red-plane") ||
-                o.CompareTag("blue-plane") ||
-                o.CompareTag("blue-plane-bot") ||
-                o.CompareTag("red-plane-bot"));
     }
 }

@@ -31,6 +31,9 @@ public class BoatBullet : Projectile
         {
             // create damage event
             gCtrl.damageEvent.Raise(this.gameObject, new DamageData(other.gameObject, 10, this.gameObject.tag));
+
+            // destroy self
+            gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }
     }
 }
