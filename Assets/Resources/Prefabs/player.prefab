@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8153128262588086548}
   - component: {fileID: 6052605466629919422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -93,23 +93,6 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Spawn As Blue Boat
-      m_Flags: 0
-    m_Flags: 0
-  spawnAsRedPlane:
-    m_Name: Spawn As Red Plane
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a0af3fc5-b606-4b20-9e18-aae93b04398c
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: fb1fbe87-9792-4e7c-8dd6-6b5509874ee6
-      m_Path: <Keyboard>/3
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Spawn As Red Plane
       m_Flags: 0
     m_Flags: 0
   spawnAsBluePlane:

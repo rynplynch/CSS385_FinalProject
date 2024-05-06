@@ -4,18 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - red-boat
-  - blue-boat
-  - sea
-  - blue-spawn
-  - red-spawn
-  - marker
-  - red-plane
   - blue-plane
+  - red-plane
+  - marker
+  - sea
+  - blue-boat-bot
+  - red-boat-bot
+  - blue-boat
+  - blue-spawn
+  - boat-camera
+  - plane-camera
+  - red-boat
+  - red-spawn
   - red-projectile
   - blue-projectile
-  - plane-camera
-  - boat-camera
   layers:
   - Default
   - TransparentFX

@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2548579690006374005}
   - component: {fileID: 839635853610892214}
   - component: {fileID: -6886568574721601640}
-  - component: {fileID: -409179893644395114}
+  - component: {fileID: -131491703052695527}
   m_Layer: 0
   m_Name: red-plane
   m_TagString: red-plane
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1884115802506b4e9f004ae9289101f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 3500
 --- !u!114 &-6886568574721601640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,14 +279,14 @@ MonoBehaviour:
   pitchSpeed: 1
   rollSpeed: 1
   yawSpeed: 1
-  mouseSensitivity: 100
+  mouseSensitivity: 200
   turnMagnitude: 10
   drag: 0.01
   rb: {fileID: 0}
   timer: 0
   isBoat: 0
   boatThrust: 0
---- !u!114 &-409179893644395114
+--- !u!114 &-131491703052695527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,12 +300,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5583429841924730313, guid: e510c7667521d3a4c915171b95137a90, type: 3}
   missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
-  bulletSpeed: 100
-  missileSpeed: 100
-  bulletCooldown: 2
-  missileCooldown: 2
-  bulletLifeTime: 10
-  missileLifeTime: 10
+  bulletSpeed: 5
+  missileSpeed: 5
+  bulletCooldown: 0.1
+  missileCooldown: 3
+  bulletLifeTime: 2
+  missileLifeTime: 5
 --- !u!1 &8536050956803229267
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2868434461900414316}
   - component: {fileID: 3067899328532692085}
   - component: {fileID: 3690892238932636031}
+  - component: {fileID: 1567087623198262068}
   m_Layer: 0
   m_Name: red-boat
   m_TagString: red-boat
@@ -233,4 +234,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1884115802506b4e9f004ae9289101f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 7500

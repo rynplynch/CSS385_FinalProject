@@ -39,11 +39,16 @@ public class MissileBehavior : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Boat") || collider.CompareTag("Plane"))
+            // if (CheckTag.IsBoat(collider) || CheckTag.IsPlane(collider))
+            if (collider.CompareTag("blue-boat") || collider.CompareTag("red-boat") || collider.CompareTag("blue-plane") || collider.CompareTag("red-plane"))
             {
-                isHoming = true;
-                target = collider.transform;
-                break;
+                // Check if the target is of matching color
+                if (!CheckTag.MatchingColor(gameObject.tag, collider.tag))
+                {
+                    isHoming = true;
+                    target = collider.transform;
+                    break;
+                }
             }
         }
     }
@@ -60,18 +65,18 @@ public class MissileBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (isHoming && other.transform == target)
+        // Check if the other object is a boat or a plane
+        if (CheckTag.IsBoat(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
         {
-            if (other.CompareTag("Boat"))
             {
                 other.GetComponent<Health>().TakeDamage(boatDamage);
+                Destroy(gameObject);
             }
-            else if (other.CompareTag("Plane"))
-            {
+        }
+        else if (CheckTag.IsPlane(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
+        {
                 other.GetComponent<Health>().TakeDamage(planeDamage);
-            }
-            Destroy(gameObject);
+                Destroy(gameObject);
         }
     }
 }
