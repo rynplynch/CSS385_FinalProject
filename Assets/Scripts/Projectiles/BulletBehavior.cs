@@ -90,7 +90,7 @@ public class BulletBehavior : Projectile
         return (o.CompareTag("red-boat") ||
                 o.CompareTag("blue-boat") ||
                 o.CompareTag("blue-boat-bot") ||
-                o.CompareTag("red-boat-tag"));
+                o.CompareTag("red-boat-bot"));
     }
 
     // did we hit a plane?!?!??!
@@ -99,6 +99,6 @@ public class BulletBehavior : Projectile
         return (o.CompareTag("red-plane") ||
                 o.CompareTag("blue-plane") ||
                 o.CompareTag("blue-plane-bot") ||
-                o.CompareTag("red-plane-tag"));
+                o.CompareTag("red-plane-bot"));
     }
 }
