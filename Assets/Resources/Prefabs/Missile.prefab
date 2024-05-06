@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileSpeed: 250
-  boatDamage: 7500
-  planeDamage: 10000
+  boatDamage: 1000
+  planeDamage: 2500
   homingRadius: 250
   homingStrength: 2500

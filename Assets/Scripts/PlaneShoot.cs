@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Unity.Play.Publisher.Editor;
 using UnityEngine;
 
 public class PlaneShoot : MonoBehaviour
@@ -45,7 +44,7 @@ public class PlaneShoot : MonoBehaviour
     void ShootBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
-
+        bullet.tag = gameObject.tag; // pass along gameobject tag to bullet
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         bulletRb.velocity = transform.forward * bulletSpeed;
         Destroy(bullet, bulletLifeTime); // destroy self after certain amount of time as passed
@@ -54,7 +53,7 @@ public class PlaneShoot : MonoBehaviour
     void ShootMissile()
     {
         GameObject missile = Instantiate(missilePrefab, transform.position + transform.forward, transform.rotation);
-
+        missile.tag = gameObject.tag; // pass along gameobject tag to bullet
         Rigidbody missileRb = missile.GetComponent<Rigidbody>();
         missileRb.velocity = transform.forward * missileSpeed;
         Destroy(missile, missileLifeTime); // destroy self after certain amount of time as passed

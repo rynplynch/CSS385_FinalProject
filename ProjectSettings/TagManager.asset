@@ -13,11 +13,13 @@ TagManager:
   - marker
   - red-plane
   - blue-plane
+  - Gold
+  - Undefined
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Collectibles
   - Water
   - UI
   - 

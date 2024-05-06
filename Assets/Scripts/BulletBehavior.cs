@@ -9,7 +9,6 @@ public class BulletBehavior : MonoBehaviour
     public int planeDamage; // Damage to planes
     private Rigidbody rb;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +24,19 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Boat"))
+        // Check if the other object is a boat or a plane
+        if (CheckTag.IsBoat(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
         {
+
             other.GetComponent<Health>().TakeDamage(boatDamage);
             Destroy(gameObject);
+
         }
-        else if (other.CompareTag("Plane"))
+        else if (CheckTag.IsPlane(other) && !CheckTag.MatchingColor(gameObject.tag, other.tag))
         {
             other.GetComponent<Health>().TakeDamage(planeDamage);
             Destroy(gameObject);
         }
     }
-
 }
+
