@@ -17,7 +17,7 @@ public class SpawnPrefab : SpawnListener
         data.Reference = Instantiate(data.Prefab, data.Position, data.Rotation);
 
         Projectile p = data.Reference.GetComponent<Projectile>();
-        // if the game object is tagged as a projectile
+        // if the game object has a projectile component
         if (p)
             p.firedBy = caller;
     }

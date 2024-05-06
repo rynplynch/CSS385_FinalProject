@@ -58,9 +58,10 @@ public class PlaneShoot : MonoBehaviour
         bulletRb.velocity = transform.forward * bulletSpeed;
 
         // if coming from a red plane
-        if (this.CompareTag("red-plane"))
+        if (this.CompareTag("red-plane")){
             // set bullet tag
             bullet.Reference.tag = "red-projectile";
+        }
         else if (this.CompareTag("blue-plane"))
             bullet.Reference.tag = "blue-projectile";
 

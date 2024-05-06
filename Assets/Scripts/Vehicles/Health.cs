@@ -9,12 +9,16 @@ public class Health : MonoBehaviour
     private TextMesh healthText; // TextMesh component to display health
     private GameObject healthTextObject; // Reference to the GameObject containing health text
 
+    private GameLogic gCtrl;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gCtrl = GameLogic.Instance;
+
         currentHealth = maxHealth; // Set current health to max health at the start
 
         // Create an empty GameObject for health text
@@ -60,7 +64,11 @@ public class Health : MonoBehaviour
         {
             Debug.Log("Dead");
             currentHealth = 0;
-            Destroy(gameObject);
+            // destroy data telling the destroy event to remove this gameobject
+            DestoryData d = new DestoryData(this.gameObject, 0);
+
+            // also pass in the caller into the spawn event
+            gCtrl.destroyEvent.Raise(this.gameObject, d);
         }
         UpdateHealthText(); // Update the displayed health after taking damage
     }
