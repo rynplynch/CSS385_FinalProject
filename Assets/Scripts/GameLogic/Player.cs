@@ -21,8 +21,13 @@ public class Player : MonoBehaviour
     SpawnData boatCamera = new SpawnData();
     SpawnData planeCamera = new SpawnData();
 
+    public static int playerId;
+
     void Start()
     {
+        // Assign or retrieve player ID when the player is created or initialized
+        playerId = GetPlayerId();
+        
         // setting references at creation of player
         gCtrl = GameLogic.Instance;
         sEvent = gCtrl.spawnEvent;
@@ -168,5 +173,18 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(SpawnRoutine(bluePlane));
         }
+    }
+
+    public int GetPlayerId()
+    {
+        // Retrieve player ID from persistent storage (e.g., PlayerPrefs)
+        // If player ID doesn't exist, assign a new unique ID and save it
+        int savedPlayerId = PlayerPrefs.GetInt("PlayerId", -1);
+        if (savedPlayerId == -1)
+        {
+            savedPlayerId = Random.Range(0, 1000); // Generate a random player ID (or use a different method to ensure uniqueness)
+            PlayerPrefs.SetInt("PlayerId", savedPlayerId); // Save player ID to PlayerPrefs
+        }
+        return savedPlayerId;
     }
 }
