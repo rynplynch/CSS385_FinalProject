@@ -132,6 +132,9 @@ public class Player : MonoBehaviour
 
         d.LifeCycle = 0;
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // destroy camera
         yield return DeleteObject(d);
     }
