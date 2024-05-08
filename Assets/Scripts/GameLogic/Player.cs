@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,11 +23,13 @@ public class Player : MonoBehaviour
     SpawnData planeCamera = new SpawnData();
 
     public static int playerId;
+    private UpgradeManager upgradeManager;
 
     void Start()
     {
         // Assign or retrieve player ID when the player is created or initialized
         playerId = GetPlayerId();
+        upgradeManager = UpgradeManager.Instance;
         
         // setting references at creation of player
         gCtrl = GameLogic.Instance;
@@ -36,6 +39,26 @@ public class Player : MonoBehaviour
 
         // grab reference to prefabs
         LoadPrefabs();
+    }
+
+    void Update()
+    {
+        // Check for input to upgrade
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            // Call the UpgradeMissile method with the player ID
+            upgradeManager.UpgradeHealth(playerId);
+        }
+        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            // Call the UpgradeBullet method with the player ID
+            upgradeManager.UpgradeBullet(playerId);
+        }
+        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            // Call the UpgradeMissile method with the player ID
+            upgradeManager.UpgradeMissile(playerId);
+        }      
     }
 
     // sequence of events that happens during spawning
@@ -182,7 +205,7 @@ public class Player : MonoBehaviour
         int savedPlayerId = PlayerPrefs.GetInt("PlayerId", -1);
         if (savedPlayerId == -1)
         {
-            savedPlayerId = Random.Range(0, 1000); // Generate a random player ID (or use a different method to ensure uniqueness)
+            savedPlayerId = Random.Range(0, 10); // Generate a random player ID (or use a different method to ensure uniqueness)
             PlayerPrefs.SetInt("PlayerId", savedPlayerId); // Save player ID to PlayerPrefs
         }
         return savedPlayerId;

@@ -6,7 +6,7 @@ using TMPro;
 public class GoldManagerScript : MonoBehaviour
 {
     // Gold Tracking
-private Dictionary<int, int> playerGold = new Dictionary<int, int>(); // Store gold count for each player
+    private Dictionary<int, int> playerGold = new Dictionary<int, int>(); // Store gold count for each player
     public TMP_Text[] goldTexts; // Array of TMP_Text for displaying gold count of each player
 
     public GameObject goldPrefab;
@@ -68,6 +68,48 @@ private Dictionary<int, int> playerGold = new Dictionary<int, int>(); // Store g
     private bool RandomGenerator()
     {
         return Random.Range(1, 10) <= 3;
+    }
+
+    // Check if the player can afford the specified amount of gold
+    public bool CanAfford(int playerId, int amount)
+    {
+        if (playerGold.ContainsKey(playerId))
+        {
+            return playerGold[playerId] >= amount;
+        }
+        else
+        {
+            Debug.LogWarning("Player " + playerId + " does not exist.");
+            return false;
+        }
+    }
+
+    // Spend gold for the specified player
+    public void SpendGold(int playerId, int amount)
+    {
+        if (playerGold.ContainsKey(playerId))
+        {
+            playerGold[playerId] -= amount;
+            UpdateGoldText(playerId);
+        }
+        else
+        {
+            Debug.LogWarning("Player " + playerId + " does not exist.");
+        }
+    }
+
+    // Get the gold count for the specified player
+    public int GetGold(int playerId)
+    {
+        if (playerGold.ContainsKey(playerId))
+        {
+            return playerGold[playerId];
+        }
+        else
+        {
+            Debug.LogWarning("Player " + playerId + " does not exist.");
+            return 0;
+        }
     }
 
 

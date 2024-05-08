@@ -263,9 +263,9 @@ MonoBehaviour:
   thrust: 5000
   wasdInput: {x: 0, y: 0}
   mouseMove: {x: 0, y: 0}
-  pitchSpeed: 1
-  rollSpeed: 1
-  yawSpeed: 1
+  pitchSpeed: 10
+  rollSpeed: 10
+  yawSpeed: 10
   mouseSensitivity: 200
   turnMagnitude: 10
   drag: 0.01
@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 400
+  currentHealth: 0
   healthBarTag: player-health-bar
 --- !u!1 &8536050956803229267
 GameObject:

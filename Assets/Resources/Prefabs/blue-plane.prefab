@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34f0f46fc545be4d99dba0fe138ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 500
+  thrust: 5000
   wasdInput: {x: 1, y: 1}
   mouseMove: {x: 0, y: 0}
   pitchSpeed: 10
@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 400
+  currentHealth: 0
   healthBarTag: player-health-bar
 --- !u!1 &8536050956803229267
 GameObject:
