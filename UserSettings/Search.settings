@@ -8,9 +8,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.8DF93128" = "h:t:BoatBehavior #cameraFirePoint=none"
+	"last_search.8DF93128" = "p:t:Health healthbar=none"
 	"OpenInspectorPreview.8DF93128" = "0"
-	"currentGroup.8DF93128" = null
+	"currentGroup.8DF93128" = ""
 }
 providers = {
 	store = {
@@ -67,6 +67,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"Slid"
 ]
 searchItemFavorites = [
 ]

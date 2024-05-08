@@ -18,6 +18,7 @@ TagManager:
   - red-spawn
   - red-projectile
   - blue-projectile
+  - player-health-bar
   layers:
   - Default
   - TransparentFX

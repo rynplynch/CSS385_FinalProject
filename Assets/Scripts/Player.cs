@@ -5,11 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public InputAction spawnAsRedBoat;
-    public InputAction spawnAsRedPlane;
-    public InputAction spawnAsBlueBoat;
-    public InputAction spawnAsBluePlane;
-
     // how we reference our game logic and events
     private GameLogic gCtrl;
     private SpawnEvent sEvent;
@@ -36,26 +31,6 @@ public class Player : MonoBehaviour
 
         // grab reference to prefabs
         LoadPrefabs();
-
-        spawnAsRedBoat.Enable();
-        spawnAsBlueBoat.Enable();
-        spawnAsRedPlane.Enable();
-        spawnAsBluePlane.Enable();
-    }
-
-    void Update(){
-        if (spawnAsRedBoat.WasPerformedThisFrame()){
-            StartCoroutine(SpawnRoutine(redBoat));
-        }
-        if (spawnAsBlueBoat.WasPerformedThisFrame()){
-            StartCoroutine(SpawnRoutine(blueBoat));
-        }
-        if (spawnAsRedPlane.WasPerformedThisFrame()){
-            StartCoroutine(SpawnRoutine(redPlane));
-        }
-        if (spawnAsBluePlane.WasPerformedThisFrame()){
-            StartCoroutine(SpawnRoutine(bluePlane));
-        }
     }
 
     // sequence of events that happens during spawning
@@ -173,5 +148,25 @@ public class Player : MonoBehaviour
         lEvent.Raise(this.gameObject, blueBoat);
         lEvent.Raise(this.gameObject, boatCamera);
         lEvent.Raise(this.gameObject, planeCamera);
+    }
+
+    public void SpawnSelection(string teamVehicle)
+    {
+        if (teamVehicle == "redBoat")
+        {
+            StartCoroutine(SpawnRoutine(redBoat));
+        }
+        if (teamVehicle == "blueBoat")
+        {
+            StartCoroutine(SpawnRoutine(blueBoat));
+        }
+        if (teamVehicle == "redPlane")
+        {
+            StartCoroutine(SpawnRoutine(redPlane));
+        }
+        if (teamVehicle == "bluePlane")
+        {
+            StartCoroutine(SpawnRoutine(bluePlane));
+        }
     }
 }
