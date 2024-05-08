@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         healthText.color = Color.blue; // Color
         healthText.alignment = TextAlignment.Center;
         healthText.anchor = TextAnchor.MiddleCenter;
-        
+
         UpdateHealthText(); // Update the displayed health
     }
 

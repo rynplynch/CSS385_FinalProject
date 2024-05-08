@@ -120,9 +120,9 @@ GameObject:
   - component: {fileID: 8762329161358443213}
   - component: {fileID: 1369242081011302550}
   - component: {fileID: 2548579690006374005}
-  - component: {fileID: 839635853610892214}
   - component: {fileID: -427946685295200163}
   - component: {fileID: -2190253815459166212}
+  - component: {fileID: -1067620298136490369}
   m_Layer: 0
   m_Name: blue-plane
   m_TagString: blue-plane
@@ -248,19 +248,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &839635853610892214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936691286629156027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1884115802506b4e9f004ae9289101f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3500
 --- !u!114 &-427946685295200163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +293,20 @@ MonoBehaviour:
   missileCooldown: 3
   bulletLifeTime: 2
   missileLifeTime: 5
+--- !u!114 &-1067620298136490369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936691286629156027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBarTag: player-health-bar
 --- !u!1 &8536050956803229267
 GameObject:
   m_ObjectHideFlags: 0
