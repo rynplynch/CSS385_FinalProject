@@ -19,6 +19,7 @@ TagManager:
   - red-projectile
   - blue-projectile
   - player-health-bar
+  - ui-canvas
   layers:
   - Default
   - TransparentFX

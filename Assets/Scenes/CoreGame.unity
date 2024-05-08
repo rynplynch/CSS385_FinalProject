@@ -488,6 +488,7 @@ MonoBehaviour:
   loadEvent: {fileID: 0}
   destroyEvent: {fileID: 0}
   damageEvent: {fileID: 0}
+  gameOverEvent: {fileID: 0}
 --- !u!4 &310837413
 Transform:
   m_ObjectHideFlags: 0
@@ -3443,7 +3444,7 @@ GameObject:
   - component: {fileID: 2090085146}
   m_Layer: 5
   m_Name: SpawnUICanvas
-  m_TagString: Untagged
+  m_TagString: ui-canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

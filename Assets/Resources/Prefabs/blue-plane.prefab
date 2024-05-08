@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: -427946685295200163}
   - component: {fileID: -2190253815459166212}
   - component: {fileID: -1067620298136490369}
+  - component: {fileID: -4473835823348510545}
   m_Layer: 0
   m_Name: blue-plane
   m_TagString: blue-plane
@@ -307,6 +308,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBarTag: player-health-bar
+--- !u!114 &-4473835823348510545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936691286629156027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b9515b67b22ac65bb9edfa5e904f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8536050956803229267
 GameObject:
   m_ObjectHideFlags: 0

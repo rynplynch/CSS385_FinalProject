@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2868434461900414316}
   - component: {fileID: 3067899328532692085}
   - component: {fileID: 2581174376425275359}
+  - component: {fileID: -4044929327280890374}
   m_Layer: 0
   m_Name: blue-boat
   m_TagString: blue-boat
@@ -234,4 +235,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthBarPrefab: {fileID: 7917618939460234847, guid: a08613719bb71f1409ff7e0e889e3cfe, type: 3}
+  healthBarTag: player-health-bar
+--- !u!114 &-4044929327280890374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7611867931909644352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b9515b67b22ac65bb9edfa5e904f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

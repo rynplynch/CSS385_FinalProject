@@ -62,7 +62,6 @@ public class Health : MonoBehaviour
         }
         else if (currentHealth <= 0)
         {
-            Debug.Log("Dead");
             currentHealth = 0;
             // destroy data telling the destroy event to remove this gameobject
             DestoryData d = new DestoryData(this.gameObject, 0);

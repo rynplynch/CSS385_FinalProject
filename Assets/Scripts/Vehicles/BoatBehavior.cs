@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BoatBehavior : MonoBehaviour
+public class BoatBehavior : Vehicle
 {
     // used to manipulate the force applied to the player
     [Tooltip("Recommend settings\nAcceleration: [0-10]\nMaxThrust: [0-10]")]

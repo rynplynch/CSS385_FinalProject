@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     SpawnData boatCamera = new SpawnData();
     SpawnData planeCamera = new SpawnData();
 
+    // ui canvas
+    public GameObject UICanvas;
+
     void Start()
     {
         // setting references at creation of player
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
         lEvent = gCtrl.loadEvent;
         dEvent = gCtrl.destroyEvent;
 
+        UICanvas = GameObject.FindGameObjectWithTag("ui-canvas");
         // grab reference to prefabs
         LoadPrefabs();
     }
@@ -74,6 +78,19 @@ public class Player : MonoBehaviour
 
         yield return SpawnObject(o);
         yield return AttachCamera(o);
+        yield return SetPlayerReference(o);
+    }
+
+    // save reference to this player instance inside spawned game object
+    private IEnumerator SetPlayerReference(SpawnData o)
+    {
+        // grab the vehicle component from the just spawned boat/plane
+        Vehicle v = o.Reference.gameObject.GetComponent<Vehicle>();
+
+        // set the spawned by reference
+        v.SpawnedBy = this;
+
+        yield return null;
     }
 
     private IEnumerator AttachCamera(SpawnData o)
@@ -148,6 +165,17 @@ public class Player : MonoBehaviour
         lEvent.Raise(this.gameObject, blueBoat);
         lEvent.Raise(this.gameObject, boatCamera);
         lEvent.Raise(this.gameObject, planeCamera);
+    }
+
+    public IEnumerator PlayerDied()
+    {
+        // remove the players camera
+        yield return DetachCamera();
+
+        // reactivate main camera
+        gCtrl.mainCamera.Reference.SetActive(true);
+
+        UICanvas.SetActive(true);
     }
 
     public void SpawnSelection(string teamVehicle)

@@ -18,6 +18,14 @@ public class DestroyObject : DestroyListener
 
         // if the data exists and there is a reference to instantiated object
         if (d != null && d.Reference != null){
+            // if there is a vehicle component
+            Vehicle v = d.Reference.GetComponent<Vehicle>();
+
+            if (v)
+            {
+                Player p = v.SpawnedBy;
+                StartCoroutine(p.PlayerDied());
+            }
             // destroy the reference
             Destroy(d.Reference, d.LifeCycle);
 

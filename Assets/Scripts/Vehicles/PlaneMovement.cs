@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlaneMovement : MonoBehaviour
+public class PlaneMovement : Vehicle
 {
 
     //public GameObject mouseTarget;

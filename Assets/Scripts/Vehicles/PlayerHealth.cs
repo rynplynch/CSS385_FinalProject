@@ -46,13 +46,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Debug.Log("Dead");
             currentHealth = 0;
 
             DestoryData d = new DestoryData(this.gameObject, 0);
             gCtrl.destroyEvent.Raise(this.gameObject, d);
-
-            
         }
 
         if (healthBar != null)
