@@ -116,8 +116,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: ae3cd825-c522-407b-92c4-ce2478743388
-      m_Path: <Keyboard>/c
+      m_Id: 82a549d6-0658-426a-8e34-0ae0108ca41c
+      m_Path: <Mouse>/rightButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 

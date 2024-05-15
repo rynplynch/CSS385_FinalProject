@@ -150,10 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 20
-  rotationalSpeed: 20
-  maxThrustForce: 10
-  maxRotationalForce: 10
+  maxForwardSpeed: 15
+  rotationalSpeed: 10
+  currentThrust: 0
   forward:
     m_Name: Forward
     m_Type: 0
@@ -247,4 +246,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b9515b67b22ac65bb9edfa5e904f4b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
