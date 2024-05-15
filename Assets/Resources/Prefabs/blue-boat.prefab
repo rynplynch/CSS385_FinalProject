@@ -149,10 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 20
-  rotationalSpeed: 20
-  maxThrustForce: 10
-  maxRotationalForce: 10
+  maxForwardSpeed: 15
+  rotationalSpeed: 10
+  currentThrust: 0
   forward:
     m_Name: Forward
     m_Type: 0
@@ -234,4 +233,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthBarPrefab: {fileID: 7917618939460234847, guid: a08613719bb71f1409ff7e0e889e3cfe, type: 3}
+  healthBarTag: player-health-bar

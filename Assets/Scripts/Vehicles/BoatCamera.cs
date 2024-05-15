@@ -55,29 +55,16 @@ public class BoatCamera : MonoBehaviour
         }
 
         // fire on cooldown if left mb is pressed and the boat is in firing mode
-        if (fire.WasPerformedThisFrame() && isFollowingMouse && Time.time >= nextFireTime)
+        if (fire.WasPerformedThisFrame() && Time.time >= nextFireTime)
         {
-            // must pass in SpawnData to the spawn event
-            SpawnData bull = new SpawnData();
-
-            // set prefab value
-            bull.Prefab = bulletPrefab;
-
-            // set spawn position to location of ship
-            bull.Position = this.gameObject.transform.position;
-
-            // apply rotation to bullet spawn
-            bull.Rotation = this.transform.rotation;
-
-            // Invoke the spawn event
-            gCtrl.spawnEvent.Raise(this.gameObject, bull);
-
-            // if coming from a red boat
-            if (player.CompareTag("red-boat"))
-                // set bullet tag on the bullet we just created
-                bull.Reference.tag = "red-projectile";
-            else if (player.CompareTag("blue-boat"))
-                bull.Reference.tag = "blue-projectile";
+            if (isFollowingMouse)
+            {
+                FireFromCenter();
+            }
+            else
+            {
+                FireFromSides();
+            }
 
             nextFireTime = Time.time + fireRate;
         }
@@ -90,6 +77,52 @@ public class BoatCamera : MonoBehaviour
         gCtrl = GameLogic.Instance;
         fire.Enable();
         toggleCameraMode.Enable();
+    }
+
+    // Fire bullets from the center when following the mouse
+    private void FireFromCenter()
+    {
+        SpawnData bull = new SpawnData();
+        bull.Prefab = bulletPrefab;
+        bull.Position = this.gameObject.transform.position;
+        bull.Rotation = this.transform.rotation;
+        gCtrl.spawnEvent.Raise(this.gameObject, bull);
+
+        if (player.CompareTag("red-boat"))
+            bull.Reference.tag = "red-projectile";
+        else if (player.CompareTag("blue-boat"))
+            bull.Reference.tag = "blue-projectile";
+    }
+
+    // Fire bullets from both sides when not following the mouse
+    private void FireFromSides()
+    {
+        float offsetDistance = 5f; // Distance from the center to the side
+        Vector3 leftFirePosition = player.transform.position - player.transform.right * offsetDistance;
+        Vector3 rightFirePosition = player.transform.position + player.transform.right * offsetDistance;
+        Quaternion leftFireDirection = Quaternion.LookRotation(-player.transform.right);
+        Quaternion rightFireDirection = Quaternion.LookRotation(player.transform.right);
+
+        // Fire from the left side
+        FireBullet(leftFirePosition, leftFireDirection);
+
+        // Fire from the right side
+        FireBullet(rightFirePosition, rightFireDirection);
+    }
+
+    // Function to fire a bullet from a given position
+    private void FireBullet(Vector3 position, Quaternion direction)
+    {
+        SpawnData bull = new SpawnData();
+        bull.Prefab = bulletPrefab;
+        bull.Position = position;
+        bull.Rotation = direction;
+        gCtrl.spawnEvent.Raise(this.gameObject, bull);
+
+        if (player.CompareTag("red-boat"))
+            bull.Reference.tag = "red-projectile";
+        else if (player.CompareTag("blue-boat"))
+            bull.Reference.tag = "blue-projectile";
     }
 
     // Fire mode, camera follows mouse movement

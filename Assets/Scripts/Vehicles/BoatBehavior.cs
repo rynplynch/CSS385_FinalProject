@@ -1,80 +1,95 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BoatBehavior : MonoBehaviour
 {
-    // used to manipulate the force applied to the player
     [Tooltip("Recommend settings\nAcceleration: [0-10]\nMaxThrust: [0-10]")]
-    public float forwardSpeed;
+    public float maxForwardSpeed;
     public float rotationalSpeed;
-    private Vector3 rotationVectorR;
-    private Vector3 rotationVectorL;
-    public float maxThrustForce;
-    public float maxRotationalForce;
+    private Vector3 rotationVector;
+    public float currentThrust;
+
+    private float thrustChangeRate = 20f;
+    private float accelerationTime = 5f;
+    private float decelerationTime = 5f;
+    private float rotationAccelerationTime = 1f;
+    private float rotationDecelerationTime = 1f;
+    private float currentRotationalThrust = 0f;
+    private float rotationalThrustChangeRate = 20f;
 
     public InputAction forward;
     public InputAction backward;
     public InputAction right;
     public InputAction left;
 
-    // used to apply force to the boat
     private Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // cameraFirePoint = Camera.main.transform;
         forward.Enable();
         backward.Enable();
         left.Enable();
         right.Enable();
 
-        // grab reference to attached rigid body component
         rb = this.GetComponent<Rigidbody>();
-
-        // set how heavy the boat is
         rb.SetDensity(10);
-
+        thrustChangeRate = 100f / accelerationTime;
+        rotationalThrustChangeRate = rotationalSpeed / rotationAccelerationTime;
     }
 
-    private void MovePlayer(){
+    private void MovePlayer()
+    {
         float time = Time.deltaTime;
 
-        // manipulate the current vector with another movement vector
         Vector3 newPos = this.transform.position;
+        float forwardSpeed = (currentThrust / 100) * maxForwardSpeed;
 
-        // construct rotation vector
-        rotationVectorR = new Vector3(0, rotationalSpeed * time, 0);
-        rotationVectorL = new Vector3(0, -rotationalSpeed * time, 0);
-
-        // get the current rotation of the boat
         Quaternion currentRot = this.transform.rotation;
+        newPos += this.transform.forward * time * forwardSpeed;
 
-        if (forward.IsPressed()){
-            // add in the forward movement vector
-            // using the forward vector relative to itself
-            newPos += this.transform.forward * time * forwardSpeed;
-        }
-        if (backward.IsPressed()){
-            newPos += -this.transform.forward * time * forwardSpeed;
-        }
-
-        if (left.IsPressed()){
-            // apply the left rotation vector to the current rotation
-            rb.MoveRotation(currentRot * Quaternion.Euler(rotationVectorL));
-        } else if (right.IsPressed()){
-            rb.MoveRotation(currentRot * Quaternion.Euler(rotationVectorR));
-        }
-
+        currentRotationalThrust = Mathf.Clamp(currentRotationalThrust, -rotationalSpeed, rotationalSpeed);
+        rotationVector = new Vector2(0, currentRotationalThrust * time);
+        rb.MoveRotation(currentRot * Quaternion.Euler(rotationVector));
         rb.MovePosition(newPos);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AdjustThrust()
+    {
+        float time = Time.deltaTime;
+
+        if (forward.IsPressed())
+        {
+            currentThrust += thrustChangeRate * time;
+        }
+        else if (backward.IsPressed())
+        {
+            currentThrust -= thrustChangeRate * time;
+        }
+        else
+        {
+            currentThrust = Mathf.Lerp(currentThrust, 0, time / decelerationTime);
+        }
+
+        if (left.IsPressed())
+        {
+            currentRotationalThrust -= rotationalThrustChangeRate * time;
+        }
+        else if (right.IsPressed())
+        {
+            currentRotationalThrust += rotationalThrustChangeRate * time;
+        }
+        else
+        {
+            currentRotationalThrust = Mathf.Lerp(currentRotationalThrust, 0, time / rotationDecelerationTime);
+        }
+
+        currentThrust = Mathf.Clamp(currentThrust, 0, 100);
+    }
+
+    void FixedUpdate()
     {
         MovePlayer();
-
+        AdjustThrust();
     }
 }
