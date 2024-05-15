@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public int initialGoldCost = 50; 
-    public int goldIncreasePerLevel = 100; 
+    public int initialGoldCost = 50;
+    public int goldIncreasePerLevel = 100;
     public int damageIncrease = 50;
-    public int boatDamageIncrease = 100; 
+    public int boatDamageIncrease = 100;
     public int healthIncrease = 100;
 
     public BoatBullet boatBullet; // BoatBullet component
@@ -16,15 +16,18 @@ public class UpgradeManager : MonoBehaviour
     public MissileBehavior missileBehavior; // MissileBehavior component
     public PlayerHealth playerHealth; // PlayerHealth component
 
-    private Dictionary<int, int> bulletLevels = new Dictionary<int, int>(); 
+    private Dictionary<int, int> bulletLevels = new Dictionary<int, int>();
     private Dictionary<int, int> missileLevels = new Dictionary<int, int>();
-    private Dictionary<int, int> healthLevels = new Dictionary<int, int>(); 
+    private Dictionary<int, int> healthLevels = new Dictionary<int, int>();
 
     private GoldManagerScript goldManager;
 
     // upgrade manager instances
     private static UpgradeManager _instance;
-    public static UpgradeManager Instance { get { return _instance; } }
+    public static UpgradeManager Instance
+    {
+        get { return _instance; }
+    }
 
     // Display levels of upgrades
     public TextMeshProUGUI bulletLevelText;
@@ -38,10 +41,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 
     void InitializeLevels()
     {
@@ -50,7 +50,7 @@ public class UpgradeManager : MonoBehaviour
         {
             bulletLevels[i] = 0;
             missileLevels[i] = 0;
-            healthLevels[1] = 0;
+            healthLevels[i] = 0;
         }
     }
 
@@ -66,7 +66,7 @@ public class UpgradeManager : MonoBehaviour
             _instance = this;
         }
     }
-    
+
     public void UpgradeHealth(int playerId)
     {
         int upgradeCost = initialGoldCost + (healthLevels[playerId] * goldIncreasePerLevel);
@@ -130,7 +130,7 @@ public class UpgradeManager : MonoBehaviour
         {
             healthLevelText.text = "Health Level: " + healthLevels[playerId];
         }
-        
+
         // Update bullet level text
         if (bulletLevelText != null)
         {
