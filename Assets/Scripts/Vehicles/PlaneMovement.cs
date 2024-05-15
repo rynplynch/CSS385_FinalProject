@@ -40,6 +40,7 @@ public class PlaneMovement : MonoBehaviour
 
     private Vector3 oldVelocity;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,8 @@ public class PlaneMovement : MonoBehaviour
         //Locks the cursor so it doesn't go off screen
         //Can be commented out
         Cursor.lockState = CursorLockMode.Locked;
+
+
 
     }
 

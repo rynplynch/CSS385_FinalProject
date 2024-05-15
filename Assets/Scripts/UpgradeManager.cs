@@ -7,9 +7,11 @@ public class UpgradeManager : MonoBehaviour
 {
     public int initialGoldCost = 50; 
     public int goldIncreasePerLevel = 100; 
-    public int damageIncrease = 50; 
+    public int damageIncrease = 50;
+    public int boatDamageIncrease = 100; 
     public int healthIncrease = 100;
 
+    public BoatBullet boatBullet; // BoatBullet component
     public BulletBehavior bulletBehavior; // BulletBehavior component
     public MissileBehavior missileBehavior; // MissileBehavior component
     public PlayerHealth playerHealth; // PlayerHealth component
@@ -90,6 +92,7 @@ public class UpgradeManager : MonoBehaviour
         {
             goldManager.SpendGold(playerId, upgradeCost);
             // Apply bullet and increase upgrade level
+            boatBullet.damage += boatDamageIncrease;
             bulletBehavior.boatDamage += damageIncrease;
             bulletBehavior.planeDamage += damageIncrease;
             bulletLevels[playerId]++;

@@ -6,6 +6,7 @@ public class BoatBullet : Projectile
 {
     public float speed = 20f;
     public float lifespan = 3f;
+    public int damage;
 
     private GameLogic gCtrl;
 
@@ -30,7 +31,7 @@ public class BoatBullet : Projectile
         if (!Object.ReferenceEquals(firedBy, other.gameObject))
         {
             // create damage event
-            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(other.gameObject, 10, this.gameObject.tag));
+            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(other.gameObject, damage, this.gameObject.tag));
 
             // destroy self
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
