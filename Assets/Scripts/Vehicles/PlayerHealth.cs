@@ -26,13 +26,16 @@ public class PlayerHealth : MonoBehaviour
         if (!foundObject)
         {
             healthBarObject = GameObject.FindWithTag(healthBarTag);
-            foreach (Transform child in healthBarObject.transform)
+            if (healthBarObject != null)
             {
-                child.gameObject.SetActive(true);
+                foreach (Transform child in healthBarObject.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+                healthBar = healthBarObject.GetComponentInChildren<HealthBar>();
+                healthBar.SetMaxHealth(maxHealth);
+                foundObject = !foundObject;
             }
-            healthBar = healthBarObject.GetComponentInChildren<HealthBar>();
-            healthBar.SetMaxHealth(maxHealth);
-            foundObject = !foundObject;
         }
 
         if (Input.GetKeyDown(KeyCode.K))
