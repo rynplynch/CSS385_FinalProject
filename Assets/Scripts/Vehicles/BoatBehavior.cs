@@ -24,6 +24,7 @@ public class BoatBehavior : Vehicle
     public InputAction left;
 
     private Rigidbody rb;
+ 
 
     void Start()
     {

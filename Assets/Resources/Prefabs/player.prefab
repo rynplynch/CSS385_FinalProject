@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8153128262588086548}
   - component: {fileID: 6052605466629919422}
+  - component: {fileID: -4876710478055859461}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -44,71 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87adab1d16f4a5953923978ffbe9dede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAsRedBoat:
-    m_Name: Spawn As Red Boat
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d0ac151c-461d-41a7-a726-01f638a7d85f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 3a9ca8e2-1410-4d32-9b52-6c57cbc05fd0
-      m_Path: <Keyboard>/1
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Spawn As Red Boat
-      m_Flags: 0
-    m_Flags: 0
-  spawnAsRedPlane:
-    m_Name: Spawn As Red Plane
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 40fc519a-b655-4fb3-86d5-c81f6184eda2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ade36b6e-239b-4c96-aa8d-3ee8a738a7ec
-      m_Path: <Keyboard>/3
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Spawn As Red Plane
-      m_Flags: 0
-    m_Flags: 0
-  spawnAsBlueBoat:
-    m_Name: Spawn As Blue Boat
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 132b384f-854f-480a-98cc-f2b2543916bb
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 29da9e16-6204-4b19-af96-b31a65087d66
-      m_Path: <Keyboard>/2
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Spawn As Blue Boat
-      m_Flags: 0
-    m_Flags: 0
-  spawnAsBluePlane:
-    m_Name: Spawn As Blue Plane
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 47b82f00-ac5f-4cb3-aab7-e644f6c03945
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: eecd3b61-a0d6-4b0b-8d87-f75f2280f277
-      m_Path: <Keyboard>/4
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Spawn As Blue Plane
-      m_Flags: 0
-    m_Flags: 0
+--- !u!114 &-4876710478055859461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226713613367014551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 400
+  currentHealth: 0
+  healthBarTag: player-health-bar

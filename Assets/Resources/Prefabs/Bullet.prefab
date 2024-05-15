@@ -151,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firedBy: {fileID: 0}
   bulletSpeed: 250
-  boatDamage: 2000
-  planeDamage: 3000
+  boatDamage: 50
+  planeDamage: 150
 --- !u!114 &7331546978784175832
 MonoBehaviour:
   m_ObjectHideFlags: 0

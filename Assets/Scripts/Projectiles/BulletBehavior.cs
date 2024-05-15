@@ -12,7 +12,6 @@ public class BulletBehavior : Projectile
     private GameLogic gCtrl;
     private Rigidbody rb;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +70,7 @@ public class BulletBehavior : Projectile
         if (CheckTag.IsBoat(other))
             // apply boat damage
             d.DamageToApply = boatDamage;
+            
         // if the target is a plane
         else if (CheckTag.IsPlane(other))
             // apply boat damage

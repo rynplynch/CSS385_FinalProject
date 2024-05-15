@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject spawnUI;
     public Player player;
+    public GameObject aim;
 
     void Start()
     {
@@ -20,5 +21,13 @@ public class UIManager : MonoBehaviour
         player = FindFirstObjectByType<Player>();
         player.SpawnSelection(teamVehicle);
         spawnUI.SetActive(false);
+        if (teamVehicle.Contains("Boat"))
+        {
+            aim.SetActive(true);
+        }
+        else
+        {
+            aim.SetActive(false);
+        }
     }
 }

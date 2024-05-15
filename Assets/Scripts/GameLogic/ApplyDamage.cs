@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ApplyDamage : DamageListener
 {
+    public int goldValue = 15;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class ApplyDamage : DamageListener
                 return;
 
             hp.TakeDamage(d.DamageToApply);
+            FindFirstObjectByType<GoldManagerScript>().AddGold(Player.playerId, goldValue);
         }
     }
 }
