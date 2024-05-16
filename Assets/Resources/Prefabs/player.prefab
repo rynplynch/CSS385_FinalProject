@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8153128262588086548}
   - component: {fileID: 6052605466629919422}
-  - component: {fileID: -4876710478055859461}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -45,18 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87adab1d16f4a5953923978ffbe9dede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4876710478055859461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4226713613367014551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 400
-  currentHealth: 0
-  healthBarTag: player-health-bar
+  UICanvas: {fileID: 0}
