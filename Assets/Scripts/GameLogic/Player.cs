@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private SpawnEvent sEvent;
     private LoadEvent lEvent;
     private DestroyEvent dEvent;
+    private UpgradeEvent uEvent;
 
     // objects the player can spawn as
     SpawnData redBoat = new SpawnData();
@@ -27,6 +28,9 @@ public class Player : MonoBehaviour
     public static int playerId;
     private UpgradeManager upgradeManager;
 
+    // singleton for managing player gold
+    private GoldManagerScript goldManager;
+
     void Start()
     {
         // Assign or retrieve player ID when the player is created or initialized
@@ -38,6 +42,8 @@ public class Player : MonoBehaviour
         sEvent = gCtrl.spawnEvent;
         lEvent = gCtrl.loadEvent;
         dEvent = gCtrl.destroyEvent;
+        uEvent = gCtrl.UpgradeEvent;
+        goldManager = FindAnyObjectByType<GoldManagerScript>();
 
         UICanvas = GameObject.FindGameObjectWithTag("ui-canvas");
         // grab reference to prefabs
@@ -51,6 +57,11 @@ public class Player : MonoBehaviour
         {
             // Call the UpgradeMissile method with the player ID
             upgradeManager.UpgradeHealth(playerId);
+
+            // data to pass to the upgraded event
+            // UpgradeData uData = new UpgradeData();
+            // uData.PlayerGold = goldManager.GetGold();
+            // uEvent.Raise(this.gameObject, uData);
         }
         else if (Keyboard.current.digit2Key.wasPressedThisFrame)
         {

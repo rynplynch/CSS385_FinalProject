@@ -12,12 +12,13 @@ public class GameLogic : MonoBehaviour
     // used to track the different state of the game
     private Dictionary<string, bool> gameStates = new Dictionary<string, bool>
     {
-        {"GameStart", true},
-        {"GameRunning", false},
-        {"GameStop", false}
+        { "GameStart", true },
+        { "GameRunning", false },
+        { "GameStop", false }
     };
 
     // componets attached to this object
+    // listen for game event and perform an action
     private LoadResources loader;
     private SpawnPrefab spawner;
     private DestroyObject destroyer;
@@ -25,14 +26,23 @@ public class GameLogic : MonoBehaviour
     private TicketSystem ticker;
     private EndGame gameEnder;
     private GameClock gameClock;
+    private UpgradePlayer upgrader;
 
     // data for spawning objects
     private SpawnData player = new SpawnData();
     private SpawnData sea = new SpawnData();
     private SpawnData blueSpawn = new SpawnData();
-    public SpawnData BlueSpawn { get => blueSpawn; private set => blueSpawn = value;}
+    public SpawnData BlueSpawn
+    {
+        get => blueSpawn;
+        private set => blueSpawn = value;
+    }
     private SpawnData redSpawn = new SpawnData();
-    public SpawnData RedSpawn { get => redSpawn; private set => redSpawn = value;}
+    public SpawnData RedSpawn
+    {
+        get => redSpawn;
+        private set => redSpawn = value;
+    }
     public SpawnData mainCamera = new SpawnData();
 
     // used to trigger events
@@ -41,6 +51,12 @@ public class GameLogic : MonoBehaviour
     public DestroyEvent destroyEvent;
     public DamageEvent damageEvent;
     public GameOverEvent gameOverEvent;
+    private UpgradeEvent _upgradeEvent;
+    public UpgradeEvent UpgradeEvent
+    {
+        get => _upgradeEvent;
+        private set => _upgradeEvent = value;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +67,7 @@ public class GameLogic : MonoBehaviour
         destroyEvent = ScriptableObject.CreateInstance("DestroyEvent") as DestroyEvent;
         damageEvent = ScriptableObject.CreateInstance("DamageEvent") as DamageEvent;
         gameOverEvent = ScriptableObject.CreateInstance("GameOverEvent") as GameOverEvent;
+        UpgradeEvent = ScriptableObject.CreateInstance("UpgradeEvent") as UpgradeEvent;
     }
 
     // Update is called once per frame
@@ -68,10 +85,8 @@ public class GameLogic : MonoBehaviour
             GameLoop();
     }
 
-    public void GameLoop()
-    {
+    public void GameLoop() { }
 
-    }
     // Game Routines
 
     // tasks performed when a game is over
@@ -82,7 +97,6 @@ public class GameLogic : MonoBehaviour
 
         // stop the game clock
         gameClock.IsCounting = false;
-
 
         Debug.Log("GAME OVER");
         // yield return Despawn();
@@ -136,6 +150,7 @@ public class GameLogic : MonoBehaviour
         damager = this.gameObject.AddComponent<ApplyDamage>();
         ticker = this.gameObject.AddComponent<TicketSystem>();
         gameEnder = this.gameObject.AddComponent<EndGame>();
+        upgrader = this.gameObject.AddComponent<UpgradePlayer>();
 
         // components that are not event listeners
         gameClock = this.gameObject.AddComponent<GameClock>();
@@ -194,8 +209,7 @@ public class GameLogic : MonoBehaviour
         }
         else
         {
-           Instance = this;
+            Instance = this;
         }
-     }
+    }
 }
-
