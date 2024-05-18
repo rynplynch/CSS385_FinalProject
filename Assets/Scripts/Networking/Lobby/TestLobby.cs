@@ -184,7 +184,7 @@ public class TestLobby : MonoBehaviour
 
             PrintPlayers(lobby);
 
-            TestRelay.Instance.JoinRelay(joinedLobby.Data["RelayCode"].Value);
+            testRelay.JoinRelay(joinedLobby.Data["RelayCode"].Value);
         }
         catch (LobbyServiceException e)
         {
