@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class ApplyDamage : DamageListener
 {
     public int goldValue = 15;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +17,10 @@ public class ApplyDamage : DamageListener
         Response.AddListener(ToCall);
     }
 
-    private void ToCall(GameObject caller, DamageData d){
+    private void ToCall(GameObject caller, DamageData d)
+    {
         // grab health component of object to damage
-        Health hp = d.ObjectToDamage.GetComponent<Health>();
+        PlayerHealth hp = d.ObjectToDamage.GetComponent<PlayerHealth>();
 
         // only do damage if the object has a health component
         if (hp)

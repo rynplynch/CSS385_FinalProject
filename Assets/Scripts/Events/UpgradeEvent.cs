@@ -46,4 +46,28 @@ public class UpgradeData
         get { return this._playerGold; }
         set { this._playerGold = value; }
     }
+
+    private PlayerHealth _playerHealth;
+
+    /// <summary>
+    /// The players health component
+    /// </summary>
+    /// <value>PlayerHealth</value>
+    public PlayerHealth PlayerHealth
+    {
+        get { return this._playerHealth; }
+        set { this._playerHealth = value; }
+    }
+
+    private GameObject _player;
+
+    /// <summary>
+    /// the player to upgrade
+    /// </summary>
+    /// <value>GameObject</value>
+    public GameObject Player
+    {
+        get { return this._player; }
+        set { this._player = value; }
+    }
 }

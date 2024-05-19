@@ -798,6 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2516d3ecd8aa42e128e4b7f996e45116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgrader: {fileID: 0}
   spawnEvent: {fileID: 0}
   loadEvent: {fileID: 0}
   destroyEvent: {fileID: 0}

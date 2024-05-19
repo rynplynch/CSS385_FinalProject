@@ -8,8 +8,7 @@ public class SpawnEvent : ScriptableObject
     /// <summary>
     /// The list of listeners that this event will notify if it is raised.
     /// </summary>
-    private readonly List<SpawnListener> eventListeners =
-        new List<SpawnListener>();
+    private readonly List<SpawnListener> eventListeners = new List<SpawnListener>();
 
     public void Raise(GameObject caller, SpawnData data)
     {
@@ -36,13 +35,33 @@ public class SpawnData
     // used to save reference to Instantiated GameObject
     // will always start out as null, set by SpawnPrefab class
     private GameObject reference = null;
-    public GameObject Reference { get => reference; set => reference = value; }
+    public GameObject Reference
+    {
+        get => reference;
+        set => reference = value;
+    }
     private string tag;
-    public string Tag { get => tag; set => tag = value; }
+    public string Tag
+    {
+        get => tag;
+        set => tag = value;
+    }
     private GameObject prefab;
-    public GameObject Prefab { get => prefab; set => prefab = value; }
+    public GameObject Prefab
+    {
+        get => prefab;
+        set => prefab = value;
+    }
     private Vector3 position;
-    public Vector3 Position { get => position; set => position = value; }
+    public Vector3 Position
+    {
+        get => position;
+        set => position = value;
+    }
     private Quaternion rotation;
-    public Quaternion Rotation { get => rotation; set => rotation = value; }
+    public Quaternion Rotation
+    {
+        get => rotation;
+        set => rotation = value;
+    }
 }

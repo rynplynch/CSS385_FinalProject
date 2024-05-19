@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class GoldManagerScript : MonoBehaviour
 {
@@ -28,22 +28,27 @@ public class GoldManagerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     void SpawnGold()
     {
         if (goldSpawned < maxGoldSpawn && RandomGenerator() == true) // random spawn include y axis
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(min, max), Random.Range(minY, maxY), Random.Range(min, max));
+            Vector3 spawnPosition = new Vector3(
+                Random.Range(min, max),
+                Random.Range(minY, maxY),
+                Random.Range(min, max)
+            );
             GameObject g = Instantiate(goldPrefab, spawnPosition, Quaternion.identity);
             goldSpawned++;
         }
         else if (goldSpawned < maxGoldSpawn && RandomGenerator() == false) // random spawn sea level
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(min, max), minY, Random.Range(min, max));
+            Vector3 spawnPosition = new Vector3(
+                Random.Range(min, max),
+                minY,
+                Random.Range(min, max)
+            );
             GameObject g = Instantiate(goldPrefab, spawnPosition, Quaternion.identity);
             goldSpawned++;
         }
@@ -55,7 +60,7 @@ public class GoldManagerScript : MonoBehaviour
             playerGold[playerId] = 0; // Initialize player's gold count if not present
         playerGold[playerId] += goldToAdd;
         goldSpawned--;
-        UpdateGoldText(playerId);
+        // UpdateGoldText(playerId);
     }
 
     // Update gold text for the specified player
@@ -90,7 +95,7 @@ public class GoldManagerScript : MonoBehaviour
         if (playerGold.ContainsKey(playerId))
         {
             playerGold[playerId] -= amount;
-            UpdateGoldText(playerId);
+            // UpdateGoldText(playerId);
         }
         else
         {
@@ -111,6 +116,4 @@ public class GoldManagerScript : MonoBehaviour
             return 0;
         }
     }
-
-
 }

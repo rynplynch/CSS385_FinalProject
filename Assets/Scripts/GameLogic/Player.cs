@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    // player actions
+    public InputAction showPlayerMenu;
+
     // how we reference our game logic and events
     private GameLogic gCtrl;
     private SpawnEvent sEvent;
@@ -48,6 +53,8 @@ public class Player : MonoBehaviour
         UICanvas = GameObject.FindGameObjectWithTag("ui-canvas");
         // grab reference to prefabs
         LoadPrefabs();
+
+        showPlayerMenu.Enable();
     }
 
     void Update()
@@ -56,54 +63,55 @@ public class Player : MonoBehaviour
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             // Call the UpgradeMissile method with the player ID
-            upgradeManager.UpgradeHealth(playerId);
-
-            // data to pass to the upgraded event
-            // UpgradeData uData = new UpgradeData();
-            // uData.PlayerGold = goldManager.GetGold();
-            // uEvent.Raise(this.gameObject, uData);
+            // upgradeManager.UpgradeHealth(playerId);
+            StartCoroutine(UpdateHealthRoutine());
         }
         else if (Keyboard.current.digit2Key.wasPressedThisFrame)
         {
             // Call the UpgradeBullet method with the player ID
-            upgradeManager.UpgradeBullet(playerId);
+            // upgradeManager.UpgradeBullet(playerId);
         }
         else if (Keyboard.current.digit3Key.wasPressedThisFrame)
         {
             // Call the UpgradeMissile method with the player ID
-            upgradeManager.UpgradeMissile(playerId);
+            // upgradeManager.UpgradeMissile(playerId);
         }
+
+        if (showPlayerMenu.WasPressedThisFrame())
+        {
+            ShowPlayerMenu();
+        }
+        else if (showPlayerMenu.WasReleasedThisFrame())
+        {
+            SceneManager.UnloadSceneAsync("PlayerMenu");
+            Scene game = SceneManager.GetSceneByName("Game");
+            SceneManager.SetActiveScene(game);
+        }
+    }
+
+    // load and display the player menu canvas using the scene
+    private void ShowPlayerMenu()
+    {
+        // load the player menu scene
+        SceneManager.LoadScene("PlayerMenu", LoadSceneMode.Additive);
     }
 
     // sequence of events that happens during spawning
     private IEnumerator SpawnRoutine(SpawnData o)
     {
-        DestoryData d = new DestoryData();
-        d.LifeCycle = 0;
-        // make sure the player can not spawn as multiple GameObjects at once
-        // also detach the player-camera if that is the case
-        if (redBoat.Reference != null)
+        // returns the vehicle the player is spawned as
+        SpawnData currentVehicle = GetSpawnedVehicle();
+
+        // if the player has a spawned vehicle
+        if (currentVehicle != null)
         {
+            // detach camera from spawned vehicle
             yield return DetachCamera();
-            d.Reference = redBoat.Reference;
-            yield return DeleteObject(d);
-        }
-        if (blueBoat.Reference != null)
-        {
-            yield return DetachCamera();
-            d.Reference = blueBoat.Reference;
-            yield return DeleteObject(d);
-        }
-        if (redPlane.Reference != null)
-        {
-            yield return DetachCamera();
-            d.Reference = redPlane.Reference;
-            yield return DeleteObject(d);
-        }
-        if (bluePlane.Reference != null)
-        {
-            yield return DetachCamera();
-            d.Reference = bluePlane.Reference;
+
+            // ready destroy data for destroy event
+            DestoryData d = new DestoryData(currentVehicle.Reference, 0);
+
+            // destroy current vehicle
             yield return DeleteObject(d);
         }
 
@@ -120,8 +128,54 @@ public class Player : MonoBehaviour
             o.Position = gCtrl.BlueSpawn.Position + new Vector3(10, -20, 0);
 
         yield return SpawnObject(o);
+        // this allows health upgrades to persisten between spawns
+        yield return ApplyHealthLevel(o);
         yield return AttachCamera(o);
         yield return SetPlayerReference(o);
+    }
+
+    // apply the current health level of player vehicle
+    private IEnumerator ApplyHealthLevel(SpawnData o)
+    {
+        // get health component of vehicle
+        PlayerHealth hp = o.Reference.GetComponent<PlayerHealth>();
+
+        // get health level of player
+        int lvl = gCtrl.upgrader.GetPlayerHealthLvl(this.gameObject);
+
+        // change the max health of the vehicle
+        hp.maxHealth = hp.maxHealth + gCtrl.upgrader.healthIncrease * lvl;
+
+        // also update the current health
+        hp.currentHealth = hp.maxHealth;
+
+        yield return null;
+    }
+
+    private IEnumerator UpdateHealthRoutine()
+    {
+        // get the players current vehicle
+        SpawnData currentVehicle = GetSpawnedVehicle();
+
+        // if the player is spawned allow upgrading
+        if (currentVehicle != null)
+        {
+            // data to pass to the upgraded event
+            UpgradeData uData = new UpgradeData();
+
+            // player to upgrade
+            uData.Player = this.gameObject;
+
+            // grab the vehicles health comp
+            uData.PlayerHealth = currentVehicle.Reference.GetComponent<PlayerHealth>();
+
+            // current amount of gold the player has
+            uData.PlayerGold = 50;
+
+            // raise the upgrade event
+            uEvent.Raise(this.gameObject, uData);
+        }
+        yield return null;
     }
 
     // save reference to this player instance inside spawned game object
@@ -195,6 +249,21 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+    // displays red or blue team menu
+    private async void ShowTeamMenuAsync(string team)
+    {
+        // unload the current UI
+
+        // if red is passed in
+        if (team.Contains("red"))
+            // load up red team menu
+            await SceneManager.LoadSceneAsync("RedTeamMenu", LoadSceneMode.Additive);
+        // if blue is passed in
+        else if (team.Contains("blue"))
+            // load up blue team menu
+            await SceneManager.LoadSceneAsync("BlueTeamMenu", LoadSceneMode.Additive);
+    }
+
     private void LoadPrefabs()
     {
         // this is how load knows which prefab to grab
@@ -214,7 +283,9 @@ public class Player : MonoBehaviour
         lEvent.Raise(this.gameObject, planeCamera);
     }
 
-    public IEnumerator PlayerDied()
+    // actions taken when the player dies
+    // takes in a string that is the team they died as
+    public IEnumerator PlayerDied(string t)
     {
         // remove the players camera
         yield return DetachCamera();
@@ -222,7 +293,8 @@ public class Player : MonoBehaviour
         // reactivate main camera
         gCtrl.mainCamera.Reference.SetActive(true);
 
-        UICanvas.SetActive(true);
+        // take the player back to their team menu
+        ShowTeamMenuAsync(t);
     }
 
     public void SpawnSelection(string teamVehicle)
@@ -256,5 +328,20 @@ public class Player : MonoBehaviour
             PlayerPrefs.SetInt("PlayerId", savedPlayerId); // Save player ID to PlayerPrefs
         }
         return savedPlayerId;
+    }
+
+    // returns the currently spawned vehicle
+    // returns null if no vehicle spawned
+    private SpawnData GetSpawnedVehicle()
+    {
+        if (redBoat.Reference != null)
+            return redBoat;
+        if (blueBoat.Reference != null)
+            return blueBoat;
+        if (redPlane.Reference != null)
+            return redPlane;
+        if (bluePlane.Reference != null)
+            return bluePlane;
+        return null;
     }
 }

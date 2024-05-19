@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // this class should be the only object in our hierarchy
 public class GameLogic : MonoBehaviour
@@ -25,8 +27,8 @@ public class GameLogic : MonoBehaviour
     private ApplyDamage damager;
     private TicketSystem ticker;
     private EndGame gameEnder;
-    private GameClock gameClock;
-    private UpgradePlayer upgrader;
+    public GameClock gameClock;
+    public UpgradePlayer upgrader;
 
     // data for spawning objects
     private SpawnData player = new SpawnData();
@@ -56,6 +58,11 @@ public class GameLogic : MonoBehaviour
     {
         get => _upgradeEvent;
         private set => _upgradeEvent = value;
+    }
+    public SpawnData Player
+    {
+        get => player;
+        private set => player = value;
     }
 
     // Start is called before the first frame update
@@ -121,6 +128,9 @@ public class GameLogic : MonoBehaviour
 
         // start the game clock
         gameClock.IsCounting = true;
+
+        // show the spawn menu when the game starts
+        ShowSpawnMenuAsync();
     }
 
     // attach GameLogic components for running a game
@@ -162,14 +172,14 @@ public class GameLogic : MonoBehaviour
     private IEnumerator LoadPrefabs()
     {
         // this is how we find our prefab at load time
-        player.Tag = "Player";
+        Player.Tag = "Player";
         sea.Tag = "sea";
         mainCamera.Tag = "MainCamera";
         redSpawn.Tag = "red-spawn";
         blueSpawn.Tag = "blue-spawn";
 
         // raise a load even for each prefab
-        loadEvent.Raise(this.gameObject, player);
+        loadEvent.Raise(this.gameObject, Player);
         loadEvent.Raise(this.gameObject, sea);
         loadEvent.Raise(this.gameObject, mainCamera);
         loadEvent.Raise(this.gameObject, blueSpawn);
@@ -192,10 +202,31 @@ public class GameLogic : MonoBehaviour
     private IEnumerator Despawn()
     {
         destroyEvent.Raise(this.gameObject, new DestoryData(mainCamera.Reference, 0f));
-        destroyEvent.Raise(this.gameObject, new DestoryData(player.Reference, 0f));
+        destroyEvent.Raise(this.gameObject, new DestoryData(Player.Reference, 0f));
         destroyEvent.Raise(this.gameObject, new DestoryData(blueSpawn.Reference, 0f));
         destroyEvent.Raise(this.gameObject, new DestoryData(redSpawn.Reference, 0f));
         yield return null;
+    }
+
+    // load and display the player menu canvas using the scene
+    public async void ShowSpawnMenuAsync()
+    {
+        // load the player menu scene, wait for it to finish the load
+        await SceneManager.LoadSceneAsync("SpawnMenu", LoadSceneMode.Additive);
+
+        // Scene s = SceneManager.GetSceneByName("SpawnMenu");
+
+        // // get the root gameobject for the scene
+        // GameObject[] objects = s.GetRootGameObjects();
+
+        // // gets the canvas gameobject
+        // GameObject c = objects[0];
+
+        // SpawnMenu sMenu = c.GetComponent<SpawnMenu>();
+
+        // Camera camera = mainCamera.Reference.GetComponent<Camera>();
+
+        // sMenu.SetRenderCam(camera);
     }
 
     // this is here as a safety check

@@ -23,17 +23,17 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (!foundObject)
-        {
-            healthBarObject = GameObject.FindWithTag(healthBarTag);
-            foreach (Transform child in healthBarObject.transform)
-            {
-                child.gameObject.SetActive(true);
-            }
-            healthBar = healthBarObject.GetComponentInChildren<HealthBar>();
-            healthBar.SetMaxHealth(maxHealth);
-            foundObject = !foundObject;
-        }
+        // if (!foundObject)
+        // {
+        //     healthBarObject = GameObject.FindWithTag(healthBarTag);
+        //     foreach (Transform child in healthBarObject.transform)
+        //     {
+        //         child.gameObject.SetActive(true);
+        //     }
+        //     healthBar = healthBarObject.GetComponentInChildren<HealthBar>();
+        //     healthBar.SetMaxHealth(maxHealth);
+        //     foundObject = !foundObject;
+        // }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -52,9 +52,9 @@ public class PlayerHealth : MonoBehaviour
             gCtrl.destroyEvent.Raise(this.gameObject, d);
         }
 
-        if (healthBar != null)
-        {
-            healthBar.SetHealth(currentHealth);
-        }
+        // if (healthBar != null)
+        // {
+        //     healthBar.SetHealth(currentHealth);
+        // }
     }
 }

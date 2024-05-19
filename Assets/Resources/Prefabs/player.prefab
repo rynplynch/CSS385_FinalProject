@@ -44,4 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87adab1d16f4a5953923978ffbe9dede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showPlayerMenu:
+    m_Name: Show Player Menu
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e1a1333a-ed6c-4c38-8d55-4cc58b1cbe37
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c604f5db-bf18-48cb-9756-99aaf9203dc5
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Show Player Menu
+      m_Flags: 0
+    m_Flags: 0
   UICanvas: {fileID: 0}
