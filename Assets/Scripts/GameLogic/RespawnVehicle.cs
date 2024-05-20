@@ -17,6 +17,8 @@ public class RespawnVehicle : DestroyListener
     {
         // if the prefab we are destroying has a vehicle component
         Vehicle v = data.Reference.GetComponent<Vehicle>();
+
+
         if (v)
         {
             Debug.Log("HEELE?");

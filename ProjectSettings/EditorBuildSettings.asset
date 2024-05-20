@@ -11,18 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Planes.unity
     guid: 20378a75507f1fa4ca310e97c70aef6e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CoreGame.unity
     guid: 46189ef20e0327bcfbde9318d6b39fef
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/MainMenu.unity
+    guid: 499f11ce64d0c64b683de66a5abc72f6
   - enabled: 1
     path: Assets/Scenes/SceneManager/Game.unity
     guid: 56c939965bc05ba7eb2184be8be6e537
   - enabled: 1
     path: Assets/Scenes/SceneManager/Loading.unity
     guid: 922cfee7a0ed47c6997002e197c9f745
-  - enabled: 1
-    path: Assets/Scenes/SceneManager/MainMenu.unity
-    guid: 499f11ce64d0c64b683de66a5abc72f6
   - enabled: 1
     path: Assets/Scenes/SceneManager/PlayerMenu.unity
     guid: 6f46829e69da506c09bcff89a826cb27

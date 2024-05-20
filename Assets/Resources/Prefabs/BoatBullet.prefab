@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: -8562057611545862808}
   - component: {fileID: -7063556679224900772}
   - component: {fileID: -4914021257425257126}
+  - component: {fileID: 474467013152406422}
+  - component: {fileID: 678244719559167342}
   m_Layer: 0
   m_Name: BoatBullet
   m_TagString: Untagged
@@ -166,3 +168,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firedBy: {fileID: 0}
+--- !u!114 &474467013152406422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313843009057268759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2994372419
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &678244719559167342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313843009057268759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26285d148eb404fa970c7509bb6c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
