@@ -13,7 +13,14 @@ public class SpawnObjectOnNetwork : MonoBehaviour
     void Start()
     {
         no = GetComponent<NetworkObject>();
-        no.Spawn();
+        TestServerRPC(no);
+    }
+
+    [ServerRpc]
+    void TestServerRPC(NetworkObject no)
+    {
+        no.Spawn(true);
+        //Debug.Log("Test ServerRPC");
     }
 
 }
