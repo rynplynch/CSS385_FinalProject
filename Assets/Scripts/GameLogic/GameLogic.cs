@@ -64,6 +64,11 @@ public class GameLogic : MonoBehaviour
         get => player;
         private set => player = value;
     }
+    public TicketSystem Ticker
+    {
+        get => ticker;
+        private set => ticker = value;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -99,16 +104,8 @@ public class GameLogic : MonoBehaviour
     // tasks performed when a game is over
     public IEnumerator EndGame()
     {
-        // change the game state
-        gameStates["GameStop"] = true;
-
-        // stop the game clock
-        gameClock.IsCounting = false;
-
-        Debug.Log("GAME OVER");
-        // yield return Despawn();
-        // yield return DetachComponents();
-
+        // load the main menu
+        GoToMainMenuAsync();
         yield return null;
     }
 
@@ -141,7 +138,7 @@ public class GameLogic : MonoBehaviour
         Destroy(spawner);
         Destroy(destroyer);
         Destroy(damager);
-        Destroy(ticker);
+        Destroy(Ticker);
         Destroy(gameEnder);
 
         // components that are not event listeners
@@ -158,7 +155,7 @@ public class GameLogic : MonoBehaviour
         spawner = this.gameObject.AddComponent<SpawnPrefab>();
         destroyer = this.gameObject.AddComponent<DestroyObject>();
         damager = this.gameObject.AddComponent<ApplyDamage>();
-        ticker = this.gameObject.AddComponent<TicketSystem>();
+        Ticker = this.gameObject.AddComponent<TicketSystem>();
         gameEnder = this.gameObject.AddComponent<EndGame>();
         upgrader = this.gameObject.AddComponent<UpgradePlayer>();
 
@@ -213,20 +210,12 @@ public class GameLogic : MonoBehaviour
     {
         // load the player menu scene, wait for it to finish the load
         await SceneManager.LoadSceneAsync("SpawnMenu", LoadSceneMode.Additive);
+    }
 
-        // Scene s = SceneManager.GetSceneByName("SpawnMenu");
-
-        // // get the root gameobject for the scene
-        // GameObject[] objects = s.GetRootGameObjects();
-
-        // // gets the canvas gameobject
-        // GameObject c = objects[0];
-
-        // SpawnMenu sMenu = c.GetComponent<SpawnMenu>();
-
-        // Camera camera = mainCamera.Reference.GetComponent<Camera>();
-
-        // sMenu.SetRenderCam(camera);
+    public async void GoToMainMenuAsync()
+    {
+        // load the player menu scene, wait for it to finish the load
+        await SceneManager.LoadSceneAsync("MainMenu");
     }
 
     // this is here as a safety check

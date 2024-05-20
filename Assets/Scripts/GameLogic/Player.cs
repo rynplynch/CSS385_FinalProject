@@ -8,9 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // player actions
-    public InputAction showPlayerMenu;
-
     // how we reference our game logic and events
     private GameLogic gCtrl;
     private SpawnEvent sEvent;
@@ -53,8 +50,6 @@ public class Player : MonoBehaviour
         UICanvas = GameObject.FindGameObjectWithTag("ui-canvas");
         // grab reference to prefabs
         LoadPrefabs();
-
-        showPlayerMenu.Enable();
     }
 
     void Update()
@@ -76,24 +71,6 @@ public class Player : MonoBehaviour
             // Call the UpgradeMissile method with the player ID
             // upgradeManager.UpgradeMissile(playerId);
         }
-
-        if (showPlayerMenu.WasPressedThisFrame())
-        {
-            ShowPlayerMenu();
-        }
-        else if (showPlayerMenu.WasReleasedThisFrame())
-        {
-            SceneManager.UnloadSceneAsync("PlayerMenu");
-            Scene game = SceneManager.GetSceneByName("Game");
-            SceneManager.SetActiveScene(game);
-        }
-    }
-
-    // load and display the player menu canvas using the scene
-    private void ShowPlayerMenu()
-    {
-        // load the player menu scene
-        SceneManager.LoadScene("PlayerMenu", LoadSceneMode.Additive);
     }
 
     // sequence of events that happens during spawning
@@ -247,6 +224,14 @@ public class Player : MonoBehaviour
         if (o.Reference != null)
             dEvent.Raise(this.gameObject, o);
         yield return null;
+    }
+
+    // displays the boat UI
+    private async void ShowBoatUIAsync()
+    {
+        // if the player is on the red team
+        if (CheckTag.MatchingColor(GetSpawnedVehicle().Tag, "red"))
+            await SceneManager.UnloadSceneAsync("");
     }
 
     // displays red or blue team menu

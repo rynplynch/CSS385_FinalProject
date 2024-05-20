@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "ShowPlayerMenu",
+                    "type": "Button",
+                    "id": "0bce3659-68c7-4fbf-aff0-17a12a0b76ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ShootLeft",
                     "type": "Button",
                     "id": "c52dcb5f-d9d3-4331-a9d8-c47ac2a71440",
@@ -145,6 +154,45 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5325af18-545c-435a-b010-4f5910c9263b",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowPlayerMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Boat",
+            "id": "b49907ff-55af-46fc-b002-f3adbc0b0e45",
+            "actions": [
+                {
+                    "name": "ShowPlayerMenu",
+                    "type": "Button",
+                    "id": "a0bdc07b-0b3f-4033-ae33-c860bceea32c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d1fa5e08-e3d2-4b36-a967-58d083a8bd87",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowPlayerMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -31,7 +31,8 @@ public class GameClock : MonoBehaviour
     void Update()
     {
         // if the clock is counting down
-        if (IsCounting){
+        if (IsCounting)
+        {
             // remove the time passed since last updated
             TimeLeft = TimeLeft - Time.deltaTime;
 
@@ -46,5 +47,5 @@ public class GameClock : MonoBehaviour
     public void ResetClock() => TimeLeft = GameDuration;
 
     // how many minutes should games last?
-    public void SetGameLengthMins(int minutes) => GameDuration = (float) (minutes * 60);
+    public void SetGameLengthMins(int minutes) => GameDuration = (float)(minutes * 60);
 }

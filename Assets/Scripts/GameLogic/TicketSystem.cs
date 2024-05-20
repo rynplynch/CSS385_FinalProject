@@ -5,23 +5,32 @@ using UnityEngine.Events;
 
 public class TicketSystem : SpawnListener
 {
-    // amount of tickets peer team
-    private Dictionary<string, int> teamTickets = new Dictionary<string, int>
-        {
-            {"red", 500},
-            {"blue", 500}
-        };
+    // starting amount of tickets
+    private int _startingTickets;
+    public int StartingTickets
+    {
+        get => _startingTickets;
+        private set => _startingTickets = value;
+    }
+
+    // amount of tickets left peer team
+    private Dictionary<string, int> teamTickets = new Dictionary<string, int>();
 
     // cost of each prefab that is spawned
     private Dictionary<string, int> prefabCost = new Dictionary<string, int>
-        {
-            {"boat", 50},
-            {"plane", 25}
-        };
+    {
+        { "boat", 50 },
+        { "plane", 25 }
+    };
 
     // Start is called before the first frame update
     void Start()
     {
+        StartingTickets = 500;
+        // add starting values to each team
+        teamTickets.Add("red", StartingTickets);
+        teamTickets.Add("blue", StartingTickets);
+
         // instantiate new unity event
         Response = new UnityEvent<GameObject, SpawnData>();
 
@@ -29,13 +38,14 @@ public class TicketSystem : SpawnListener
         Response.AddListener(ToCall);
     }
 
-    private void ToCall(GameObject caller, SpawnData d){
+    private void ToCall(GameObject caller, SpawnData d)
+    {
         // game object being spawned
         GameObject s = d.Prefab;
 
         // if the prefab is on red team
         if (CheckTag.IsRedTeam(s))
-            {
+        {
             // if prefab is a boat
             if (CheckTag.IsBoat(s))
                 // remove tickets from red team at cost of boat
@@ -45,7 +55,7 @@ public class TicketSystem : SpawnListener
                 // remove tickets from red team at cost of plane
                 teamTickets["red"] = teamTickets["red"] - prefabCost["plane"];
             Debug.Log("Red team tickets remaining: " + $"{teamTickets["red"]}");
-            }
+        }
         // if the prefab is on blue team
         else if (CheckTag.IsBlueTeam(s))
         {

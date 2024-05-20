@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class BoatBehavior : Vehicle
 {
@@ -24,7 +25,6 @@ public class BoatBehavior : Vehicle
     public InputAction left;
 
     private Rigidbody rb;
- 
 
     void Start()
     {
@@ -49,7 +49,11 @@ public class BoatBehavior : Vehicle
         Quaternion currentRot = this.transform.rotation;
         newPos += this.transform.forward * time * forwardSpeed;
 
-        currentRotationalThrust = Mathf.Clamp(currentRotationalThrust, -rotationalSpeed, rotationalSpeed);
+        currentRotationalThrust = Mathf.Clamp(
+            currentRotationalThrust,
+            -rotationalSpeed,
+            rotationalSpeed
+        );
         rotationVector = new Vector2(0, currentRotationalThrust * time);
         rb.MoveRotation(currentRot * Quaternion.Euler(rotationVector));
         rb.MovePosition(newPos);
@@ -82,7 +86,11 @@ public class BoatBehavior : Vehicle
         }
         else
         {
-            currentRotationalThrust = Mathf.Lerp(currentRotationalThrust, 0, time / rotationDecelerationTime);
+            currentRotationalThrust = Mathf.Lerp(
+                currentRotationalThrust,
+                0,
+                time / rotationDecelerationTime
+            );
         }
 
         currentThrust = Mathf.Clamp(currentThrust, 0, 100);

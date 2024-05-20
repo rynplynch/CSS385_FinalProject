@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class BoatCamera : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class BoatCamera : MonoBehaviour
     public GameObject bulletPrefab;
 
     public InputAction fire;
-    
+
     private float defaultCameraDistance;
     private float defaultCameraHeight;
     public GameObject player;
@@ -35,7 +36,7 @@ public class BoatCamera : MonoBehaviour
         {
             HandleCameraToggle();
             togglePressed = true;
-        } 
+        }
         else if (!toggleCameraMode.IsPressed() && togglePressed)
         {
             togglePressed = false;
@@ -44,7 +45,9 @@ public class BoatCamera : MonoBehaviour
         // Follow mouse for boat or default for either
         if (player != null)
         {
-            if ((player.CompareTag("red-boat") | player.CompareTag("blue-boat")) && isFollowingMouse)
+            if (
+                (player.CompareTag("red-boat") | player.CompareTag("blue-boat")) && isFollowingMouse
+            )
             {
                 SetMouseFollowCamera();
             }
@@ -79,6 +82,22 @@ public class BoatCamera : MonoBehaviour
         toggleCameraMode.Enable();
     }
 
+    public void OnShowPlayerMenu(InputAction.CallbackContext ctx)
+    {
+        // when the show player menu action is performed
+        if (ctx.performed)
+        {
+            // load the player menu scene
+            SceneManager.LoadScene("PlayerMenu", LoadSceneMode.Additive);
+        }
+        // when the show player menu action stops
+        else if (ctx.canceled)
+        {
+            // remove the player menu
+            SceneManager.UnloadSceneAsync("PlayerMenu");
+        }
+    }
+
     // Fire bullets from the center when following the mouse
     private void FireFromCenter()
     {
@@ -98,8 +117,10 @@ public class BoatCamera : MonoBehaviour
     private void FireFromSides()
     {
         float offsetDistance = 5f; // Distance from the center to the side
-        Vector3 leftFirePosition = player.transform.position - player.transform.right * offsetDistance;
-        Vector3 rightFirePosition = player.transform.position + player.transform.right * offsetDistance;
+        Vector3 leftFirePosition =
+            player.transform.position - player.transform.right * offsetDistance;
+        Vector3 rightFirePosition =
+            player.transform.position + player.transform.right * offsetDistance;
         Quaternion leftFireDirection = Quaternion.LookRotation(-player.transform.right);
         Quaternion rightFireDirection = Quaternion.LookRotation(player.transform.right);
 
@@ -139,7 +160,10 @@ public class BoatCamera : MonoBehaviour
     // Default follow camera for boat and plane
     private void SetDefaultCamera()
     {
-        transform.position = player.transform.position - player.transform.forward * cameraDistance + Vector3.up * cameraHeight;
+        transform.position =
+            player.transform.position
+            - player.transform.forward * cameraDistance
+            + Vector3.up * cameraHeight;
         transform.LookAt(player.transform);
     }
 
@@ -153,5 +177,6 @@ public class BoatCamera : MonoBehaviour
     }
 
     public void setFollowedPlayer(GameObject p) => player = p;
+
     public GameObject getFollowedPlayer() => player;
 }

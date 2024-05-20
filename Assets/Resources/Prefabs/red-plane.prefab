@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeTransform: {fileID: 2701751268451559347}
   distance: 25
+  maxDistance: 250
   fixedAim: 0
   raycastAim: 1
 --- !u!1 &2936691286629156027
