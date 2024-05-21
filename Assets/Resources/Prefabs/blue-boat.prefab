@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 496777778043368668}
   - component: {fileID: 2868434461900414316}
   - component: {fileID: 3067899328532692085}
-  - component: {fileID: 2581174376425275359}
   - component: {fileID: -4044929327280890374}
   - component: {fileID: -8754579710268856391}
+  - component: {fileID: 1380470106426956414}
   m_Layer: 0
   m_Name: blue-boat
   m_TagString: blue-boat
@@ -222,21 +222,6 @@ MonoBehaviour:
       m_Action: Left
       m_Flags: 0
     m_Flags: 0
---- !u!114 &2581174376425275359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7611867931909644352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
-  healthBarTag: player-health-bar
 --- !u!114 &-4044929327280890374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,10 +268,30 @@ MonoBehaviour:
     m_ActionId: c52dcb5f-d9d3-4331-a9d8-c47ac2a71440
     m_ActionName: Plane/ShootLeft
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a0bdc07b-0b3f-4033-ae33-c860bceea32c
+    m_ActionName: 'Boat/ShowPlayerMenu[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0bce3659-68c7-4fbf-aff0-17a12a0b76ae
+    m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24be33b7-94df-4ccc-81d0-bf56f5a68496
+    m_ActionName: 'Plane/UpgradeHealth[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7fa9269-b03e-4e25-8d1c-e5b44ad23c70
+    m_ActionName: 'Plane/UpgradeBullet[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e4f9f615-7cd8-489a-ad8c-6fbb51251d2c
+    m_ActionName: 'Plane/UpgradeMissile[/Keyboard/3]'
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5832151884109306061, guid: d9b903119ad62d55fa4c333dbe8f8981, type: 3}
-        m_TargetAssemblyTypeName: BoatCamera, Assembly-CSharp
-        m_MethodName: OnShowPlayerMenu
+      - m_Target: {fileID: 1380470106426956414}
+        m_TargetAssemblyTypeName: BoatActions, Assembly-CSharp
+        m_MethodName: OnUpgradeBullet
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -296,14 +301,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a0bdc07b-0b3f-4033-ae33-c860bceea32c
-    m_ActionName: 'Boat/ShowPlayerMenu[/Keyboard/tab]'
+    m_ActionId: 4f1527b8-8011-43bc-974d-cf9ae59f3207
+    m_ActionName: 'Boat/UpgradeBullet[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0bce3659-68c7-4fbf-aff0-17a12a0b76ae
-    m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
+      m_Calls:
+      - m_Target: {fileID: 1380470106426956414}
+        m_TargetAssemblyTypeName: BoatActions, Assembly-CSharp
+        m_MethodName: OnUpgradeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 95fd753a-d149-4333-aaa1-02a1e8368ca2
+    m_ActionName: 'Boat/UpgradeHealth[/Keyboard/1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Boat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1380470106426956414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7611867931909644352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac8f3bf69c65a053aedbc9c5c89c5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

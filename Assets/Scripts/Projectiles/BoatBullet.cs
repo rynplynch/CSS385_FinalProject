@@ -31,7 +31,10 @@ public class BoatBullet : Projectile
         if (!Object.ReferenceEquals(firedBy, other.gameObject))
         {
             // create damage event
-            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(other.gameObject, damage, this.gameObject.tag));
+            gCtrl.damageEvent.Raise(
+                this.gameObject,
+                new DamageData(other.gameObject, damage, this.gameObject)
+            );
 
             // destroy self
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));

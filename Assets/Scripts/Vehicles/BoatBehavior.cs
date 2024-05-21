@@ -26,8 +26,11 @@ public class BoatBehavior : Vehicle
 
     private Rigidbody rb;
 
+    private GameLogic gCtrl;
+
     void Start()
     {
+        gCtrl = GameLogic.Instance;
         forward.Enable();
         backward.Enable();
         left.Enable();
@@ -57,6 +60,12 @@ public class BoatBehavior : Vehicle
         rotationVector = new Vector2(0, currentRotationalThrust * time);
         rb.MoveRotation(currentRot * Quaternion.Euler(rotationVector));
         rb.MovePosition(newPos);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            gCtrl.HpSystem.ApplyDamage(this.gameObject, 500);
     }
 
     private void AdjustThrust()

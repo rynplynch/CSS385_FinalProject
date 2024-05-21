@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 496777778043368668}
   - component: {fileID: 2868434461900414316}
   - component: {fileID: 3067899328532692085}
-  - component: {fileID: 5872949313622729886}
   - component: {fileID: -3928826108043192275}
   - component: {fileID: 1918182166112491094}
   m_Layer: 0
@@ -298,21 +297,6 @@ MonoBehaviour:
       m_Action: Left
       m_Flags: 0
     m_Flags: 0
---- !u!114 &5872949313622729886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7611867931909644352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
-  healthBarTag: player-health-bar
 --- !u!114 &-3928826108043192275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +362,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0bce3659-68c7-4fbf-aff0-17a12a0b76ae
     m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24be33b7-94df-4ccc-81d0-bf56f5a68496
+    m_ActionName: 'Plane/UpgradeHealth[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7fa9269-b03e-4e25-8d1c-e5b44ad23c70
+    m_ActionName: 'Plane/UpgradeBullet[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e4f9f615-7cd8-489a-ad8c-6fbb51251d2c
+    m_ActionName: 'Plane/UpgradeMissile[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f1527b8-8011-43bc-974d-cf9ae59f3207
+    m_ActionName: 'Boat/UpgradeBullet[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 95fd753a-d149-4333-aaa1-02a1e8368ca2
+    m_ActionName: 'Boat/UpgradeHealth[/Keyboard/1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Boat

@@ -53,6 +53,7 @@ public class PlayerMenu : MonoBehaviour
         redSlider = redTicketsContainer.GetComponent<Slider>();
         redTickets = redTicketsContainer.GetChild(1).GetComponent<TMP_Text>();
 
+        // set the ticket sliders max value
         blueSlider.maxValue = gCtrl.Ticker.StartingTickets;
         redSlider.maxValue = gCtrl.Ticker.StartingTickets;
     }
@@ -60,12 +61,20 @@ public class PlayerMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // grab current tickets for each team
+        int currBlue = gCtrl.Ticker.GetTeamTickets("blue");
+        int currRed = gCtrl.Ticker.GetTeamTickets("red");
+
         // get the most updated time
         timeLeft = TimeSpan.FromSeconds(gCtrl.gameClock.TimeLeft);
 
         // set value of sliders
-        blueSlider.value = gCtrl.Ticker.GetTeamTickets("blue");
-        redSlider.value = gCtrl.Ticker.GetTeamTickets("red");
+        blueSlider.value = currBlue;
+        redSlider.value = currRed;
+
+        // also display the amount if tickets left as text
+        blueTickets.text = $"{currBlue}";
+        redTickets.text = $"{currRed}";
 
         // display the time to the player
         clockUI.text = $"Time left: {timeLeft.Minutes}:{timeLeft.Seconds}";

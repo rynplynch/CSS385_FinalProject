@@ -19,11 +19,10 @@ public class PlaneShoot : MonoBehaviour
     private float bulletNextFireTime;
     private float missileNextFireTime;
 
-    
     // Start is called before the first frame update
     void Start()
     {
-       gCtrl = GameLogic.Instance;
+        gCtrl = GameLogic.Instance;
     }
 
     // Update is called once per frame
@@ -58,7 +57,8 @@ public class PlaneShoot : MonoBehaviour
         bulletRb.velocity = transform.forward * bulletSpeed;
 
         // if coming from a red plane
-        if (this.CompareTag("red-plane")){
+        if (this.CompareTag("red-plane"))
+        {
             // set bullet tag
             bullet.Reference.tag = "red-projectile";
         }

@@ -8,8 +8,7 @@ public class DamageEvent : ScriptableObject
     /// <summary>
     /// The list of listeners that this event will notify if it is raised.
     /// </summary>
-    private readonly List<DamageListener> eventListeners =
-        new List<DamageListener>();
+    private readonly List<DamageListener> eventListeners = new List<DamageListener>();
 
     public void Raise(GameObject caller, DamageData data)
     {
@@ -34,26 +33,38 @@ public class DamageEvent : ScriptableObject
 public class DamageData
 {
     // constructors
-    public DamageData(){}
+    public DamageData() { }
 
-    public DamageData(GameObject toDamage, int damageToApply, string tagOfProjectile)
+    public DamageData(GameObject toDamage, int damageToApply, GameObject projectile)
     {
         this.ObjectToDamage = toDamage;
         this.DamageToApply = damageToApply;
-        this.Tag = tagOfProjectile;
+        this.Projectile = projectile;
     }
 
     // used to save reference to Instantiated GameObject
     // will always start out as null, set by SpawnPrefab class
     private GameObject objectToDamage = null;
-    public GameObject ObjectToDamage { get => objectToDamage; set => objectToDamage = value; }
+    public GameObject ObjectToDamage
+    {
+        get => objectToDamage;
+        set => objectToDamage = value;
+    }
 
     // damage to apply
     private int damageToApply = 0;
-    public int DamageToApply { get => damageToApply; set => damageToApply = value; }
+    public int DamageToApply
+    {
+        get => damageToApply;
+        set => damageToApply = value;
+    }
 
-    // tag of the projectile
+    // projectile doing damage
     // important for checking if you're hurting your own team
-    private string tag;
-    public string Tag { get => tag; set => tag = value; }
+    private GameObject _projectile;
+    public GameObject Projectile
+    {
+        get => _projectile;
+        set => _projectile = value;
+    }
 }

@@ -42,7 +42,7 @@ public class MissileBehavior : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             GameObject o = collider.gameObject;
-            if ( o && (CheckTag.IsBoat(o) || CheckTag.IsPlane(o)))
+            if (o && (CheckTag.IsBoat(o) || CheckTag.IsPlane(o)))
             {
                 // Check if the target is of matching color
                 if (!CheckTag.MatchingColor(this.gameObject.tag, collider.tag))
@@ -72,7 +72,10 @@ public class MissileBehavior : MonoBehaviour
         if (CheckTag.IsBoat(o) && !CheckTag.MatchingColor(this.gameObject.tag, o.tag))
         {
             // raise a new damage event
-            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(o, boatDamage, this.tag));
+            gCtrl.damageEvent.Raise(
+                this.gameObject,
+                new DamageData(o, boatDamage, this.gameObject)
+            );
 
             // raise a new destroy event
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
@@ -80,7 +83,10 @@ public class MissileBehavior : MonoBehaviour
         else if (CheckTag.IsPlane(o) && !CheckTag.MatchingColor(this.gameObject.tag, o.tag))
         {
             // raise a new damage event
-            gCtrl.damageEvent.Raise(this.gameObject, new DamageData(o, planeDamage, this.tag));
+            gCtrl.damageEvent.Raise(
+                this.gameObject,
+                new DamageData(o, planeDamage, this.gameObject)
+            );
 
             // raise a new destroy event
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));

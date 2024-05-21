@@ -24,7 +24,10 @@ public class DestroyObject : DestroyListener
             if (v)
             {
                 // the instantiated object tells us who create it
-                Player p = v.SpawnedBy;
+                GameObject o = v.SpawnedBy;
+
+                // grab player component
+                Player p = o.GetComponent<Player>();
 
                 // if the player was on the blue team
                 if (CheckTag.IsBlueTeam(d.Reference))

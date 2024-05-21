@@ -24,14 +24,41 @@ public class GameLogic : MonoBehaviour
     private LoadResources loader;
     private SpawnPrefab spawner;
     private DestroyObject destroyer;
-    private ApplyDamage damager;
+
+    // listens for damage events, tracks health of object
+    private HealthSystem hpSystem;
+    public HealthSystem HpSystem
+    {
+        get => hpSystem;
+        private set => hpSystem = value;
+    }
+
+    // listens for spawn events, tracks team tickets
     private TicketSystem ticker;
+    public TicketSystem Ticker
+    {
+        get => ticker;
+        private set => ticker = value;
+    }
+
+    // listens for upgrade Input Actions, tracks upgrades
+    private UpgradeSystem upSystem;
+    public UpgradeSystem UpSystem
+    {
+        get => upSystem;
+        private set => upSystem = value;
+    }
+
     private EndGame gameEnder;
     public GameClock gameClock;
-    public UpgradePlayer upgrader;
 
     // data for spawning objects
     private SpawnData player = new SpawnData();
+    public SpawnData Player
+    {
+        get => player;
+        private set => player = value;
+    }
     private SpawnData sea = new SpawnData();
     private SpawnData blueSpawn = new SpawnData();
     public SpawnData BlueSpawn
@@ -53,22 +80,6 @@ public class GameLogic : MonoBehaviour
     public DestroyEvent destroyEvent;
     public DamageEvent damageEvent;
     public GameOverEvent gameOverEvent;
-    private UpgradeEvent _upgradeEvent;
-    public UpgradeEvent UpgradeEvent
-    {
-        get => _upgradeEvent;
-        private set => _upgradeEvent = value;
-    }
-    public SpawnData Player
-    {
-        get => player;
-        private set => player = value;
-    }
-    public TicketSystem Ticker
-    {
-        get => ticker;
-        private set => ticker = value;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +90,6 @@ public class GameLogic : MonoBehaviour
         destroyEvent = ScriptableObject.CreateInstance("DestroyEvent") as DestroyEvent;
         damageEvent = ScriptableObject.CreateInstance("DamageEvent") as DamageEvent;
         gameOverEvent = ScriptableObject.CreateInstance("GameOverEvent") as GameOverEvent;
-        UpgradeEvent = ScriptableObject.CreateInstance("UpgradeEvent") as UpgradeEvent;
     }
 
     // Update is called once per frame
@@ -137,7 +147,7 @@ public class GameLogic : MonoBehaviour
         Destroy(loader);
         Destroy(spawner);
         Destroy(destroyer);
-        Destroy(damager);
+        Destroy(HpSystem);
         Destroy(Ticker);
         Destroy(gameEnder);
 
@@ -154,10 +164,10 @@ public class GameLogic : MonoBehaviour
         loader = this.gameObject.AddComponent<LoadResources>();
         spawner = this.gameObject.AddComponent<SpawnPrefab>();
         destroyer = this.gameObject.AddComponent<DestroyObject>();
-        damager = this.gameObject.AddComponent<ApplyDamage>();
+        HpSystem = this.gameObject.AddComponent<HealthSystem>();
         Ticker = this.gameObject.AddComponent<TicketSystem>();
+        UpSystem = this.gameObject.AddComponent<UpgradeSystem>();
         gameEnder = this.gameObject.AddComponent<EndGame>();
-        upgrader = this.gameObject.AddComponent<UpgradePlayer>();
 
         // components that are not event listeners
         gameClock = this.gameObject.AddComponent<GameClock>();
@@ -189,7 +199,7 @@ public class GameLogic : MonoBehaviour
     private IEnumerator InitialSpawn()
     {
         spawnEvent.Raise(this.gameObject, mainCamera);
-        spawnEvent.Raise(this.gameObject, player);
+        spawnEvent.Raise(this.gameObject, Player);
         spawnEvent.Raise(this.gameObject, blueSpawn);
         spawnEvent.Raise(this.gameObject, redSpawn);
         yield return null;

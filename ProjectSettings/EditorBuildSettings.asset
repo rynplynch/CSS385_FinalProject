@@ -35,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/BlueTeamMenu.unity
     guid: 4daf83ceb28e80849a5ff2dded7051d8
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/BoatUI.unity
+    guid: 73aa017828b171b7aa81c3f49fcad344
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/PlaneUI.unity
+    guid: ce2345aceb631c8308e461dfcd66cd35
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0e70cadd54c62a14aa97dc4666828f88, type: 2}
   m_UseUCBPForAssetBundles: 0

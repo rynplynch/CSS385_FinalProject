@@ -6,7 +6,7 @@ using UnityEngine;
 public class GoldManagerScript : MonoBehaviour
 {
     // Gold Tracking
-    private Dictionary<int, int> playerGold = new Dictionary<int, int>(); // Store gold count for each player
+    private Dictionary<Player, int> playerGold = new Dictionary<Player, int>(); // Store gold count for each player
     public TMP_Text[] goldTexts; // Array of TMP_Text for displaying gold count of each player
 
     public GameObject goldPrefab;
@@ -54,19 +54,18 @@ public class GoldManagerScript : MonoBehaviour
         }
     }
 
-    public void AddGold(int playerId, int goldToAdd)
+    public void AddGold(Player p, int goldToAdd)
     {
-        if (!playerGold.ContainsKey(playerId))
-            playerGold[playerId] = 0; // Initialize player's gold count if not present
-        playerGold[playerId] += goldToAdd;
-        goldSpawned--;
-        // UpdateGoldText(playerId);
-    }
+        // of given a null value return
+        if (!p)
+            return;
 
-    // Update gold text for the specified player
-    private void UpdateGoldText(int playerId)
-    {
-        goldTexts[playerId].text = "Player " + playerId + " Gold: " + playerGold[playerId];
+        // if the player is not registered
+        if (!IsRegistered(p))
+            RegisterPlayer(p);
+
+        playerGold[p] += goldToAdd;
+        goldSpawned--;
     }
 
     // Random generator for gold spawn (air or sea)
@@ -76,44 +75,53 @@ public class GoldManagerScript : MonoBehaviour
     }
 
     // Check if the player can afford the specified amount of gold
-    public bool CanAfford(int playerId, int amount)
+    public bool CanAfford(Player p, int amount)
     {
-        if (playerGold.ContainsKey(playerId))
+        if (playerGold.ContainsKey(p))
         {
-            return playerGold[playerId] >= amount;
+            return playerGold[p] >= amount;
         }
         else
         {
-            Debug.LogWarning("Player " + playerId + " does not exist.");
+            Debug.LogWarning("Player " + p + " does not exist.");
             return false;
         }
     }
 
     // Spend gold for the specified player
-    public void SpendGold(int playerId, int amount)
+    public void SpendGold(Player p, int amount)
     {
-        if (playerGold.ContainsKey(playerId))
+        if (playerGold.ContainsKey(p))
         {
-            playerGold[playerId] -= amount;
+            playerGold[p] -= amount;
             // UpdateGoldText(playerId);
         }
         else
         {
-            Debug.LogWarning("Player " + playerId + " does not exist.");
+            Debug.LogWarning("Player " + p + " does not exist.");
         }
     }
 
     // Get the gold count for the specified player
-    public int GetGold(int playerId)
+    public int GetGold(Player p)
     {
-        if (playerGold.ContainsKey(playerId))
+        if (playerGold.ContainsKey(p))
         {
-            return playerGold[playerId];
+            return playerGold[p];
         }
         else
         {
-            Debug.LogWarning("Player " + playerId + " does not exist.");
+            RegisterPlayer(p);
             return 0;
         }
     }
+
+    // register a new player with the gold manager
+    private void RegisterPlayer(Player p)
+    {
+        playerGold.Add(p, 0);
+    }
+
+    // is the player registered with the gold manager?
+    private bool IsRegistered(Player p) => p && playerGold.ContainsKey(p);
 }

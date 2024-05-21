@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 2548579690006374005}
   - component: {fileID: -427946685295200163}
   - component: {fileID: -2190253815459166212}
-  - component: {fileID: -1067620298136490369}
   - component: {fileID: 4782842497000987916}
   m_Layer: 0
   m_Name: blue-plane
@@ -295,21 +294,6 @@ MonoBehaviour:
   missileCooldown: 3
   bulletLifeTime: 2
   missileLifeTime: 5
---- !u!114 &-1067620298136490369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936691286629156027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c720d64a4a6cff4eb1de82e273ae438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 400
-  currentHealth: 0
-  healthBarTag: player-health-bar
 --- !u!114 &4782842497000987916
 MonoBehaviour:
   m_ObjectHideFlags: 0

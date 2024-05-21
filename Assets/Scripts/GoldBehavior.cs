@@ -5,9 +5,10 @@ using UnityEngine;
 public class GoldBehavior : MonoBehaviour
 {
     public int value;
+
     //private int playerId; // Store player ID who collects the gold
 
-     private GameLogic gCtrl;
+    private GameLogic gCtrl;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,17 @@ public class GoldBehavior : MonoBehaviour
         // Check if the other object is a boat or a plane
         if (CheckTag.IsBoat(o) || CheckTag.IsPlane(o))
         {
-            // Add gold to the player's count
-            FindFirstObjectByType<GoldManagerScript>().AddGold(Player.playerId, value);
+            // grab vehicle component
+            Vehicle v = o.GetComponent<Vehicle>();
+
+            // if colliding with a vehicle
+            if (v)
+                // Add gold to the player who spawned the vehicle
+                FindFirstObjectByType<GoldManagerScript>()
+                    .AddGold(v.SpawnedBy.GetComponent<Player>(), value);
+
             // Destroy the gold object
-             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
+            gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }
     }
 }

@@ -21,7 +21,6 @@ public class RespawnVehicle : DestroyListener
         {
             Debug.Log("HEELE?");
             // grab reference to player that spawned vehicle
-            Player p = v.SpawnedBy;
         }
     }
 }

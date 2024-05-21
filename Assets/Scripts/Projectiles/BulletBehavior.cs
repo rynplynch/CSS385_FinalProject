@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,10 +21,7 @@ public class BulletBehavior : Projectile
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,8 +42,7 @@ public class BulletBehavior : Projectile
     {
         Transform parent = other.transform.parent;
         // if the parent exists and is what fired this bullet
-        if (parent &&
-            Object.ReferenceEquals(firedBy, parent.gameObject))
+        if (parent && Object.ReferenceEquals(firedBy, parent.gameObject))
             // this bullet was fired by the parent
             return true;
         // if no parent check if collider object fired the bullet
@@ -58,19 +53,19 @@ public class BulletBehavior : Projectile
         return false;
     }
 
-    private void ApplyDamage(GameObject other){
+    private void ApplyDamage(GameObject other)
+    {
         // to be passed into damage event
         // first item is object to damage
         // tag is the take of this bullet
         DamageData d = new DamageData();
         d.ObjectToDamage = other.gameObject;
-        d.Tag = this.gameObject.tag;
+        d.Projectile = this.gameObject;
 
         // if the target is a boat
         if (CheckTag.IsBoat(other))
             // apply boat damage
             d.DamageToApply = boatDamage;
-            
         // if the target is a plane
         else if (CheckTag.IsPlane(other))
             // apply boat damage

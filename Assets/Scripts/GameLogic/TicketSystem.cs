@@ -54,7 +54,6 @@ public class TicketSystem : SpawnListener
             else if (CheckTag.IsPlane(s))
                 // remove tickets from red team at cost of plane
                 teamTickets["red"] = teamTickets["red"] - prefabCost["plane"];
-            Debug.Log("Red team tickets remaining: " + $"{teamTickets["red"]}");
         }
         // if the prefab is on blue team
         else if (CheckTag.IsBlueTeam(s))
@@ -67,7 +66,6 @@ public class TicketSystem : SpawnListener
             else if (CheckTag.IsPlane(s))
                 // remove tickets from blue team at cost of plane
                 teamTickets["blue"] = teamTickets["blue"] - prefabCost["plane"];
-            Debug.Log("Blue team tickets remaining: " + $"{teamTickets["blue"]}");
         }
 
         // if a team is out of tickets

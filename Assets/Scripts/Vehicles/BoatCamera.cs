@@ -82,22 +82,6 @@ public class BoatCamera : MonoBehaviour
         toggleCameraMode.Enable();
     }
 
-    public void OnShowPlayerMenu(InputAction.CallbackContext ctx)
-    {
-        // when the show player menu action is performed
-        if (ctx.performed)
-        {
-            // load the player menu scene
-            SceneManager.LoadScene("PlayerMenu", LoadSceneMode.Additive);
-        }
-        // when the show player menu action stops
-        else if (ctx.canceled)
-        {
-            // remove the player menu
-            SceneManager.UnloadSceneAsync("PlayerMenu");
-        }
-    }
-
     // Fire bullets from the center when following the mouse
     private void FireFromCenter()
     {

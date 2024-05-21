@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     private SpawnEvent sEvent;
     private LoadEvent lEvent;
     private DestroyEvent dEvent;
-    private UpgradeEvent uEvent;
 
     // objects the player can spawn as
     SpawnData redBoat = new SpawnData();
@@ -28,7 +27,6 @@ public class Player : MonoBehaviour
     // ui canvas
     public GameObject UICanvas;
     public static int playerId;
-    private UpgradeManager upgradeManager;
 
     // singleton for managing player gold
     private GoldManagerScript goldManager;
@@ -37,14 +35,12 @@ public class Player : MonoBehaviour
     {
         // Assign or retrieve player ID when the player is created or initialized
         playerId = GetPlayerId();
-        upgradeManager = UpgradeManager.Instance;
 
         // setting references at creation of player
         gCtrl = GameLogic.Instance;
         sEvent = gCtrl.spawnEvent;
         lEvent = gCtrl.loadEvent;
         dEvent = gCtrl.destroyEvent;
-        uEvent = gCtrl.UpgradeEvent;
         goldManager = FindAnyObjectByType<GoldManagerScript>();
 
         UICanvas = GameObject.FindGameObjectWithTag("ui-canvas");
@@ -52,32 +48,13 @@ public class Player : MonoBehaviour
         LoadPrefabs();
     }
 
-    void Update()
-    {
-        // Check for input to upgrade
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            // Call the UpgradeMissile method with the player ID
-            // upgradeManager.UpgradeHealth(playerId);
-            StartCoroutine(UpdateHealthRoutine());
-        }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            // Call the UpgradeBullet method with the player ID
-            // upgradeManager.UpgradeBullet(playerId);
-        }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            // Call the UpgradeMissile method with the player ID
-            // upgradeManager.UpgradeMissile(playerId);
-        }
-    }
+    void Update() { }
 
     // sequence of events that happens during spawning
     private IEnumerator SpawnRoutine(SpawnData o)
     {
         // returns the vehicle the player is spawned as
-        SpawnData currentVehicle = GetSpawnedVehicle();
+        GameObject currentVehicle = GetSpawnedVehicle();
 
         // if the player has a spawned vehicle
         if (currentVehicle != null)
@@ -86,73 +63,37 @@ public class Player : MonoBehaviour
             yield return DetachCamera();
 
             // ready destroy data for destroy event
-            DestoryData d = new DestoryData(currentVehicle.Reference, 0);
+            DestoryData d = new DestoryData(currentVehicle, 0);
 
             // destroy current vehicle
             yield return DeleteObject(d);
         }
 
         // if the player is spawning as a red team vehicle
-        if (o.Tag.Equals("red-boat") | o.Tag.Equals("red-plane"))
+        if (CheckTag.MatchingColor(o.Tag, "red"))
             // change the spawn position to red spawn
             // offset a little so it doesn't spawn right on top
             o.Position = gCtrl.RedSpawn.Position + new Vector3(10, -20, 0);
-
         // if the player is spawning as a red team vehicle
-        if (o.Tag.Equals("blue-boat") | o.Tag.Equals("blue-plane"))
+        else if (CheckTag.MatchingColor(o.Tag, "blue"))
             // change the spawn position to red spawn
             // offset a little so it doesn't spawn right on top
             o.Position = gCtrl.BlueSpawn.Position + new Vector3(10, -20, 0);
 
+        // spawn the object
         yield return SpawnObject(o);
-        // this allows health upgrades to persisten between spawns
-        yield return ApplyHealthLevel(o);
+
+        // this persists health upgrades
+        gCtrl.UpSystem.UpgradeNewVehicle(this, o.Reference);
+
+        // attach camera so player can follow object
         yield return AttachCamera(o);
+
+        // how we track if a vehicle belongs to the player
         yield return SetPlayerReference(o);
-    }
 
-    // apply the current health level of player vehicle
-    private IEnumerator ApplyHealthLevel(SpawnData o)
-    {
-        // get health component of vehicle
-        PlayerHealth hp = o.Reference.GetComponent<PlayerHealth>();
-
-        // get health level of player
-        int lvl = gCtrl.upgrader.GetPlayerHealthLvl(this.gameObject);
-
-        // change the max health of the vehicle
-        hp.maxHealth = hp.maxHealth + gCtrl.upgrader.healthIncrease * lvl;
-
-        // also update the current health
-        hp.currentHealth = hp.maxHealth;
-
-        yield return null;
-    }
-
-    private IEnumerator UpdateHealthRoutine()
-    {
-        // get the players current vehicle
-        SpawnData currentVehicle = GetSpawnedVehicle();
-
-        // if the player is spawned allow upgrading
-        if (currentVehicle != null)
-        {
-            // data to pass to the upgraded event
-            UpgradeData uData = new UpgradeData();
-
-            // player to upgrade
-            uData.Player = this.gameObject;
-
-            // grab the vehicles health comp
-            uData.PlayerHealth = currentVehicle.Reference.GetComponent<PlayerHealth>();
-
-            // current amount of gold the player has
-            uData.PlayerGold = 50;
-
-            // raise the upgrade event
-            uEvent.Raise(this.gameObject, uData);
-        }
-        yield return null;
+        // display UI for vehicles
+        ShowVehicleUI();
     }
 
     // save reference to this player instance inside spawned game object
@@ -162,7 +103,7 @@ public class Player : MonoBehaviour
         Vehicle v = o.Reference.gameObject.GetComponent<Vehicle>();
 
         // set the spawned by reference
-        v.SpawnedBy = this;
+        v.SpawnedBy = this.gameObject;
 
         yield return null;
     }
@@ -226,19 +167,36 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+    // decide what vehicle UI to show
+    private void ShowVehicleUI()
+    {
+        // the vehicle the player currently control's
+        GameObject o = GetSpawnedVehicle();
+
+        // if its a boat
+        if (CheckTag.IsBoat(o))
+            // show boat UI
+            ShowBoatUIAsync();
+        else if (CheckTag.IsPlane(o))
+            // show plane UI
+            ShowPlaneUIAsync();
+    }
+
     // displays the boat UI
     private async void ShowBoatUIAsync()
     {
-        // if the player is on the red team
-        if (CheckTag.MatchingColor(GetSpawnedVehicle().Tag, "red"))
-            await SceneManager.UnloadSceneAsync("");
+        await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
+    }
+
+    // displays the plane UI
+    private async void ShowPlaneUIAsync()
+    {
+        await SceneManager.LoadSceneAsync("PlaneUI", LoadSceneMode.Additive);
     }
 
     // displays red or blue team menu
     private async void ShowTeamMenuAsync(string team)
     {
-        // unload the current UI
-
         // if red is passed in
         if (team.Contains("red"))
             // load up red team menu
@@ -247,6 +205,18 @@ public class Player : MonoBehaviour
         else if (team.Contains("blue"))
             // load up blue team menu
             await SceneManager.LoadSceneAsync("BlueTeamMenu", LoadSceneMode.Additive);
+    }
+
+    private async void HideVehicleUI()
+    {
+        // if the vehicle was a boat
+        if (CheckTag.IsBoat(GetSpawnedVehicle()))
+            // remove boat UI
+            await SceneManager.UnloadSceneAsync("BoatUI");
+        // if the vehicle was a plane
+        else if (CheckTag.IsPlane(GetSpawnedVehicle()))
+            // remove the plane UI
+            await SceneManager.UnloadSceneAsync("PlaneUI");
     }
 
     private void LoadPrefabs()
@@ -272,6 +242,9 @@ public class Player : MonoBehaviour
     // takes in a string that is the team they died as
     public IEnumerator PlayerDied(string t)
     {
+        // remove vehicle UI
+        HideVehicleUI();
+
         // remove the players camera
         yield return DetachCamera();
 
@@ -317,16 +290,16 @@ public class Player : MonoBehaviour
 
     // returns the currently spawned vehicle
     // returns null if no vehicle spawned
-    private SpawnData GetSpawnedVehicle()
+    public GameObject GetSpawnedVehicle()
     {
         if (redBoat.Reference != null)
-            return redBoat;
+            return redBoat.Reference;
         if (blueBoat.Reference != null)
-            return blueBoat;
+            return blueBoat.Reference;
         if (redPlane.Reference != null)
-            return redPlane;
+            return redPlane.Reference;
         if (bluePlane.Reference != null)
-            return bluePlane;
+            return bluePlane.Reference;
         return null;
     }
 }

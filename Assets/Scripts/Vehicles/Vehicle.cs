@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    public Player SpawnedBy { get; set; }
+    public GameObject SpawnedBy { get; set; }
 }

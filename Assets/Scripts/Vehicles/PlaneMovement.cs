@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class PlaneMovement : Vehicle
 {
-
     //public GameObject mouseTarget;
 
     public float thrust;
     public Vector2 wasdInput;
+
     //public float verticalInput;
     public Vector2 mouseMove;
-
 
     public float pitchSpeed;
     public float rollSpeed;
     public float yawSpeed;
 
     public float mouseSensitivity;
+
     [SerializeField]
     private float turnMagnitude;
 
     public float drag;
+
     /*
     public float pitchDrag;
     public float rollDrag;
@@ -40,10 +41,12 @@ public class PlaneMovement : Vehicle
 
     private Vector3 oldVelocity;
 
+    private GameLogic gCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
+        gCtrl = GameLogic.Instance;
         //planeShoot = GetComponent<PlaneShoot>();
 
         //Sets player rigidbody
@@ -51,14 +54,13 @@ public class PlaneMovement : Vehicle
         //Locks the cursor so it doesn't go off screen
         //Can be commented out
         Cursor.lockState = CursorLockMode.Locked;
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+            gCtrl.HpSystem.ApplyDamage(this.gameObject, 1000);
         //Gets horizontal and vertical input
         wasdInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -113,7 +115,6 @@ public class PlaneMovement : Vehicle
         Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
     }
 
-
     void PlaneMove()
     {
         //Force/Torque method
@@ -129,7 +130,9 @@ public class PlaneMovement : Vehicle
         //This is the thrust force imparted by the engines
         rb.AddForce(transform.forward * deltaTime * (clampedVerticalInput * thrust));
         //This is the drag force from the air
-        rb.AddForce(-rb.velocity * deltaTime * rb.velocity.magnitude * rb.velocity.magnitude * drag);
+        rb.AddForce(
+            -rb.velocity * deltaTime * rb.velocity.magnitude * rb.velocity.magnitude * drag
+        );
 
         //Makes the plane look at the target
         //transform.LookAt(mouseTarget.transform);
@@ -142,7 +145,6 @@ public class PlaneMovement : Vehicle
         //Converts the movement into rotation for the quaternion
         xRotation -= mouseMove.y;
         yRotation += mouseMove.x;
-
 
         zRotation -= wasdInput.x;
 
@@ -197,6 +199,7 @@ public class PlaneMovement : Vehicle
         //transform.Rotate(Vector3.up * Time.deltaTime * horizontalInput * yawSpeed);
         */
     }
+
     void BoatMove()
     {
         float deltaTime = Time.deltaTime;
@@ -205,6 +208,5 @@ public class PlaneMovement : Vehicle
         //rb.AddForce(-transform.forward * rb.velocity);
 
         rb.AddTorque(transform.up * deltaTime * boatThrust * wasdInput.x);
-
     }
 }
