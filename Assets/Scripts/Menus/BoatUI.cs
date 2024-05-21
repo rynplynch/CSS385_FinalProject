@@ -82,6 +82,7 @@ public class BoatUI : MonoBehaviour
         int hpLvl = gCtrl.UpSystem.GetPlayerHpLvl(p);
         int bltLvl = gCtrl.UpSystem.GetPlayerBltLvl(p);
         int mslLvl = gCtrl.UpSystem.GetPlayerMslLvl(p);
+        int playerGold = goldManager.GetGold(p);
 
         // apply data values to UI elements
         hpSlider.value = curHp;
@@ -89,7 +90,7 @@ public class BoatUI : MonoBehaviour
         hpText.text = $"HP:{curHp}";
         hpLvlTxt.text = $"HP lvl:{hpLvl}";
         bltLvlTxt.text = $"Bullet lvl:{bltLvl}";
-        goldText.text = goldManager.GetGold(p).ToString();
+        goldText.text = $"Player gold:{playerGold}";
     }
 
     // set the camera the canvas uses to render

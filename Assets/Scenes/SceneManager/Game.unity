@@ -228,6 +228,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_Name
       value: red-boat-boat (1)
@@ -287,6 +295,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794443561734578244, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
@@ -402,6 +418,14 @@ PrefabInstance:
       propertyPath: healthBarPrefab
       value: 
       objectReference: {fileID: 7917618939460234847, guid: a08613719bb71f1409ff7e0e889e3cfe, type: 3}
+    - target: {fileID: 1592865460149799905, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592865460149799905, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734075618992629381, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
       propertyPath: m_Name
       value: blue-boat-bot (1)
@@ -531,6 +555,14 @@ PrefabInstance:
       propertyPath: healthBarPrefab
       value: 
       objectReference: {fileID: 7917618939460234847, guid: a08613719bb71f1409ff7e0e889e3cfe, type: 3}
+    - target: {fileID: 1592865460149799905, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592865460149799905, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734075618992629381, guid: 80babf3d3189ec410a6f9ae27ade4ec3, type: 3}
       propertyPath: m_Name
       value: blue-boat-bot
@@ -834,6 +866,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_Name
       value: red-boat-boat (3)
@@ -966,10 +1006,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3690892238932636031, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
-      propertyPath: healthBarPrefab
-      value: 
-      objectReference: {fileID: 7917618939460234847, guid: a08613719bb71f1409ff7e0e889e3cfe, type: 3}
     - target: {fileID: 3794443561734578244, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_LocalPosition.x
       value: -81.7
@@ -1008,6 +1044,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794443561734578244, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
@@ -1185,6 +1229,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_Name
       value: red-boat-boat (4)
@@ -1360,6 +1412,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258696399176660893, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7611867931909644352, guid: 483602e29a3905eb99c72d5d9947eb92, type: 3}
       propertyPath: m_Name
       value: red-boat-boat (5)
@@ -1399,6 +1459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameClock: {fileID: 0}
+  updateHpUI:
+    m_PersistentCalls:
+      m_Calls: []
   spawnEvent: {fileID: 0}
   loadEvent: {fileID: 0}
   destroyEvent: {fileID: 0}

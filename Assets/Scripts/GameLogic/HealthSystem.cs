@@ -68,6 +68,12 @@ public class HealthSystem : DamageListener
             // apply damage to the object
             ApplyDamage(d.ObjectToDamage, d.DamageToApply);
 
+            // update all health UI elements
+            Debug.Log(d.ObjectToDamage.name);
+            Debug.Log("max:" + GetMaxHealth(d.ObjectToDamage));
+            Debug.Log("currnt" + GetCurrentHealth(d.ObjectToDamage));
+            gCtrl.updateHpUI.Invoke();
+
             // damage as been dealt to player, break
             return;
         }

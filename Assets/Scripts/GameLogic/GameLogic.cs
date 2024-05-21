@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -73,6 +74,9 @@ public class GameLogic : MonoBehaviour
         private set => redSpawn = value;
     }
     public SpawnData mainCamera = new SpawnData();
+
+    // Unity Events
+    public UnityEvent updateHpUI;
 
     // used to trigger events
     public SpawnEvent spawnEvent;
