@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class CheckTag : MonoBehaviour
 {
-    List<string> teams = new List<string>(){
-        "red",
-        "blue"
-    };
+    List<string> teams = new List<string>() { "red", "blue" };
 
     // Start is called before the first frame update
-    void Start()
-    {
-    }
+    void Start() { }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 
     public static bool IsBoat(GameObject other)
     {

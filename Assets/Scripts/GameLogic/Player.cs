@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     SpawnData blueBoat = new SpawnData();
     SpawnData bluePlane = new SpawnData();
 
+    // allowed spawn radius
+    public int spawnRadius = 25;
+
     // player camera that follows spawned objects
     SpawnData boatCamera = new SpawnData();
     SpawnData planeCamera = new SpawnData();
@@ -69,16 +72,8 @@ public class Player : MonoBehaviour
             yield return DeleteObject(d);
         }
 
-        // if the player is spawning as a red team vehicle
-        if (CheckTag.MatchingColor(o.Tag, "red"))
-            // change the spawn position to red spawn
-            // offset a little so it doesn't spawn right on top
-            o.Position = gCtrl.RedSpawn.Position + new Vector3(10, -20, 0);
-        // if the player is spawning as a red team vehicle
-        else if (CheckTag.MatchingColor(o.Tag, "blue"))
-            // change the spawn position to red spawn
-            // offset a little so it doesn't spawn right on top
-            o.Position = gCtrl.BlueSpawn.Position + new Vector3(10, -20, 0);
+        // sets the spawn point of the object
+        yield return SetSpawnPoint(o);
 
         // spawn the object
         yield return SpawnObject(o);
@@ -108,13 +103,82 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+    // sets the spawn point inside the spawn data
+    private IEnumerator SetSpawnPoint(SpawnData o)
+    {
+        // height vehicles are spawned
+        float height = 2f;
+
+        // construct offset vector
+        Vector3 offset = GetRandomVec(spawnRadius);
+
+        // add the offset to vehicle spawn point
+        o.Position = offset;
+
+        // if the player is spawning as a red team vehicle
+        if (CheckTag.IsRedTeam(o.Prefab))
+        {
+            // if the player is spawning as a boat
+            if (CheckTag.IsBoat(o.Prefab))
+            {
+                // get the red spawn position and add offset
+                offset = gCtrl.RedBoatSpawn.Position + offset;
+
+                // spawn facing toward blue spawn
+                o.Rotation = Quaternion.LookRotation(Vector3.right);
+
+                // set the spawn height as constant
+                o.Position = new Vector3(offset.x, height, offset.z);
+            }
+            // if the player is spawning as a plane
+            else if (CheckTag.IsPlane(o.Prefab))
+            {
+                // get the red spawn position and add offset
+                offset = gCtrl.RedPlaneSpawn.Position + offset;
+
+                // spawn facing toward blue spawn
+                o.Rotation = Quaternion.LookRotation(Vector3.right);
+
+                // set the spawn height as constant
+                o.Position = new Vector3(offset.x, height, offset.z);
+            }
+        }
+        // if the player is spawning as a red team vehicle
+        else if (CheckTag.IsBlueTeam(o.Prefab))
+            // if the player is spawning as a boat
+            if (CheckTag.IsBoat(o.Prefab))
+            {
+                // get the red spawn position and add offset
+                offset = gCtrl.BlueBoatSpawn.Position + offset;
+
+                // spawn facing toward red spawn
+                o.Rotation = Quaternion.LookRotation(Vector3.left);
+
+                // set the spawn height as constant
+                o.Position = new Vector3(offset.x, height, offset.z);
+            }
+            // if the player is spawning as a plane
+            else if (CheckTag.IsPlane(o.Prefab))
+            {
+                // get the red spawn position and add offset
+                offset = gCtrl.BluePlaneSpawn.Position + offset;
+
+                // spawn facing toward red spawn
+                o.Rotation = Quaternion.LookRotation(Vector3.left);
+
+                // set the spawn height as constant
+                o.Position = new Vector3(offset.x, height, offset.z);
+            }
+        yield return null;
+    }
+
     private IEnumerator AttachCamera(SpawnData o)
     {
         // deactivate main camera
         gCtrl.mainCamera.Reference.SetActive(false);
 
         // check what the spawn object is
-        if (o.Tag.Equals("blue-boat") | o.Tag.Equals("red-boat"))
+        if (CheckTag.IsBoat(o.Prefab))
         {
             // spawn a camera for a boat
             yield return SpawnObject(boatCamera);
@@ -125,7 +189,7 @@ public class Player : MonoBehaviour
             // pass in a refence so the camera can follow the boat
             script.setFollowedPlayer(o.Reference);
         }
-        else if (o.Tag.Equals("blue-plane") | o.Tag.Equals("red-plane"))
+        else if (CheckTag.IsPlane(o.Prefab))
         {
             yield return SpawnObject(planeCamera);
             PlaneCamera script = planeCamera.Reference.GetComponent<PlaneCamera>();
@@ -301,5 +365,19 @@ public class Player : MonoBehaviour
         if (bluePlane.Reference != null)
             return bluePlane.Reference;
         return null;
+    }
+
+    // returns a random vector3 with the specified range
+    private Vector3 GetRandomVec(int range)
+    {
+        // vectore to return
+        Vector3 randomVec = new Vector3();
+
+        // get random for each component
+        randomVec.x = Random.Range(-range, range);
+        randomVec.y = Random.Range(-range, range);
+        randomVec.z = Random.Range(-range, range);
+
+        return randomVec;
     }
 }

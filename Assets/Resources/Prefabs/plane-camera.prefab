@@ -163,6 +163,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a0bdc07b-0b3f-4033-ae33-c860bceea32c
     m_ActionName: 'Boat/ShowPlayerMenu[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24be33b7-94df-4ccc-81d0-bf56f5a68496
+    m_ActionName: 'Plane/UpgradeHealth[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7fa9269-b03e-4e25-8d1c-e5b44ad23c70
+    m_ActionName: 'Plane/UpgradeBullet[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e4f9f615-7cd8-489a-ad8c-6fbb51251d2c
+    m_ActionName: 'Plane/UpgradeMissile[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f1527b8-8011-43bc-974d-cf9ae59f3207
+    m_ActionName: 'Boat/UpgradeBullet[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 95fd753a-d149-4333-aaa1-02a1e8368ca2
+    m_ActionName: 'Boat/UpgradeHealth[/Keyboard/1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Plane

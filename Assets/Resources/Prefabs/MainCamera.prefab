@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca0bfe6effdcdd488103141f5b35f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 8751300528805170345, guid: 6c2019689e31e4017bab1ee257f63fb6, type: 3}
+  center: {fileID: 7238839044495227544, guid: 6c2019689e31e4017bab1ee257f63fb6, type: 3}
   orbitSpeed: 5
   distanceFromCenter: 100
   heightAboveCenter: 100

@@ -52,6 +52,7 @@ public class GameLogic : MonoBehaviour
 
     private EndGame gameEnder;
     public GameClock gameClock;
+    public BotSystem botSys;
 
     // data for spawning objects
     private SpawnData player = new SpawnData();
@@ -61,22 +62,18 @@ public class GameLogic : MonoBehaviour
         private set => player = value;
     }
     private SpawnData sea = new SpawnData();
-    private SpawnData blueSpawn = new SpawnData();
-    public SpawnData BlueSpawn
-    {
-        get => blueSpawn;
-        private set => blueSpawn = value;
-    }
-    private SpawnData redSpawn = new SpawnData();
-    public SpawnData RedSpawn
-    {
-        get => redSpawn;
-        private set => redSpawn = value;
-    }
+
+    // spawn points for vehicles
+    public SpawnData BlueBoatSpawn { get; private set; }
+    public SpawnData BluePlaneSpawn { get; private set; }
+    public SpawnData RedBoatSpawn { get; private set; }
+    public SpawnData RedPlaneSpawn { get; private set; }
+
     public SpawnData mainCamera = new SpawnData();
 
     // Unity Events
     public UnityEvent updateHpUI;
+    public UnityEvent spawnBot;
 
     // used to trigger events
     public SpawnEvent spawnEvent;
@@ -157,6 +154,7 @@ public class GameLogic : MonoBehaviour
 
         // components that are not event listeners
         Destroy(gameClock);
+        Destroy(botSys);
 
         yield return null;
     }
@@ -175,6 +173,7 @@ public class GameLogic : MonoBehaviour
 
         // components that are not event listeners
         gameClock = this.gameObject.AddComponent<GameClock>();
+        botSys = this.gameObject.AddComponent<BotSystem>();
 
         yield return null;
     }
@@ -182,19 +181,29 @@ public class GameLogic : MonoBehaviour
     // load in prefabs and set values
     private IEnumerator LoadPrefabs()
     {
+        // initialize spawn data
+        RedBoatSpawn = new SpawnData();
+        RedPlaneSpawn = new SpawnData();
+        BlueBoatSpawn = new SpawnData();
+        BluePlaneSpawn = new SpawnData();
+
         // this is how we find our prefab at load time
         Player.Tag = "Player";
         sea.Tag = "sea";
         mainCamera.Tag = "MainCamera";
-        redSpawn.Tag = "red-spawn";
-        blueSpawn.Tag = "blue-spawn";
+        RedBoatSpawn.Tag = "red-boat-spawn";
+        RedPlaneSpawn.Tag = "red-plane-spawn";
+        BlueBoatSpawn.Tag = "blue-boat-spawn";
+        BluePlaneSpawn.Tag = "blue-plane-spawn";
 
         // raise a load even for each prefab
         loadEvent.Raise(this.gameObject, Player);
         loadEvent.Raise(this.gameObject, sea);
         loadEvent.Raise(this.gameObject, mainCamera);
-        loadEvent.Raise(this.gameObject, blueSpawn);
-        loadEvent.Raise(this.gameObject, redSpawn);
+        loadEvent.Raise(this.gameObject, RedBoatSpawn);
+        loadEvent.Raise(this.gameObject, RedPlaneSpawn);
+        loadEvent.Raise(this.gameObject, BlueBoatSpawn);
+        loadEvent.Raise(this.gameObject, BluePlaneSpawn);
 
         yield return null;
     }
@@ -204,8 +213,11 @@ public class GameLogic : MonoBehaviour
     {
         spawnEvent.Raise(this.gameObject, mainCamera);
         spawnEvent.Raise(this.gameObject, Player);
-        spawnEvent.Raise(this.gameObject, blueSpawn);
-        spawnEvent.Raise(this.gameObject, redSpawn);
+
+        spawnEvent.Raise(this.gameObject, RedBoatSpawn);
+        spawnEvent.Raise(this.gameObject, RedPlaneSpawn);
+        spawnEvent.Raise(this.gameObject, BlueBoatSpawn);
+        spawnEvent.Raise(this.gameObject, BluePlaneSpawn);
         yield return null;
     }
 
@@ -214,8 +226,10 @@ public class GameLogic : MonoBehaviour
     {
         destroyEvent.Raise(this.gameObject, new DestoryData(mainCamera.Reference, 0f));
         destroyEvent.Raise(this.gameObject, new DestoryData(Player.Reference, 0f));
-        destroyEvent.Raise(this.gameObject, new DestoryData(blueSpawn.Reference, 0f));
-        destroyEvent.Raise(this.gameObject, new DestoryData(redSpawn.Reference, 0f));
+        destroyEvent.Raise(this.gameObject, new DestoryData(RedBoatSpawn.Reference, 0f));
+        destroyEvent.Raise(this.gameObject, new DestoryData(RedPlaneSpawn.Reference, 0f));
+        destroyEvent.Raise(this.gameObject, new DestoryData(BlueBoatSpawn.Reference, 0f));
+        destroyEvent.Raise(this.gameObject, new DestoryData(BluePlaneSpawn.Reference, 0f));
         yield return null;
     }
 

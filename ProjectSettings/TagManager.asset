@@ -20,6 +20,10 @@ TagManager:
   - blue-projectile
   - player-health-bar
   - ui-canvas
+  - blue-boat-spawn
+  - blue-plane-spawn
+  - red-plane-spawn
+  - red-boat-spawn
   layers:
   - Default
   - TransparentFX
