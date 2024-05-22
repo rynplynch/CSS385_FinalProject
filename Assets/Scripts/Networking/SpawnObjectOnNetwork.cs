@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Collections;
 
 [RequireComponent(typeof(NetworkObject))]
-public class SpawnObjectOnNetwork : MonoBehaviour
+public class SpawnObjectOnNetwork : NetworkBehaviour
 {
 
     private NetworkObject no;
@@ -13,14 +14,14 @@ public class SpawnObjectOnNetwork : MonoBehaviour
     void Start()
     {
         no = GetComponent<NetworkObject>();
-        TestServerRPC(no);
+        TestServerRPC();
     }
 
-    [ServerRpc]
-    void TestServerRPC(NetworkObject no)
+    [ServerRpc(RequireOwnership =false)]
+    private void TestServerRPC()
     {
+        Debug.Log("Test ServerRPC");
         no.Spawn(true);
-        //Debug.Log("Test ServerRPC");
     }
 
 }
