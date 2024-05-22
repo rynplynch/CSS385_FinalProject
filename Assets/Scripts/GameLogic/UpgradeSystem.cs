@@ -131,7 +131,7 @@ public class UpgradeSystem : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough gold to upgrade missiles.");
+                Debug.Log("Not enough gold to upgrade missile.");
             }
         }
     }

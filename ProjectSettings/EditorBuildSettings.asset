@@ -15,14 +15,14 @@ EditorBuildSettings:
     path: Assets/Scenes/CoreGame.unity
     guid: 46189ef20e0327bcfbde9318d6b39fef
   - enabled: 1
+    path: Assets/Scenes/SceneManager/MainMenu.unity
+    guid: 499f11ce64d0c64b683de66a5abc72f6
+  - enabled: 1
     path: Assets/Scenes/SceneManager/Game.unity
     guid: 56c939965bc05ba7eb2184be8be6e537
   - enabled: 1
     path: Assets/Scenes/SceneManager/Loading.unity
     guid: 922cfee7a0ed47c6997002e197c9f745
-  - enabled: 1
-    path: Assets/Scenes/SceneManager/MainMenu.unity
-    guid: 499f11ce64d0c64b683de66a5abc72f6
   - enabled: 1
     path: Assets/Scenes/SceneManager/PlayerMenu.unity
     guid: 6f46829e69da506c09bcff89a826cb27
@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneManager/PlaneUI.unity
     guid: ce2345aceb631c8308e461dfcd66cd35
+  - enabled: 1
+    path: Assets/Scenes/SceneManager/GameOverMenu.unity
+    guid: e1c50e6666bce5654aeae920f6434f95
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0e70cadd54c62a14aa97dc4666828f88, type: 2}
   m_UseUCBPForAssetBundles: 0
