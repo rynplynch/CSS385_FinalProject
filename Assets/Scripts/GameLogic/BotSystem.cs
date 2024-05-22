@@ -165,4 +165,10 @@ public class BotSystem : MonoBehaviour
 
         return randomVec;
     }
+
+    // reduce number of spawned red team boats
+    public void ReduceNumRedBoat() => numRedBtBot--;
+
+    // reduce number of spawned blue team boats
+    public void ReduceNumBlueBoat() => numBlueBtBot--;
 }

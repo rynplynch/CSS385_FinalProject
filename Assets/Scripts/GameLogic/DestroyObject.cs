@@ -5,12 +5,14 @@ using UnityEngine.Events;
 
 public class DestroyObject : DestroyListener
 {
+    GameLogic gCtrl;
+
     void Start()
     {
         // method called when event triggered
         Response = new UnityEvent<GameObject, DestoryData>();
         Response.AddListener(ToCall);
-        GameLogic gCtrl = GameLogic.Instance;
+        gCtrl = GameLogic.Instance;
     }
 
     public void ToCall(GameObject caller, DestoryData d)
@@ -20,6 +22,15 @@ public class DestroyObject : DestroyListener
         {
             // if there is a vehicle component
             Vehicle v = d.Reference.GetComponent<Vehicle>();
+
+            // if a bot died reduce bot counter
+            if (CheckTag.IsBot(d.Reference))
+                if (CheckTag.IsRedTeam(d.Reference))
+                    // reduce number of blue boat bots
+                    gCtrl.botSys.ReduceNumRedBoat();
+                else if (CheckTag.IsBlueTeam(d.Reference))
+                    // reduce number of blue boat bots
+                    gCtrl.botSys.ReduceNumBlueBoat();
 
             if (v)
             {

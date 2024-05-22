@@ -22,6 +22,12 @@ public class CheckTag : MonoBehaviour
         return other.CompareTag("blue-plane") || other.CompareTag("red-plane");
     }
 
+    public static bool IsBot(GameObject o)
+    {
+        Debug.Log(o.tag);
+        return o.tag.Contains("bot");
+    }
+
     public static bool IsRedTeam(GameObject o) => o.tag.Contains("red");
 
     public static bool IsBlueTeam(GameObject o) => o.tag.Contains("blue");
