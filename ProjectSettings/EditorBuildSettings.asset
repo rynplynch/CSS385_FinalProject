@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Planes.unity
     guid: 20378a75507f1fa4ca310e97c70aef6e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CoreGame.unity
     guid: 46189ef20e0327bcfbde9318d6b39fef
   - enabled: 1

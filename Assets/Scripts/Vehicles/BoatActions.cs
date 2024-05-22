@@ -15,8 +15,23 @@ public class BoatActions : MonoBehaviour
     }
 
     // when the player create an bullet upgrade event
-    public void OnUpgradeBullet(InputAction.CallbackContext ctx) =>
-        Debug.Log("Upgrade Player Health lvl");
+    public void OnUpgradeBullet(InputAction.CallbackContext ctx)
+    {
+        // when the action is first triggered
+        if (ctx.performed)
+        {
+            // get the vehicle component
+            Vehicle v = this.GetComponent<Vehicle>();
+
+            // which player spawned this vehicle?
+            Player p = v.SpawnedBy.GetComponent<Player>();
+
+            // only perform the upgrade if we know who spawned it
+            if (p)
+                // tell the upgrade system player wants to upgrade
+                gCtrl.UpSystem.UpgradeBullet(p);
+        }
+    }
 
     // when the player create a health upgrade event
     public void OnUpgradeHealth(InputAction.CallbackContext ctx)

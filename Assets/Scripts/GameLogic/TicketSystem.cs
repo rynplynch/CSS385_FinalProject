@@ -26,7 +26,7 @@ public class TicketSystem : SpawnListener
     // Start is called before the first frame update
     void Start()
     {
-        StartingTickets = 500;
+        StartingTickets = 1500;
         // add starting values to each team
         teamTickets.Add("red", StartingTickets);
         teamTickets.Add("blue", StartingTickets);

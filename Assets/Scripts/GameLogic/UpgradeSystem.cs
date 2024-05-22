@@ -131,7 +131,7 @@ public class UpgradeSystem : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough gold to upgrade bullets.");
+                Debug.Log("Not enough gold to upgrade missiles.");
             }
         }
     }
@@ -213,5 +213,29 @@ public class UpgradeSystem : MonoBehaviour
 
         // return missile lvl for player
         return _missileLevels[p];
+    }
+
+    // returns bonus damage to add to base bullet damage
+    public float GetAddedBulletDamage(Player p, int dmg)
+    {
+        int bltLvl = GetPlayerBltLvl(p);
+
+        // create a multiplier with players lvl
+        float mlt = (float)bltLvl / 10;
+
+        // return damage to be added to base damage
+        return dmg * mlt;
+    }
+
+    // returns bonus damage to add to base missile damage
+    public float GetAddedMissileDamage(Player p, int dmg)
+    {
+        int mslLvl = GetPlayerMslLvl(p);
+
+        // create a multiplier with players lvl
+        float mlt = (float)mslLvl / 10;
+
+        // return damage to be added to base damage
+        return dmg * mlt;
     }
 }

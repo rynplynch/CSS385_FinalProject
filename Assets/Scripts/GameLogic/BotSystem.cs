@@ -7,6 +7,19 @@ public class BotSystem : MonoBehaviour
 {
     GameLogic gCtrl;
 
+    // bot spawn radius
+    int spawnRadius = 25;
+
+    // how often bots are spawned
+    int spawnInterval = 5;
+
+    // how many bots are spawned
+    int numRedBtBot = 0;
+    int numBlueBtBot = 0;
+
+    // how many bots are allowed to spawn
+    int boatCap = 10;
+
     // bot prefabs
     private SpawnData RedBoat { get; set; }
     private SpawnData RedPlane { get; set; }
@@ -16,13 +29,49 @@ public class BotSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RedBoat = new SpawnData();
+        RedPlane = new SpawnData();
+        BlueBoat = new SpawnData();
+        BluePlane = new SpawnData();
+
         // grab game logic reference
         gCtrl = GameLogic.Instance;
 
+        LoadPrefabs();
+
         gCtrl.spawnBot.AddListener(SpawnBot);
+
+        InvokeRepeating(nameof(SpawnBot), 1f, spawnInterval);
     }
 
-    private void SpawnBot() { }
+    private void SpawnBot()
+    {
+        // check if the red team has reach boat cap
+        if (numRedBtBot < boatCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(RedBoat);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, RedBoat);
+
+            // increment red team boat counter
+            numRedBtBot++;
+        }
+
+        // check if blue team has reach boat cap
+        if (numBlueBtBot < boatCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(BlueBoat);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, BlueBoat);
+
+            // increment blue team boat counter
+            numBlueBtBot++;
+        }
+    }
 
     // grab bot prefabs
     private void LoadPrefabs()
@@ -36,7 +85,7 @@ public class BotSystem : MonoBehaviour
         gCtrl.loadEvent.Raise(this.gameObject, BlueBoat);
     }
 
-    private IEnumerator SetSpawnPoint(SpawnData o)
+    private void SetSpawnPoint(SpawnData o)
     {
         // height vehicles are spawned
         float height = 2f;
@@ -101,7 +150,6 @@ public class BotSystem : MonoBehaviour
                 // set the spawn height as constant
                 o.Position = new Vector3(offset.x, height, offset.z);
             }
-        yield return null;
     }
 
     // returns a random vector3 with the specified range

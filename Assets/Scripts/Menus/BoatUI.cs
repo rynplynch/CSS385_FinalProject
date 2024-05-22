@@ -77,7 +77,7 @@ public class BoatUI : MonoBehaviour
         Player p = gCtrl.Player.Reference.GetComponent<Player>();
 
         // get data we need to present to user
-        int curHp = gCtrl.HpSystem.GetCurrentHealth(p.GetSpawnedVehicle());
+        float curHp = gCtrl.HpSystem.GetCurrentHealth(p.GetSpawnedVehicle());
         int maxHp = gCtrl.HpSystem.GetMaxHealth(p.GetSpawnedVehicle());
         int hpLvl = gCtrl.UpSystem.GetPlayerHpLvl(p);
         int bltLvl = gCtrl.UpSystem.GetPlayerBltLvl(p);

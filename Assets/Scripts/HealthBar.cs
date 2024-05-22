@@ -40,7 +40,7 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateUI()
     {
-        int currHp = gCtrl.HpSystem.GetCurrentHealth(v);
+        float currHp = gCtrl.HpSystem.GetCurrentHealth(v);
         int maxHp = gCtrl.HpSystem.GetMaxHealth(v);
 
         hpSlider.maxValue = maxHp;

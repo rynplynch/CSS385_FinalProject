@@ -7,9 +7,9 @@ public class HealthSystem : DamageListener
     // tracks the game objects health
     // uses the game object reference as a key
     // returns tuple with current and max health
-    private Dictionary<GameObject, (int CurrentHp, int MaxHp)> _objectsHealth =
-        new Dictionary<GameObject, (int CurrentHp, int MaxHp)>();
-    private Dictionary<GameObject, (int CurrentHp, int MaxHp)> ObjectsHealth
+    private Dictionary<GameObject, (float CurrentHp, int MaxHp)> _objectsHealth =
+        new Dictionary<GameObject, (float CurrentHp, int MaxHp)>();
+    private Dictionary<GameObject, (float CurrentHp, int MaxHp)> ObjectsHealth
     {
         get => _objectsHealth;
         set => _objectsHealth = value;
@@ -61,17 +61,32 @@ public class HealthSystem : DamageListener
                 // registering the object with health system
                 RegisterWithHealthSystem(d.ObjectToDamage);
 
+            // TODO
+            // this is bad, what about more than one player?
+            Player p = gCtrl.Player.Reference.GetComponent<Player>();
+
+            // get the damage to apply
+            int dmg = d.DamageToApply;
+
             // spawn a new piece of gold
             FindFirstObjectByType<GoldManagerScript>()
-                .AddGold(gCtrl.Player.Reference.GetComponent<Player>(), goldValue);
+                .AddGold(p, goldValue);
 
-            // apply damage to the object
-            ApplyDamage(d.ObjectToDamage, d.DamageToApply);
+            // we use these to test for what the projectile is
+            BoatBullet bBullet = proj.GetComponent<BoatBullet>();
+            BulletBehavior pBullet = proj.GetComponent<BulletBehavior>();
+            MissileBehavior pMissile = proj.GetComponent<MissileBehavior>();
+
+            // if the projectile is a bullet from plane or boat
+            if (bBullet || pBullet)
+                // apply dmg w/ the players damage multiplier
+                ApplyDamage(d.ObjectToDamage, dmg + gCtrl.UpSystem.GetAddedBulletDamage(p, dmg));
+            // if the projectile is a missile
+            else if (pMissile)
+                // apply dmg w/ players dmg multiplier
+                ApplyDamage(d.ObjectToDamage, dmg + gCtrl.UpSystem.GetAddedMissileDamage(p, dmg));
 
             // update all health UI elements
-            Debug.Log(d.ObjectToDamage.name);
-            Debug.Log("max:" + GetMaxHealth(d.ObjectToDamage));
-            Debug.Log("currnt" + GetCurrentHealth(d.ObjectToDamage));
             gCtrl.updateHpUI.Invoke();
 
             // damage as been dealt to player, break
@@ -97,7 +112,7 @@ public class HealthSystem : DamageListener
     }
 
     // get an objects current health
-    public int GetCurrentHealth(GameObject o)
+    public float GetCurrentHealth(GameObject o)
     {
         // if the object isn't register
         if (!IsRegistered(o))
@@ -126,15 +141,16 @@ public class HealthSystem : DamageListener
     }
 
     // set current health of object
-    public void AddToCurrentHealth(GameObject o, int toAdd)
+    public void AddToCurrentHealth(GameObject o, float toAdd)
     {
         // because tuples are immutable we need to create a new one
         ObjectsHealth[o] = (GetCurrentHealth(o) + toAdd, GetMaxHealth(o));
     }
 
     // apply damage to an object
-    public void ApplyDamage(GameObject o, int damage)
+    public void ApplyDamage(GameObject o, float damage)
     {
+        Debug.Log(damage);
         // make sure game object exists in dict.
         if (!ObjectsHealth.ContainsKey(o))
             RegisterWithHealthSystem(o);

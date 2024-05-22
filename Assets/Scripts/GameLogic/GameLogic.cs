@@ -117,6 +117,10 @@ public class GameLogic : MonoBehaviour
     {
         // load the main menu
         GoToMainMenuAsync();
+
+        // return cursor control
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         yield return null;
     }
 
@@ -191,10 +195,10 @@ public class GameLogic : MonoBehaviour
         Player.Tag = "Player";
         sea.Tag = "sea";
         mainCamera.Tag = "MainCamera";
-        RedBoatSpawn.Tag = "red-boat-spawn";
-        RedPlaneSpawn.Tag = "red-plane-spawn";
-        BlueBoatSpawn.Tag = "blue-boat-spawn";
-        BluePlaneSpawn.Tag = "blue-plane-spawn";
+        RedBoatSpawn.Tag = "red-bt-spawn";
+        RedPlaneSpawn.Tag = "red-pln-spawn";
+        BlueBoatSpawn.Tag = "blue-bt-spawn";
+        BluePlaneSpawn.Tag = "blue-pln-spawn";
 
         // raise a load even for each prefab
         loadEvent.Raise(this.gameObject, Player);

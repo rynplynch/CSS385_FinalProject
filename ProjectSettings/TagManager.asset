@@ -11,19 +11,17 @@ TagManager:
   - blue-boat-bot
   - red-boat-bot
   - blue-boat
-  - blue-spawn
   - boat-camera
   - plane-camera
   - red-boat
-  - red-spawn
   - red-projectile
   - blue-projectile
   - player-health-bar
   - ui-canvas
-  - blue-boat-spawn
-  - blue-plane-spawn
-  - red-plane-spawn
-  - red-boat-spawn
+  - red-bt-spawn
+  - blue-bt-spawn
+  - red-pln-spawn
+  - blue-pln-spawn
   layers:
   - Default
   - TransparentFX
