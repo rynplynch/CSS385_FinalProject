@@ -18,7 +18,7 @@ public class BotSystem : MonoBehaviour
     int numBlueBtBot = 0;
 
     // how many bots are allowed to spawn
-    int boatCap = 10;
+    int boatCap = 0;
 
     // bot prefabs
     private SpawnData RedBoat { get; set; }

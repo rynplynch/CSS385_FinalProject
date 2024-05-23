@@ -114,6 +114,11 @@ public class HealthSystem : DamageListener
     // get an objects current health
     public float GetCurrentHealth(GameObject o)
     {
+        // if the game object is null
+        if (!o)
+            // break from the function
+            return 0f;
+
         // if the object isn't register
         if (!IsRegistered(o))
             // register it with the health system
@@ -125,6 +130,11 @@ public class HealthSystem : DamageListener
     // get an objects max health
     public int GetMaxHealth(GameObject o)
     {
+        // if the game object is null
+        if (!o)
+            // break from the function
+            return 0;
+
         // if the object isn't registered
         if (!IsRegistered(o))
             // register the new object
@@ -150,7 +160,6 @@ public class HealthSystem : DamageListener
     // apply damage to an object
     public void ApplyDamage(GameObject o, float damage)
     {
-        Debug.Log(damage);
         // make sure game object exists in dict.
         if (!ObjectsHealth.ContainsKey(o))
             RegisterWithHealthSystem(o);
