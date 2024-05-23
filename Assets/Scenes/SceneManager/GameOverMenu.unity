@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: New Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1117984450}
   - component: {fileID: 1117984449}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LossingTeamTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,8 +586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 155}
-  m_SizeDelta: {x: 272.464, y: 145.183}
+  m_AnchoredPosition: {x: 0, y: 107}
+  m_SizeDelta: {x: 272.464, y: 60.5304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117984449
 MonoBehaviour:
@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 1705807913}
   - component: {fileID: 1705807912}
   - component: {fileID: 1705807911}
+  - component: {fileID: 1705807915}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -924,6 +925,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1705807915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705807910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cffbea7408730d18545a9d53be47ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

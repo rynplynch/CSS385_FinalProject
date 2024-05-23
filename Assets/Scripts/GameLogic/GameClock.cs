@@ -18,7 +18,8 @@ public class GameClock : MonoBehaviour
     {
         // default values
         // set game length in minutes
-        SetGameLengthMins(10);
+        // SetGameLengthMins(10);
+        GameDuration = 5f;
 
         // set timeleft equal to game duration
         ResetClock();

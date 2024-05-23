@@ -24,7 +24,6 @@ public class CheckTag : MonoBehaviour
 
     public static bool IsBot(GameObject o)
     {
-        Debug.Log(o.tag);
         return o.tag.Contains("bot");
     }
 

@@ -47,7 +47,6 @@ public class MissileBehavior : MonoBehaviour
                 // Check if the target is of matching color
                 if (!CheckTag.MatchingColor(this.gameObject.tag, collider.tag))
                 {
-                    Debug.Log(collider.name);
                     isHoming = true;
                     target = collider.transform;
                     break;

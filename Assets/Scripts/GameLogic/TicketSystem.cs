@@ -80,10 +80,34 @@ public class TicketSystem : SpawnListener
         foreach (int tickets in teamTickets.Values)
         {
             // if someones tickets are bellow 0
-            if (tickets == 0)
+            if (tickets <= 0)
                 return true;
         }
         return false;
+    }
+
+    // who has the least amount of tickets?
+    public string GetLeastTicket()
+    {
+        // smallest value starts with the largest int
+        int min = int.MaxValue;
+
+        string lossingTeam = "";
+
+        // iterate over every teams ticket values
+        foreach ((string team, int tickets) in teamTickets)
+        {
+            // if the team tickets are less than min
+            if (tickets < min)
+            {
+                // we have a new min value
+                min = tickets;
+
+                // save the teams name
+                lossingTeam = team;
+            }
+        }
+        return lossingTeam;
     }
 
     // returns number of tickets left for the specified team

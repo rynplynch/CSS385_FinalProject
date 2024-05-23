@@ -8,8 +8,7 @@ public class GameOverEvent : ScriptableObject
     /// <summary>
     /// The list of listeners that this event will notify if it is raised.
     /// </summary>
-    private readonly List<GameOverListener> eventListeners =
-        new List<GameOverListener>();
+    private readonly List<GameOverListener> eventListeners = new List<GameOverListener>();
 
     public void Raise(GameObject caller, GameOverData data)
     {
@@ -31,6 +30,4 @@ public class GameOverEvent : ScriptableObject
 }
 
 // variables and properties for damaging objects
-public class GameOverData
-{
-}
+public class GameOverData { }

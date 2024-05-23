@@ -50,7 +50,7 @@ public class GameLogic : MonoBehaviour
         private set => upSystem = value;
     }
 
-    private EndGame gameEnder;
+    public GameWinner GameWinner { get; private set; }
     public GameClock gameClock;
     public BotSystem botSys;
 
@@ -81,6 +81,7 @@ public class GameLogic : MonoBehaviour
     public DestroyEvent destroyEvent;
     public DamageEvent damageEvent;
     public GameOverEvent gameOverEvent;
+    private EndGame gameEnder;
 
     // Start is called before the first frame update
     void Start()
@@ -115,8 +116,11 @@ public class GameLogic : MonoBehaviour
     // tasks performed when a game is over
     public IEnumerator EndGame()
     {
-        // load the main menu
-        GoToMainMenuAsync();
+        // figure out the winner of the game
+        MainManager.Winner = GameWinner.GetGameWinner();
+
+        // display the game over menu
+        ShowGameOverMenuAsync();
 
         // return cursor control
         Cursor.lockState = CursorLockMode.None;
@@ -158,6 +162,7 @@ public class GameLogic : MonoBehaviour
 
         // components that are not event listeners
         Destroy(gameClock);
+        Destroy(GameWinner);
         Destroy(botSys);
 
         yield return null;
@@ -177,6 +182,7 @@ public class GameLogic : MonoBehaviour
 
         // components that are not event listeners
         gameClock = this.gameObject.AddComponent<GameClock>();
+        GameWinner = this.gameObject.AddComponent<GameWinner>();
         botSys = this.gameObject.AddComponent<BotSystem>();
 
         yield return null;
@@ -248,6 +254,12 @@ public class GameLogic : MonoBehaviour
     {
         // load the player menu scene, wait for it to finish the load
         await SceneManager.LoadSceneAsync("MainMenu");
+    }
+
+    public async void ShowGameOverMenuAsync()
+    {
+        // load the player menu scene, wait for it to finish the load
+        await SceneManager.LoadSceneAsync("GameOverMenu");
     }
 
     // this is here as a safety check
