@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorldBounds : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class WorldBounds : MonoBehaviour
         // maintain a temp dict. so we can alter time values
         Dictionary<GameObject, (bool isOut, float timeLeft)> tmp =
             new Dictionary<GameObject, (bool, float)>();
-
         // loop through registered objects
         foreach (var g in ObjectsTimeLeft)
         {
@@ -76,6 +76,12 @@ public class WorldBounds : MonoBehaviour
             }
             // the player is inbound, reset their timer
             ObjectsTimeLeft[g] = (false, gracePeriod);
+
+            // hide out of bounds UI
+            HideOutOfBoundsUI();
+
+            // show vehicle UI again
+            ShowVehicleUI(g);
         }
     }
 
@@ -94,6 +100,11 @@ public class WorldBounds : MonoBehaviour
 
             // the player is out of bound
             ObjectsTimeLeft[g] = (true, gracePeriod);
+
+            // hide the vehicles UI
+            HideVehicleUI(g);
+
+            ShowOutOfBoundsUI();
         }
     }
 
@@ -104,4 +115,65 @@ public class WorldBounds : MonoBehaviour
     }
 
     private bool IsRegistered(GameObject g) => ObjectsTimeLeft.ContainsKey(g);
+
+    private void ShowOutOfBoundsUI() =>
+        SceneManager.LoadSceneAsync("OutOfBoundsUI", LoadSceneMode.Additive);
+
+    private void HideOutOfBoundsUI() => SceneManager.UnloadSceneAsync("OutOfBoundsUI");
+
+    // decide what vehicle UI to show
+    private void ShowVehicleUI(GameObject o)
+    {
+        // if its a boat
+        if (CheckTag.IsBoat(o))
+            // show boat UI
+            ShowBoatUIAsync();
+        else if (CheckTag.IsPlane(o))
+            // show plane UI
+            ShowPlaneUIAsync();
+    }
+
+    // displays the boat UI
+    private async void ShowBoatUIAsync()
+    {
+        await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
+    }
+
+    // displays the plane UI
+    private async void ShowPlaneUIAsync()
+    {
+        await SceneManager.LoadSceneAsync("PlaneUI", LoadSceneMode.Additive);
+    }
+
+    // remove vehicle UI
+    private void HideVehicleUI(GameObject o)
+    {
+        // if its a boat
+        if (CheckTag.IsBoat(o))
+            // show boat UI
+            HideBoatUIAsync();
+        else if (CheckTag.IsPlane(o))
+            // show plane UI
+            HidePlaneUIAsync();
+    }
+
+    // displays the boat UI
+    private async void HideBoatUIAsync()
+    {
+        await SceneManager.UnloadSceneAsync("BoatUI");
+    }
+
+    // displays the plane UI
+    private async void HidePlaneUIAsync()
+    {
+        await SceneManager.UnloadSceneAsync("PlaneUI");
+    }
+
+    // get how much time an object has left
+    public float GetTimeLeft(GameObject o)
+    {
+        if (ObjectsTimeLeft.ContainsKey(o))
+            return ObjectsTimeLeft[o].timeLeft;
+        return 0f;
+    }
 }

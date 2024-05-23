@@ -273,12 +273,14 @@ public class Player : MonoBehaviour
 
     private async void HideVehicleUI()
     {
-        // if the vehicle was a boat
-        if (CheckTag.IsBoat(GetSpawnedVehicle()))
+        // if the vehicle was a boat and if the scene is loaded
+        if (CheckTag.IsBoat(GetSpawnedVehicle()) && SceneManager.GetSceneByBuildIndex(7).IsValid())
             // remove boat UI
             await SceneManager.UnloadSceneAsync("BoatUI");
-        // if the vehicle was a plane
-        else if (CheckTag.IsPlane(GetSpawnedVehicle()))
+        // if the vehicle was a plane and if the scene is loaded
+        else if (
+            CheckTag.IsPlane(GetSpawnedVehicle()) && SceneManager.GetSceneByBuildIndex(8).IsValid()
+        )
             // remove the plane UI
             await SceneManager.UnloadSceneAsync("PlaneUI");
     }

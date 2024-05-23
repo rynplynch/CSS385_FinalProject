@@ -73,6 +73,7 @@ public class GameLogic : MonoBehaviour
 
     // Unity Events
     public UnityEvent updateHpUI;
+    public UnityEvent updateWorldBoundUI;
     public UnityEvent spawnBot;
 
     // used to trigger events
