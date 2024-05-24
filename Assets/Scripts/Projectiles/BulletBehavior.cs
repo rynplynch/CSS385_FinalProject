@@ -28,8 +28,8 @@ public class BulletBehavior : Projectile
         // game object of whatever we just collided with
         GameObject c = other.gameObject;
 
-        // if the collider created this bullet
-        if (IsWhatSpawnedBullet(c))
+        // if the collider created this bullet or is the world collider
+        if (IsWhatSpawnedBullet(c) || IsWorldCollider(c))
             // ignore this collision
             return;
 
@@ -51,6 +51,14 @@ public class BulletBehavior : Projectile
             return true;
 
         return false;
+    }
+
+    // check if we are colliding with the world collider
+    private bool IsWorldCollider(GameObject o)
+    {
+        WorldBounds wb = o.GetComponent<WorldBounds>();
+        // if the component exists we are colliding w/ world bounds
+        return wb;
     }
 
     private void ApplyDamage(GameObject other)

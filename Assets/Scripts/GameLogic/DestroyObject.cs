@@ -48,6 +48,11 @@ public class DestroyObject : DestroyListener
                     // let the player know they've died on the red team
                     StartCoroutine(p.PlayerDied("red"));
             }
+
+            // Projectile proj = d.Reference.GetComponent<Projectile>();
+            // if (proj)
+            //     Debug.Log(caller.name);
+
             // destroy the reference
             Destroy(d.Reference, d.LifeCycle);
 
