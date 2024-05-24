@@ -57,7 +57,6 @@ public class PlaneActions : MonoBehaviour
             // add new thrust
             rb.AddRelativeForce(Vector3.forward * (thrustAcceleration * forward) * Time.deltaTime);
             rb.AddRelativeForce(Vector3.up * (thrustAcceleration * upward) * Time.deltaTime);
-            Debug.Log(rb.GetAccumulatedForce());
         }
 
         // if the player is performing rotation action

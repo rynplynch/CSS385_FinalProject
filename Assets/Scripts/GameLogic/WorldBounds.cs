@@ -90,6 +90,7 @@ public class WorldBounds : MonoBehaviour
         // extract game object from collider
         GameObject g = c.gameObject;
 
+        Debug.Log(g.name);
         // if the game object is a boat, plane or bot
         if (CheckTag.IsBoat(g) || CheckTag.IsPlane(g) || CheckTag.IsBot(g))
         {
