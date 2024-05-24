@@ -38,6 +38,9 @@ public class OutOfBoundsUI : MonoBehaviour
     {
         // get the player that created this boat
         Player p = gCtrl.Player.Reference.GetComponent<Player>();
-        clockUI.text = $"{wb.GetTimeLeft(p.GetSpawnedVehicle())}";
+
+        // only update text if player exists
+        if (p && p.GetSpawnedVehicle())
+            clockUI.text = $"{wb.GetTimeLeft(p.GetSpawnedVehicle())}";
     }
 }

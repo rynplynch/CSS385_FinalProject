@@ -97,6 +97,8 @@ public class Player : MonoBehaviour
         // grab the vehicle component from the just spawned boat/plane
         Vehicle v = o.Reference.gameObject.GetComponent<Vehicle>();
 
+        if (!v)
+            v = o.Reference.gameObject.GetComponentInChildren<Vehicle>();
         // set the spawned by reference
         v.SpawnedBy = this.gameObject;
 
