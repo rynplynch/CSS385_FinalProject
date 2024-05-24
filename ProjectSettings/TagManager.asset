@@ -22,6 +22,8 @@ TagManager:
   - blue-bt-spawn
   - red-pln-spawn
   - blue-pln-spawn
+  - blue-plane-bot
+  - red-plane-bot
   layers:
   - Default
   - TransparentFX

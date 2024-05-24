@@ -16,9 +16,12 @@ public class BotSystem : MonoBehaviour
     // how many bots are spawned
     int numRedBtBot = 0;
     int numBlueBtBot = 0;
+    int numRedPlnBot = 0;
+    int numBluePlnBot = 0;
 
     // how many bots are allowed to spawn
     int boatCap = 10;
+    int planeCap = 10;
 
     // bot prefabs
     private SpawnData RedBoat { get; set; }
@@ -71,6 +74,32 @@ public class BotSystem : MonoBehaviour
             // increment blue team boat counter
             numBlueBtBot++;
         }
+
+        // check if blue team has reach boat cap
+        if (numBluePlnBot < planeCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(BluePlane);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, BluePlane);
+
+            // increment blue team boat counter
+            numBluePlnBot++;
+        }
+
+        // check if blue team has reach boat cap
+        if (numRedPlnBot < planeCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(RedPlane);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, RedPlane);
+
+            // increment blue team boat counter
+            numRedPlnBot++;
+        }
     }
 
     // grab bot prefabs
@@ -80,9 +109,12 @@ public class BotSystem : MonoBehaviour
         // must match tag assigned to prefab
         RedBoat.Tag = "red-boat-bot";
         BlueBoat.Tag = "blue-boat-bot";
-
+        BluePlane.Tag = "blue-plane-bot";
+        RedPlane.Tag = "red-plane-bot";
         gCtrl.loadEvent.Raise(this.gameObject, RedBoat);
+        gCtrl.loadEvent.Raise(this.gameObject, RedPlane);
         gCtrl.loadEvent.Raise(this.gameObject, BlueBoat);
+        gCtrl.loadEvent.Raise(this.gameObject, BluePlane);
     }
 
     private void SetSpawnPoint(SpawnData o)

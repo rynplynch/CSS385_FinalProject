@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShootLeft",
+                    "name": "PrimaryFire",
                     "type": "Button",
                     "id": "c52dcb5f-d9d3-4331-a9d8-c47ac2a71440",
                     "expectedControlType": "Button",
@@ -91,11 +91,22 @@
                 {
                     "name": "",
                     "id": "709f2fa0-750c-4351-afdb-38dc4e13b524",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "ShootLeft",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PrimaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eafa8288-092b-40c2-ab45-8a9d995f6a03",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
