@@ -42,7 +42,7 @@ public class PlaneShoot : MonoBehaviour
         }
     }
 
-    void ShootBullet()
+void ShootBullet()
     {
         SpawnData bullet = new SpawnData();
         bullet.Prefab = bulletPrefab;
@@ -72,7 +72,7 @@ public class PlaneShoot : MonoBehaviour
         gCtrl.destroyEvent.Raise(this.gameObject, d);
     }
 
-    void ShootMissile()
+  void ShootMissile()
     {
         SpawnData missile = new SpawnData();
         missile.Prefab = missilePrefab;

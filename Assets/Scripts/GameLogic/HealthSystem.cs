@@ -16,7 +16,7 @@ public class HealthSystem : DamageListener
     }
 
     // amount of gold given to a player for doing damage
-    public int goldValue = 15;
+    public int goldValue = 5;
 
     // initial values of objects that have health
     public int startingBoatHp = 1000;

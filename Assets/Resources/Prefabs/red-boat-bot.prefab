@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 8300278731556514469}
   - component: {fileID: 496777778043368668}
   - component: {fileID: 2868434461900414316}
+  - component: {fileID: 4108540898376594976}
   m_Layer: 0
   m_Name: red-boat-bot
   m_TagString: red-boat-bot
@@ -435,8 +436,25 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &4108540898376594976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7611867931909644352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fead69011d984184db7b2d18860be2cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  turnSpeed: 5
+  detectionRange: 120
+  bulletPrefab: {fileID: 7797213561299971884, guid: 94e0d96268f5b04428d16e8553ce3631, type: 3}
+  missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
 --- !u!1 &8112504441950155377
 GameObject:
   m_ObjectHideFlags: 0

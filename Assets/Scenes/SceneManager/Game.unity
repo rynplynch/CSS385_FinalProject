@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.y
@@ -373,7 +373,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 965.081, y: 438.5307, z: 965.081}
+  m_Size: {x: 1000, y: 450, z: 1000}
   m_Center: {x: 0, y: 145.93442, z: 0}
 --- !u!4 &566398976
 Transform:
@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalRotation.w
@@ -645,7 +645,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   goldPrefab: {fileID: 5705743841416201246, guid: 2b529e9552b0aa74ba115e2cd31ceae4, type: 3}
-  maxGoldSpawn: 10
   spawnInterval: 3
 --- !u!4 &854352532
 Transform:
@@ -676,7 +675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.y
@@ -747,7 +746,7 @@ Transform:
   m_GameObject: {fileID: 1019453403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: -150, y: 1.25, z: 0}
   m_LocalScale: {x: 50, y: 2.5, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -848,7 +847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8462413860691138476, guid: 6f7df4161937c253f81ce8d134e2c253, type: 3}
       propertyPath: m_LocalRotation.w
@@ -975,7 +974,7 @@ Transform:
   m_GameObject: {fileID: 1557152070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 350, y: 1.25, z: 0}
+  m_LocalPosition: {x: 400, y: 1.25, z: 0}
   m_LocalScale: {x: 50, y: 2.5, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1143,6 +1142,9 @@ MonoBehaviour:
   gameClock: {fileID: 0}
   botSys: {fileID: 0}
   updateHpUI:
+    m_PersistentCalls:
+      m_Calls: []
+  updateWorldBoundUI:
     m_PersistentCalls:
       m_Calls: []
   spawnBot:

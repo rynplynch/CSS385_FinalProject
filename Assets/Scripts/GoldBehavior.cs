@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoldBehavior : MonoBehaviour
 {
-    public int value;
+    private int value = 100;
 
     //private int playerId; // Store player ID who collects the gold
 
