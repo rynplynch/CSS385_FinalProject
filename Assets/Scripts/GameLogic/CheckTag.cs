@@ -19,7 +19,7 @@ public class CheckTag : MonoBehaviour
 
     public static bool IsPlane(GameObject other)
     {
-        return other.CompareTag("blue-plane") || other.CompareTag("red-plane");
+        return other.tag.Contains("plane");
     }
 
     public static bool IsBot(GameObject o)

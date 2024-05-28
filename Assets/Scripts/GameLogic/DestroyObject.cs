@@ -37,16 +37,20 @@ public class DestroyObject : DestroyListener
                 // the instantiated object tells us who create it
                 GameObject o = v.SpawnedBy;
 
-                // grab player component
-                Player p = o.GetComponent<Player>();
+                // bots are not spawned by anyone, check object is not bot
+                if (o)
+                {
+                    // grab player component
+                    Player p = o.GetComponent<Player>();
 
-                // if the player was on the blue team
-                if (CheckTag.IsBlueTeam(d.Reference))
-                    // let the player know they've died on the blue team
-                    StartCoroutine(p.PlayerDied("blue"));
-                else if (CheckTag.IsRedTeam(d.Reference))
-                    // let the player know they've died on the red team
-                    StartCoroutine(p.PlayerDied("red"));
+                    // if the player was on the blue team
+                    if (CheckTag.IsBlueTeam(d.Reference))
+                        // let the player know they've died on the blue team
+                        StartCoroutine(p.PlayerDied("blue"));
+                    else if (CheckTag.IsRedTeam(d.Reference))
+                        // let the player know they've died on the red team
+                        StartCoroutine(p.PlayerDied("red"));
+                }
             }
 
             // Projectile proj = d.Reference.GetComponent<Projectile>();

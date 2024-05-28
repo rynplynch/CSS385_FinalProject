@@ -8,10 +8,10 @@ public class BotSystem : MonoBehaviour
     GameLogic gCtrl;
 
     // bot spawn radius
-    int spawnRadius = 25;
+    int spawnRadius = 200;
 
     // how often bots are spawned
-    int spawnInterval = 5;
+    int spawnInterval = 3;
 
     // how many bots are spawned
     int numRedBtBot = 0;
@@ -22,6 +22,11 @@ public class BotSystem : MonoBehaviour
     // how many bots are allowed to spawn
     int boatCap = 10;
     int planeCap = 10;
+    int numRedBot = 0;
+    int numBlueBot = 0;
+
+    // how many bots are allowed to spawn
+    int botCap = 12;
 
     // bot prefabs
     private SpawnData RedBoat { get; set; }
@@ -42,28 +47,17 @@ public class BotSystem : MonoBehaviour
 
         LoadPrefabs();
 
-        gCtrl.spawnBot.AddListener(SpawnBot);
+        gCtrl.spawnBot.AddListener(SpawnBlueBot);
+        gCtrl.spawnBot.AddListener(SpawnRedBot);
 
-        InvokeRepeating(nameof(SpawnBot), 1f, spawnInterval);
+        InvokeRepeating(nameof(SpawnBlueBot), 1f, spawnInterval);
+        InvokeRepeating(nameof(SpawnRedBot), 1f, spawnInterval);
     }
 
-    private void SpawnBot()
+    private void SpawnBlueBot()
     {
-        // check if the red team has reach boat cap
-        if (numRedBtBot < boatCap)
-        {
-            // set boat spawn point
-            SetSpawnPoint(RedBoat);
-
-            // spawn boat
-            gCtrl.spawnEvent.Raise(this.gameObject, RedBoat);
-
-            // increment red team boat counter
-            numRedBtBot++;
-        }
-
         // check if blue team has reach boat cap
-        if (numBlueBtBot < boatCap)
+        if (numBlueBot <= botCap && Random.Range(1, 10) <= 5)
         {
             // set boat spawn point
             SetSpawnPoint(BlueBoat);
@@ -72,7 +66,45 @@ public class BotSystem : MonoBehaviour
             gCtrl.spawnEvent.Raise(this.gameObject, BlueBoat);
 
             // increment blue team boat counter
-            numBlueBtBot++;
+            numBlueBot++;
+        }
+        else if (numBlueBot <= botCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(BluePlane);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, BluePlane);
+
+            // increment blue team boat counter
+            numBlueBot++;
+        }
+    }
+
+    private void SpawnRedBot()
+    {
+        // check if the red team has reach boat cap
+        if (numRedBot <= botCap && Random.Range(1, 10) <= 5)
+        {
+            // set boat spawn point
+            SetSpawnPoint(RedBoat);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, RedBoat);
+
+            // increment red team boat counter
+            numRedBot++;
+        }
+        else if (numRedBot <= botCap)
+        {
+            // set boat spawn point
+            SetSpawnPoint(RedPlane);
+
+            // spawn boat
+            gCtrl.spawnEvent.Raise(this.gameObject, RedPlane);
+
+            // increment red team boat counter
+            numRedBot++;
         }
 
         // check if blue team has reach boat cap
@@ -108,9 +140,11 @@ public class BotSystem : MonoBehaviour
         // this is how load knows which prefab to grab
         // must match tag assigned to prefab
         RedBoat.Tag = "red-boat-bot";
+        RedPlane.Tag = "red-plane-bot";
         BlueBoat.Tag = "blue-boat-bot";
         BluePlane.Tag = "blue-plane-bot";
         RedPlane.Tag = "red-plane-bot";
+
         gCtrl.loadEvent.Raise(this.gameObject, RedBoat);
         gCtrl.loadEvent.Raise(this.gameObject, RedPlane);
         gCtrl.loadEvent.Raise(this.gameObject, BlueBoat);
@@ -199,8 +233,8 @@ public class BotSystem : MonoBehaviour
     }
 
     // reduce number of spawned red team boats
-    public void ReduceNumRedBoat() => numRedBtBot--;
+    public void ReduceNumRedBoat() => numRedBot--;
 
     // reduce number of spawned blue team boats
-    public void ReduceNumBlueBoat() => numBlueBtBot--;
+    public void ReduceNumBlueBoat() => numBlueBot--;
 }

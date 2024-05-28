@@ -10,7 +10,7 @@ public class GoldManagerScript : MonoBehaviour
     public TMP_Text[] goldTexts; // Array of TMP_Text for displaying gold count of each player
 
     public GameObject goldPrefab;
-    public int maxGoldSpawn; // Maximum number of gold to spawn in air
+    private int maxGoldSpawn = 40; // Maximum number of gold to spawn in air
     public float spawnInterval; // Interval between gold spawns
 
     // Gold spawn boundaries
@@ -32,7 +32,7 @@ public class GoldManagerScript : MonoBehaviour
 
     void SpawnGold()
     {
-        if (goldSpawned < maxGoldSpawn && RandomGenerator() == true) // random spawn include y axis
+        if (goldSpawned <= maxGoldSpawn && RandomGenerator() == true) // random spawn include y axis
         {
             Vector3 spawnPosition = new Vector3(
                 Random.Range(min, max),
