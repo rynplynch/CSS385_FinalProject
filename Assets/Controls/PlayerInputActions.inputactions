@@ -165,7 +165,7 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "a1d9cce7-c9f7-40ab-b3c4-54025355a768",
+                    "id": "543e6fd0-5abe-4e73-a531-83e1d4782378",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -176,8 +176,8 @@
                 },
                 {
                     "name": "negative",
-                    "id": "3b2caf85-19d4-41b2-8339-bbba9ce2a86c",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "81922117-ad3e-4a0a-8140-789e0e7b381c",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -187,8 +187,8 @@
                 },
                 {
                     "name": "positive",
-                    "id": "727e3e00-e481-44d9-b86a-9f3b884c8de2",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "120856bf-d0fa-49d2-b996-dd95456376db",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -231,39 +231,6 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "543e6fd0-5abe-4e73-a531-83e1d4782378",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AlterPitch",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "81922117-ad3e-4a0a-8140-789e0e7b381c",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "AlterPitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "120856bf-d0fa-49d2-b996-dd95456376db",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "AlterPitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
                     "id": "463b4970-320c-40c2-b1d6-d49dbc6f2e1c",
                     "path": "1DAxis",
                     "interactions": "",
@@ -296,6 +263,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "1D Axis",
+                    "id": "42409dba-c994-49fc-ae36-00ea70cac1dd",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AlterYaw",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "64c08680-a9da-4421-8fba-c157e6a09faa",
+                    "path": "<Pointer>/delta/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterYaw",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "cb77008e-623d-4e65-862e-19f87bb3c64d",
+                    "path": "<Pointer>/delta/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterYaw",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "97c83979-0370-4a7e-8bee-5a5bbbcfd858",
                     "path": "<Mouse>/rightButton",
@@ -316,6 +316,72 @@
                     "action": "SecondaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "a1d9cce7-c9f7-40ab-b3c4-54025355a768",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AlterPitch",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3b2caf85-19d4-41b2-8339-bbba9ce2a86c",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterPitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "727e3e00-e481-44d9-b86a-9f3b884c8de2",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterPitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "f4041d24-50ed-4939-be38-40feae353f73",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AlterPitch",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f37b96aa-4961-4ee7-a1c2-da0601f3bd95",
+                    "path": "<Pointer>/delta/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterPitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d16c52ce-34c8-447d-a057-8f35854dc54e",
+                    "path": "<Pointer>/delta/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AlterPitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
