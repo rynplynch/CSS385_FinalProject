@@ -46,6 +46,9 @@ public class PlaneActions : MonoBehaviour
         // get the rigid body of this plane
         rb = this.transform.GetComponent<Rigidbody>();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         rb.maxLinearVelocity = _maxLinearVelocity;
         rb.maxAngularVelocity = _maxLinearVelocity;
     }
@@ -119,6 +122,11 @@ public class PlaneActions : MonoBehaviour
         // grab user input
         float input = ctx.ReadValue<float>();
 
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
+
         // gives direction to scalar
         rollAcceleration = input * rollScalar;
     }
@@ -135,6 +143,10 @@ public class PlaneActions : MonoBehaviour
 
         // read in normalized input
         float input = ctx.ReadValue<float>();
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
 
         // gives direction to scalar
         pitchAcceleration = input * pitchScalar;
@@ -152,6 +164,11 @@ public class PlaneActions : MonoBehaviour
 
         // read in normalized input
         float input = ctx.ReadValue<float>();
+
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
 
         // scale user input
         input *= yawScalar;

@@ -288,7 +288,19 @@ MonoBehaviour:
     m_ActionId: 0bce3659-68c7-4fbf-aff0-17a12a0b76ae
     m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3873065125598356562}
+        m_TargetAssemblyTypeName: PlaneShoot, Assembly-CSharp
+        m_MethodName: OnPrimaryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c52dcb5f-d9d3-4331-a9d8-c47ac2a71440
     m_ActionName: Plane/ShootLeft
   - m_PersistentCalls:
@@ -415,6 +427,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 49679b18-46ff-4ffe-a665-ae0546775fcb
     m_ActionName: 'Plane/AlterYaw[/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3873065125598356562}
+        m_TargetAssemblyTypeName: PlaneShoot, Assembly-CSharp
+        m_MethodName: OnSecondaryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b3852824-ecc1-4cc7-91cb-84a14e973441
+    m_ActionName: 'Plane/SecondaryFire[/Mouse/rightButton,/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Plane
@@ -445,9 +473,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustScalar: 5500
-  rollScalar: 40
+  rollScalar: 50
   yawScalar: 10
-  pitchScalar: 50
+  pitchScalar: 60
   forwardUpSplit: 1
   _maxLinearVelocity: 1000
   _maxAngularVelocity: 15
@@ -479,7 +507,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4878523198782545409}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 7
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
