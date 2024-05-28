@@ -35,6 +35,8 @@ public class PlaneActions : MonoBehaviour
     private bool applyPitch = false;
 
     public float forwardUpSplit = 0.5f;
+    public float _maxLinearVelocity = 1000f;
+    public float _maxAngularVelocity = 20f;
 
     void Start()
     {
@@ -44,7 +46,8 @@ public class PlaneActions : MonoBehaviour
         // get the rigid body of this plane
         rb = this.transform.GetComponent<Rigidbody>();
 
-        rb.maxLinearVelocity = 10000f;
+        rb.maxLinearVelocity = _maxLinearVelocity;
+        rb.maxAngularVelocity = _maxLinearVelocity;
     }
 
     void Update()
