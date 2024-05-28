@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SecondaryFire",
+                    "type": "Button",
+                    "id": "b3852824-ecc1-4cc7-91cb-84a14e973441",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "UpgradeHealth",
                     "type": "Button",
                     "id": "24be33b7-94df-4ccc-81d0-bf56f5a68496",
@@ -285,6 +294,28 @@
                     "action": "AlterYaw",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "97c83979-0370-4a7e-8bee-5a5bbbcfd858",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a3be31f-60e1-40e5-9885-711bc5bf20a6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
