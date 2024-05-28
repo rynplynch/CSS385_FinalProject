@@ -34,7 +34,6 @@ public class WorldBounds : MonoBehaviour
                 // extract how much time object has left
                 float t = g.Value.timeLeft;
 
-                Debug.Log(g);
                 // decrement the grace period by delta time
                 t -= Time.deltaTime;
 
@@ -90,7 +89,6 @@ public class WorldBounds : MonoBehaviour
         // extract game object from collider
         GameObject g = c.gameObject;
 
-        Debug.Log(g.name);
         // if the game object is a boat, plane or bot
         if (CheckTag.IsBoat(g) || CheckTag.IsPlane(g) || CheckTag.IsBot(g))
         {
