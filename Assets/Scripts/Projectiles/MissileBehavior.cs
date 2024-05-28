@@ -13,6 +13,7 @@ public class MissileBehavior : MonoBehaviour
     private Transform target; // Current target
     private bool isHoming = false;
     private GameLogic gCtrl;
+    public GameObject explosionEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,15 @@ public class MissileBehavior : MonoBehaviour
         }
     }
 
+    private void Explode()
+    {
+        if (explosionEffect != null)
+        {
+            GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(explosion, 1f);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject o = other.gameObject;
@@ -76,7 +86,7 @@ public class MissileBehavior : MonoBehaviour
                 this.gameObject,
                 new DamageData(o, boatDamage, this.gameObject)
             );
-
+            Explode();
             // raise a new destroy event
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }
@@ -87,7 +97,7 @@ public class MissileBehavior : MonoBehaviour
                 this.gameObject,
                 new DamageData(o, planeDamage, this.gameObject)
             );
-
+            Explode();
             // raise a new destroy event
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
         }

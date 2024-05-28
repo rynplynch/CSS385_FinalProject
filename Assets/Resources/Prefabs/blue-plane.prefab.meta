@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: b328d903f3d6cab40bdffa8df664ec95
+guid: 6c4784c0b29949f41a8edeb794ef1b0b
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 194025
-  packageName: FREE Aircraft Pack
-  packageVersion: 1.0
-  assetPath: Assets/Understone/Free Aircraft Pack/Prefabs/aircraft-A-A.prefab
-  uploadId: 430025
