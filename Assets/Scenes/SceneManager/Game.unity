@@ -1145,6 +1145,9 @@ MonoBehaviour:
   updateHpUI:
     m_PersistentCalls:
       m_Calls: []
+  updateWorldBoundUI:
+    m_PersistentCalls:
+      m_Calls: []
   spawnBot:
     m_PersistentCalls:
       m_Calls: []
