@@ -226,7 +226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 93408785727072957}
   - component: {fileID: 4158992033010895111}
-  - component: {fileID: 3873065125598356562}
   - component: {fileID: 3798347217850091299}
   m_Layer: 0
   m_Name: blue-plane-bot
@@ -267,26 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b9515b67b22ac65bb9edfa5e904f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3873065125598356562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4878523198782545409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d1f160ed76a3b4caf0db2ba376d5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5583429841924730313, guid: e510c7667521d3a4c915171b95137a90, type: 3}
-  missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
-  bulletSpeed: 5
-  missileSpeed: 5
-  bulletCooldown: 0.1
-  missileCooldown: 3
-  bulletLifeTime: 2
-  missileLifeTime: 5
 --- !u!54 &3798347217850091299
 Rigidbody:
   m_ObjectHideFlags: 0
