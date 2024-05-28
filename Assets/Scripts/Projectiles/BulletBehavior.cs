@@ -7,9 +7,15 @@ public class BulletBehavior : Projectile
     public float bulletSpeed; // Bullet speed
     public int boatDamage; // Damage to boats
     public int planeDamage; // Damage to planes
+    public float homingRadius;
+    public float homingStrength; // Strength of homing effect
 
     private GameLogic gCtrl;
     private Rigidbody rb;
+    private Transform target; // Current target
+    private bool isHoming = false;
+    private float targetCheckCoolDown = 0.01f;
+    private float lastTargetCheck = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,52 @@ public class BulletBehavior : Projectile
     }
 
     // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+        // if time since last check is greater than cool down
+        // if we are not currently homing
+        if (lastTargetCheck > targetCheckCoolDown && !isHoming)
+        {
+            // grab a new target
+            CheckForTargets();
+            lastTargetCheck = 0;
+        }
+        // otherwise we are homing
+        else
+            Homing();
+
+        lastTargetCheck += Time.deltaTime;
+    }
+
+    private void Homing()
+    {
+        if (target != null)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Vector3 homingForce = direction * homingStrength * Time.deltaTime;
+            rb.velocity = homingForce.normalized * bulletSpeed;
+        }
+    }
+
+    private void CheckForTargets()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, homingRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            GameObject o = collider.gameObject;
+            if (o && (CheckTag.IsBoat(o) || CheckTag.IsPlane(o)))
+            {
+                // Check if the target is of matching color
+                if (!CheckTag.MatchingColor(this.gameObject.tag, collider.tag))
+                {
+                    isHoming = true;
+                    target = collider.transform;
+                    break;
+                }
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
