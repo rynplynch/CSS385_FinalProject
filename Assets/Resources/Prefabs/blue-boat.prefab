@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForwardSpeed: 15
-  rotationalSpeed: 0
+  maxForwardSpeed: 25
+  rotationalSpeed: 50
   currentThrust: 0
   forward:
     m_Name: Forward

@@ -76,6 +76,7 @@ public class HealthSystem : DamageListener
             BoatBullet bBullet = proj.GetComponent<BoatBullet>();
             BulletBehavior pBullet = proj.GetComponent<BulletBehavior>();
             MissileBehavior pMissile = proj.GetComponent<MissileBehavior>();
+            ExplosionBehavior pExplosion = proj.GetComponent<ExplosionBehavior>();
 
             // if the projectile is a bullet from plane or boat
             if (bBullet || pBullet)
@@ -84,6 +85,10 @@ public class HealthSystem : DamageListener
             // if the projectile is a missile
             else if (pMissile)
                 // apply dmg w/ players dmg multiplier
+                ApplyDamage(d.ObjectToDamage, dmg + gCtrl.UpSystem.GetAddedMissileDamage(p, dmg));
+            // if the projectile is a bomb explosion
+            else if (pExplosion)
+            // apply dmg w/ players dmg multiplier
                 ApplyDamage(d.ObjectToDamage, dmg + gCtrl.UpSystem.GetAddedMissileDamage(p, dmg));
 
             // update all health UI elements

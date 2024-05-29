@@ -147,3 +147,4 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   player: {fileID: 0}
+  bombPrefab: {fileID: 7789298405947639753, guid: ba67753312fbdae4eb15974764d953f4, type: 3}

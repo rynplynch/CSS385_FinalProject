@@ -489,7 +489,7 @@ MonoBehaviour:
   turnSpeed: 5
   detectionRange: 120
   bulletPrefab: {fileID: 7797213561299971884, guid: 94e0d96268f5b04428d16e8553ce3631, type: 3}
-  missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
+  missilePrefab: {fileID: 7789298405947639753, guid: ba67753312fbdae4eb15974764d953f4, type: 3}
 --- !u!1 &4135308036500170658
 GameObject:
   m_ObjectHideFlags: 0

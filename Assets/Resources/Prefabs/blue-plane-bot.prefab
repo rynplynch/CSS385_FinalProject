@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 282342858930493455}
   - component: {fileID: 128946152238631882}
   - component: {fileID: 4921489671896758190}
-  - component: {fileID: 6515936526470764835}
+  - component: {fileID: 1490471890016136494}
   m_Layer: 0
   m_Name: Rafale 15
   m_TagString: Untagged
@@ -312,8 +312,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6515936526470764835
-BoxCollider:
+--- !u!64 &1490471890016136494
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -330,9 +330,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10894829, y: 0.3461265, z: 0.34612656}
-  m_Center: {x: -0.000017670915, y: -0.00000023841858, z: -0.0000016763806}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300016, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &1160682749019370830
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ GameObject:
   - component: {fileID: 2705224248283996379}
   - component: {fileID: 8577057615282860655}
   - component: {fileID: 5377003826378976909}
-  - component: {fileID: 1932586176187177180}
+  - component: {fileID: 954484082751863962}
   m_Layer: 0
   m_Name: Rafale 18
   m_TagString: Untagged
@@ -527,8 +528,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1932586176187177180
-BoxCollider:
+--- !u!64 &954484082751863962
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -545,9 +546,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10894829, y: 0.3461265, z: 0.34612656}
-  m_Center: {x: 0.000017670915, y: -0.00000023841858, z: -0.0000016763806}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300024, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &1608277410680864381
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +561,7 @@ GameObject:
   - component: {fileID: 9015707366750392873}
   - component: {fileID: 2968932488678661651}
   - component: {fileID: 4723303138068848623}
-  - component: {fileID: 8661235068183217204}
+  - component: {fileID: 8103462625162486235}
   m_Layer: 0
   m_Name: Rafale 12
   m_TagString: Untagged
@@ -634,8 +636,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8661235068183217204
-BoxCollider:
+--- !u!64 &8103462625162486235
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -652,9 +654,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.9999996, y: 1.9999995, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300010, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &2842404628506746313
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +856,7 @@ GameObject:
   - component: {fileID: 3609658984426491866}
   - component: {fileID: 6084857089873828236}
   - component: {fileID: 3761949619508699004}
-  - component: {fileID: 1664832140135676244}
+  - component: {fileID: 5533553120840295288}
   m_Layer: 0
   m_Name: Rafale 4
   m_TagString: Untagged
@@ -928,8 +931,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1664832140135676244
-BoxCollider:
+--- !u!64 &5533553120840295288
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -946,9 +949,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1015418, y: 0.437849, z: 0.26576102}
-  m_Center: {x: -0.0000000018626451, y: -0.10067138, z: -0.07541656}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300008, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &5531290183123491310
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +964,7 @@ GameObject:
   - component: {fileID: 4011288759150535536}
   - component: {fileID: 8647177398988682688}
   - component: {fileID: 8675532683260393373}
-  - component: {fileID: 5830394259824654552}
+  - component: {fileID: 804573532632705065}
   m_Layer: 0
   m_Name: Rafale 7
   m_TagString: Untagged
@@ -1035,8 +1039,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5830394259824654552
-BoxCollider:
+--- !u!64 &804573532632705065
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1053,9 +1057,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.30443543, y: 0.4332927, z: 0.1238302}
-  m_Center: {x: -0.10290268, y: -0.1916106, z: 0.0009022355}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300026, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &5745457256452190414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1072,7 @@ GameObject:
   - component: {fileID: 6851889483323508847}
   - component: {fileID: 3866092587203955523}
   - component: {fileID: 7531947060514774141}
-  - component: {fileID: 2078510401470009593}
+  - component: {fileID: 2045673143858009370}
   m_Layer: 0
   m_Name: Rafale 3
   m_TagString: Untagged
@@ -1142,8 +1147,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2078510401470009593
-BoxCollider:
+--- !u!64 &2045673143858009370
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1160,9 +1165,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 191.22458, y: 2.0000002, z: 2}
-  m_Center: {x: 0, y: 3.9198737, z: -3.7953305}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300006, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &5932054085867411189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1180,7 @@ GameObject:
   - component: {fileID: 2334454411236142838}
   - component: {fileID: 7177432740015685684}
   - component: {fileID: 3360639002854509858}
-  - component: {fileID: 2755359636388151662}
+  - component: {fileID: 8351109322420596338}
   m_Layer: 0
   m_Name: Rafale 11
   m_TagString: Untagged
@@ -1227,7 +1233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3f29df3f7218bbc89a46d6a0cd2adf5, type: 2}
+  - {fileID: 2100000, guid: e142457544efa7649853cac01c56477f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1249,8 +1255,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2755359636388151662
-BoxCollider:
+--- !u!64 &8351109322420596338
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1267,9 +1273,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2966132, y: 2.9105926, z: 2.296613}
-  m_Center: {x: 0.0000017285347, y: -0.97328526, z: -0.0000010132788}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &5983382386978948708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1288,7 @@ GameObject:
   - component: {fileID: 1084545848705634354}
   - component: {fileID: 2044128386012909734}
   - component: {fileID: 3807959326382647485}
-  - component: {fileID: 1513487773552430522}
+  - component: {fileID: 3781923826868612195}
   m_Layer: 0
   m_Name: Rafale 14
   m_TagString: Untagged
@@ -1356,8 +1363,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1513487773552430522
-BoxCollider:
+--- !u!64 &3781923826868612195
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1374,9 +1381,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.9999996, y: 1.9999996, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300014, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &6234065893666246943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1396,7 @@ GameObject:
   - component: {fileID: 3029263741041430129}
   - component: {fileID: 6285468760218569048}
   - component: {fileID: 7029786920853587699}
-  - component: {fileID: 887377692037562324}
+  - component: {fileID: 4715117168898731660}
   m_Layer: 0
   m_Name: Rafale 16
   m_TagString: Untagged
@@ -1441,7 +1449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3f29df3f7218bbc89a46d6a0cd2adf5, type: 2}
+  - {fileID: 2100000, guid: e142457544efa7649853cac01c56477f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1463,8 +1471,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &887377692037562324
-BoxCollider:
+--- !u!64 &4715117168898731660
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1481,9 +1489,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2966132, y: 2.9105926, z: 2.296613}
-  m_Center: {x: -0.0000017285347, y: -0.97328526, z: -0.0000010132788}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300022, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &6597567701639805988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1593,7 @@ GameObject:
   - component: {fileID: 846236217921162593}
   - component: {fileID: 1828768974370610240}
   - component: {fileID: 2135237423969541135}
-  - component: {fileID: 6277534075555724996}
+  - component: {fileID: 5138586670449265128}
   m_Layer: 0
   m_Name: Rafale 6
   m_TagString: Untagged
@@ -1659,8 +1668,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6277534075555724996
-BoxCollider:
+--- !u!64 &5138586670449265128
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1677,9 +1686,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.30443543, y: 0.4332927, z: 0.1238302}
-  m_Center: {x: 0.10290268, y: -0.1916106, z: 0.0009022355}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300018, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}
 --- !u!1 &7370046902471354908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,8 +1701,7 @@ GameObject:
   - component: {fileID: 6954430115873433432}
   - component: {fileID: 4945653275360226033}
   - component: {fileID: 2028439465318957769}
-  - component: {fileID: 407263543063070255}
-  - component: {fileID: 8179569349183213583}
+  - component: {fileID: 4328199680280217765}
   m_Layer: 0
   m_Name: Rafale 13
   m_TagString: Untagged
@@ -1767,8 +1776,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &407263543063070255
-BoxCollider:
+--- !u!64 &4328199680280217765
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1785,27 +1794,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.9999996, y: 1.9999995, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &8179569349183213583
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7370046902471354908}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300012, guid: 7889650b7c5b53a4f9acd25d8b09222e, type: 3}

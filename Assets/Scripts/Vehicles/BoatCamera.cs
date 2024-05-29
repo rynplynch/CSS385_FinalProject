@@ -29,6 +29,10 @@ public class BoatCamera : MonoBehaviour
     private float currentPitch = 0f;
     private float currentYaw = 0f;
 
+    public GameObject bombPrefab;
+    private float bombCooldown = 5f;
+    private float bombNextFireTime;
+
     void LateUpdate()
     {
         // toggle camera once when pressed
@@ -71,6 +75,12 @@ public class BoatCamera : MonoBehaviour
 
             nextFireTime = Time.time + fireRate;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= bombNextFireTime)
+        {
+            FireFromCenterBomb();
+            bombNextFireTime = Time.time + bombCooldown;
+        }
     }
 
     private void Start()
@@ -95,6 +105,21 @@ public class BoatCamera : MonoBehaviour
             bull.Reference.tag = "red-projectile";
         else if (player.CompareTag("blue-boat"))
             bull.Reference.tag = "blue-projectile";
+    }
+
+    // Fire bombs from the center when following the mouse
+    private void FireFromCenterBomb()
+    {
+        SpawnData bomb = new SpawnData();
+        bomb.Prefab = bombPrefab;
+        bomb.Position = this.gameObject.transform.position;
+        bomb.Rotation = this.transform.rotation;
+        gCtrl.spawnEvent.Raise(this.gameObject, bomb);
+
+        if (player.CompareTag("red-boat"))
+            bomb.Reference.tag = "red-projectile";
+        else if (player.CompareTag("blue-boat"))
+            bomb.Reference.tag = "blue-projectile";
     }
 
     // Fire bullets from both sides when not following the mouse

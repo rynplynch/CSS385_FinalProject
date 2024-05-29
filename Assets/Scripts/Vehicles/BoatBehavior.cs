@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class BoatBehavior : Vehicle
 {
     [Tooltip("Recommend settings\nAcceleration: [0-10]\nMaxThrust: [0-10]")]
-    public float maxForwardSpeed;
-    public float rotationalSpeed;
+    private float maxForwardSpeed = 20f;
+    private float rotationalSpeed = 35f;
     private Vector3 rotationVector;
     public float currentThrust;
 
