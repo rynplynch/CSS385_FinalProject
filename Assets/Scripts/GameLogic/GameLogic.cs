@@ -117,8 +117,10 @@ public class GameLogic : MonoBehaviour
     // tasks performed when a game is over
     public IEnumerator EndGame()
     {
+        GameWinner win = this.gameObject.GetComponent<GameWinner>();
+
         // figure out the winner of the game
-        MainManager.Winner = GameWinner.GetGameWinner();
+        MainManager.Winner = win.GetGameWinner();
 
         // display the game over menu
         ShowGameOverMenuAsync();

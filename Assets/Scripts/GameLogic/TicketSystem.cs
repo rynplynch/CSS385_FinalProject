@@ -90,7 +90,7 @@ public class TicketSystem : SpawnListener
     public string GetLeastTicket()
     {
         // smallest value starts with the largest int
-        int min = int.MaxValue;
+        int max = int.MinValue;
 
         string lossingTeam = "";
 
@@ -98,10 +98,10 @@ public class TicketSystem : SpawnListener
         foreach ((string team, int tickets) in teamTickets)
         {
             // if the team tickets are less than min
-            if (tickets < min)
+            if (tickets > max)
             {
                 // we have a new min value
-                min = tickets;
+                max = tickets;
 
                 // save the teams name
                 lossingTeam = team;
