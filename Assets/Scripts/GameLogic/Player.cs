@@ -251,7 +251,8 @@ public class Player : MonoBehaviour
     // displays the boat UI
     private async void ShowBoatUIAsync()
     {
-        await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
+        if (!SceneManager.GetSceneByName("BoatUI").isLoaded)
+            await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
     }
 
     // displays the plane UI

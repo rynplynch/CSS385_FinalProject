@@ -31,7 +31,7 @@ public class BoatCamera : MonoBehaviour
 
     public GameObject bombPrefab;
     public InputAction bombFire;
-    private float bombCooldown = 1f;
+    private float bombCooldown = 10f;
     private float bombNextFireTime = 0f;
 
     void LateUpdate()
@@ -128,37 +128,43 @@ public class BoatCamera : MonoBehaviour
     }
 
     // Fire bullets from both sides when not following the mouse
-private void FireFromSides()
-{
-    float offsetDistance = 5f; // Distance from the center to the side
-    float yAxisOffset = 2f; // Y-axis offset
+    private void FireFromSides()
+    {
+        float offsetDistance = 5f; // Distance from the center to the side
+        float yAxisOffset = 2f; // Y-axis offset
 
-    Vector3 leftFirePosition = player.transform.position - player.transform.right * offsetDistance + Vector3.up * yAxisOffset;
-    Vector3 rightFirePosition = player.transform.position + player.transform.right * offsetDistance + Vector3.up * yAxisOffset;
-    Quaternion leftFireDirection = Quaternion.LookRotation(-player.transform.right);
-    Quaternion rightFireDirection = Quaternion.LookRotation(player.transform.right);
+        Vector3 leftFirePosition =
+            player.transform.position
+            - player.transform.right * offsetDistance
+            + Vector3.up * yAxisOffset;
+        Vector3 rightFirePosition =
+            player.transform.position
+            + player.transform.right * offsetDistance
+            + Vector3.up * yAxisOffset;
+        Quaternion leftFireDirection = Quaternion.LookRotation(-player.transform.right);
+        Quaternion rightFireDirection = Quaternion.LookRotation(player.transform.right);
 
-    // Fire from the left side
-    FireBullet(leftFirePosition, leftFireDirection);
+        // Fire from the left side
+        FireBullet(leftFirePosition, leftFireDirection);
 
-    // Fire from the right side
-    FireBullet(rightFirePosition, rightFireDirection);
-}
+        // Fire from the right side
+        FireBullet(rightFirePosition, rightFireDirection);
+    }
 
-// Function to fire a bullet from a given position
-private void FireBullet(Vector3 position, Quaternion direction)
-{
-    SpawnData bull = new SpawnData();
-    bull.Prefab = bulletPrefab;
-    bull.Position = position;
-    bull.Rotation = direction;
-    gCtrl.spawnEvent.Raise(this.gameObject, bull);
+    // Function to fire a bullet from a given position
+    private void FireBullet(Vector3 position, Quaternion direction)
+    {
+        SpawnData bull = new SpawnData();
+        bull.Prefab = bulletPrefab;
+        bull.Position = position;
+        bull.Rotation = direction;
+        gCtrl.spawnEvent.Raise(this.gameObject, bull);
 
-    if (player.CompareTag("red-boat"))
-        bull.Reference.tag = "red-projectile";
-    else if (player.CompareTag("blue-boat"))
-        bull.Reference.tag = "blue-projectile";
-}
+        if (player.CompareTag("red-boat"))
+            bull.Reference.tag = "red-projectile";
+        else if (player.CompareTag("blue-boat"))
+            bull.Reference.tag = "blue-projectile";
+    }
 
     // Fire mode, camera follows mouse movement
     private void SetMouseFollowCamera()

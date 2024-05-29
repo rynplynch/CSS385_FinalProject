@@ -780,6 +780,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 95fd753a-d149-4333-aaa1-02a1e8368ca2
     m_ActionName: 'Boat/UpgradeHealth[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d1769b8-ebcb-4b75-9dba-fb17f89180ad
+    m_ActionName: 'Boat/UpgradeExplosion[/Keyboard/3]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Plane
@@ -839,7 +843,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

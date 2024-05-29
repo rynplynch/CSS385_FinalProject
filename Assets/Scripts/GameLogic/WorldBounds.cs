@@ -63,7 +63,7 @@ public class WorldBounds : MonoBehaviour
         GameObject g = c.gameObject;
 
         // if the game object is a boat, plane or bot
-        if (CheckTag.IsBoat(g) || CheckTag.IsPlane(g) || CheckTag.IsBot(g))
+        if (CheckTag.IsBoat(g) || CheckTag.IsPlane(g) || !CheckTag.IsBot(g))
         {
             // if the player is not registered
             if (!IsRegistered(g))
@@ -76,7 +76,11 @@ public class WorldBounds : MonoBehaviour
             }
             // the player is inbound, reset their timer
             ObjectsTimeLeft[g] = (false, gracePeriod);
+        }
 
+        // ui conditional
+        if ((CheckTag.IsBoat(g) || CheckTag.IsPlane(g)) && !CheckTag.IsBot(g))
+        {
             // hide out of bounds UI
             HideOutOfBoundsUI();
 
@@ -119,7 +123,11 @@ public class WorldBounds : MonoBehaviour
     private void ShowOutOfBoundsUI() =>
         SceneManager.LoadSceneAsync("OutOfBoundsUI", LoadSceneMode.Additive);
 
-    private void HideOutOfBoundsUI() => SceneManager.UnloadSceneAsync("OutOfBoundsUI");
+    private void HideOutOfBoundsUI()
+    {
+        if (SceneManager.GetSceneByBuildIndex(10).IsValid())
+            SceneManager.UnloadSceneAsync("OutOfBoundsUI");
+    }
 
     // decide what vehicle UI to show
     private void ShowVehicleUI(GameObject o)
@@ -136,7 +144,8 @@ public class WorldBounds : MonoBehaviour
     // displays the boat UI
     private async void ShowBoatUIAsync()
     {
-        await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
+        if (!SceneManager.GetSceneByName("BoatUI").isLoaded)
+            await SceneManager.LoadSceneAsync("BoatUI", LoadSceneMode.Additive);
     }
 
     // displays the plane UI

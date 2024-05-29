@@ -5,14 +5,14 @@ using UnityEngine;
 public class ExplosionBehavior : Projectile
 {
     private int planeDamage = 200;
-    private int boatDamage = 400;
+    private int boatDamage = 300;
     private GameLogic gCtrl;
 
     public void Initialize(string tag)
     {
         this.tag = tag;
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,7 @@ public class ExplosionBehavior : Projectile
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 
     private void Explode()
     {
