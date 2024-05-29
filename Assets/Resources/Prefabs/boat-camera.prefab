@@ -148,3 +148,20 @@ MonoBehaviour:
     m_Flags: 0
   player: {fileID: 0}
   bombPrefab: {fileID: 7789298405947639753, guid: ba67753312fbdae4eb15974764d953f4, type: 3}
+  bombFire:
+    m_Name: Bomb Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3e40bfbb-3f6f-4d4d-893e-32a4dd0b5f9b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1e9ddda7-ea92-4735-a5d2-b81f5836c7c9
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Bomb Fire
+      m_Flags: 0
+    m_Flags: 0

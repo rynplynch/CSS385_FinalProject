@@ -51,4 +51,23 @@ public class BoatActions : MonoBehaviour
                 gCtrl.UpSystem.UpgradeHealth(p);
         }
     }
+
+    // when the player create a health upgrade event
+    public void OnUpgradeBomb(InputAction.CallbackContext ctx)
+    {
+        // when the action is first triggered
+        if (ctx.performed)
+        {
+            // get the vehicle component
+            Vehicle v = this.GetComponent<Vehicle>();
+
+            // which player spawned this vehicle?
+            Player p = v.SpawnedBy.GetComponent<Player>();
+
+            // only perform the upgrade if we know who spawned it
+            if (p)
+                // tell the upgrade system player wants to upgrade
+                gCtrl.UpSystem.UpgradeExplosion(p);
+        }
+    }
 }

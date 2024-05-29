@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 2483348674082455551}
   - component: {fileID: 2302504111183715690}
   - component: {fileID: 3393813146684886472}
+  - component: {fileID: 4914193995392761721}
   m_Layer: 0
   m_Name: blue-boat
   m_TagString: blue-boat
@@ -373,8 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b338075cfec674a256b40f77c559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForwardSpeed: 25
-  rotationalSpeed: 50
   currentThrust: 0
   forward:
     m_Name: Forward
@@ -522,13 +521,53 @@ MonoBehaviour:
     m_ActionId: a0bdc07b-0b3f-4033-ae33-c860bceea32c
     m_ActionName: 'Boat/ShowPlayerMenu[/Keyboard/tab]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3393813146684886472}
+        m_TargetAssemblyTypeName: BoatActions, Assembly-CSharp
+        m_MethodName: OnUpgradeBullet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4f1527b8-8011-43bc-974d-cf9ae59f3207
     m_ActionName: 'Boat/UpgradeBullet[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3393813146684886472}
+        m_TargetAssemblyTypeName: BoatActions, Assembly-CSharp
+        m_MethodName: OnUpgradeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 95fd753a-d149-4333-aaa1-02a1e8368ca2
     m_ActionName: 'Boat/UpgradeHealth[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3393813146684886472}
+        m_TargetAssemblyTypeName: BoatActions, Assembly-CSharp
+        m_MethodName: OnUpgradeBomb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d1769b8-ebcb-4b75-9dba-fb17f89180ad
+    m_ActionName: 'Boat/UpgradeExplosion[/Keyboard/3]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Boat
@@ -546,6 +585,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac8f3bf69c65a053aedbc9c5c89c5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4914193995392761721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644657209560634332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 1, z: 80}
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!1 &4135308036500170658
 GameObject:
   m_ObjectHideFlags: 0

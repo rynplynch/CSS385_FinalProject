@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ExplosionBehavior : Projectile
 {
-    private int planeDamage = 250;
-    private int boatDamage = 450;
+    private int planeDamage = 200;
+    private int boatDamage = 400;
     private GameLogic gCtrl;
 
     public void Initialize(string tag)

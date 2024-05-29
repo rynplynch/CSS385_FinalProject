@@ -551,6 +551,7 @@ GameObject:
   - component: {fileID: 6559220929715989923}
   - component: {fileID: 385095053491227066}
   - component: {fileID: 6832413960670442227}
+  - component: {fileID: 6524106632151392821}
   m_Layer: 0
   m_Name: blue-plane
   m_TagString: blue-plane
@@ -704,15 +705,51 @@ MonoBehaviour:
     m_ActionId: c52dcb5f-d9d3-4331-a9d8-c47ac2a71440
     m_ActionName: Plane/ShootLeft
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 385095053491227066}
+        m_TargetAssemblyTypeName: PlaneActions, Assembly-CSharp
+        m_MethodName: OnUpgradeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 24be33b7-94df-4ccc-81d0-bf56f5a68496
     m_ActionName: 'Plane/UpgradeHealth[/Keyboard/1]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 385095053491227066}
+        m_TargetAssemblyTypeName: PlaneActions, Assembly-CSharp
+        m_MethodName: OnUpgradeBullet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c7fa9269-b03e-4e25-8d1c-e5b44ad23c70
     m_ActionName: 'Plane/UpgradeBullet[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 385095053491227066}
+        m_TargetAssemblyTypeName: PlaneActions, Assembly-CSharp
+        m_MethodName: OnMissileUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e4f9f615-7cd8-489a-ad8c-6fbb51251d2c
     m_ActionName: 'Plane/UpgradeMissile[/Keyboard/3]'
   - m_PersistentCalls:
@@ -787,6 +824,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &6524106632151392821
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469031685919532651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4865017830758665161
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class BoatUI : MonoBehaviour
     private Transform helpContainer;
     private Transform hpLvlContainer;
     private Transform bltLvlContainer;
-    private Transform mslLvlContainer;
+    private Transform expLvlContainer;
 
     // actual text elements we show the player
     private Slider hpSlider;
@@ -27,7 +27,7 @@ public class BoatUI : MonoBehaviour
     private Button helpBtn;
     private TMP_Text hpLvlTxt;
     private TMP_Text bltLvlTxt;
-    private TMP_Text mslLvlTxt;
+    private TMP_Text expLvlTxt;
 
     // game controller
     private GameLogic gCtrl;
@@ -51,7 +51,7 @@ public class BoatUI : MonoBehaviour
         helpContainer = this.transform.GetChild(2);
         hpLvlContainer = this.transform.GetChild(3);
         bltLvlContainer = this.transform.GetChild(4);
-        mslLvlContainer = this.transform.GetChild(5);
+        expLvlContainer = this.transform.GetChild(5);
 
         // extract UI components from their containers
         goldText = goldContainer.GetComponent<TMP_Text>();
@@ -60,7 +60,7 @@ public class BoatUI : MonoBehaviour
         helpBtn = helpContainer.GetComponent<Button>();
         hpLvlTxt = hpLvlContainer.GetComponent<TMP_Text>();
         bltLvlTxt = bltLvlContainer.GetComponent<TMP_Text>();
-        mslLvlTxt = mslLvlContainer.GetComponent<TMP_Text>();
+        expLvlTxt = expLvlContainer.GetComponent<TMP_Text>();
 
         // set the hp sliders max value
         hpSlider.maxValue = 1000;
@@ -81,7 +81,7 @@ public class BoatUI : MonoBehaviour
         int maxHp = gCtrl.HpSystem.GetMaxHealth(p.GetSpawnedVehicle());
         int hpLvl = gCtrl.UpSystem.GetPlayerHpLvl(p);
         int bltLvl = gCtrl.UpSystem.GetPlayerBltLvl(p);
-        int mslLvl = gCtrl.UpSystem.GetPlayerMslLvl(p);
+        int expLvl = gCtrl.UpSystem.GetPlayerExpLvl(p);
         int playerGold = goldManager.GetGold(p);
 
         // apply data values to UI elements
@@ -90,6 +90,7 @@ public class BoatUI : MonoBehaviour
         hpText.text = $"HP:{curHp}";
         hpLvlTxt.text = $"HP lvl:{hpLvl}";
         bltLvlTxt.text = $"Bullet lvl:{bltLvl}";
+        expLvlTxt.text = $"Bomb lvl:{expLvl}";
         goldText.text = $"Player gold:{playerGold}";
     }
 

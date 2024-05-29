@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 8086062840625244828}
   - component: {fileID: 5419572935170473606}
   - component: {fileID: 1624862448753305244}
+  - component: {fileID: 7165681016269790929}
   m_Layer: 0
   m_Name: red-plane-bot
   m_TagString: red-plane-bot
@@ -826,7 +827,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1624862448753305244
 MonoBehaviour:
@@ -845,6 +846,28 @@ MonoBehaviour:
   detectionRange: 100
   bulletPrefab: {fileID: 7797213561299971884, guid: 94e0d96268f5b04428d16e8553ce3631, type: 3}
   missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
+--- !u!64 &7165681016269790929
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469031685919532651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4865017830758665161
 GameObject:
   m_ObjectHideFlags: 0

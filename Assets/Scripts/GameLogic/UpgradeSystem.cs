@@ -14,6 +14,7 @@ public class UpgradeSystem : MonoBehaviour
     public BoatBullet boatBullet; // BoatBullet component
     public BulletBehavior bulletBehavior; // BulletBehavior component
     public MissileBehavior missileBehavior; // MissileBehavior component
+    public ExplosionBehavior explosionBehavior; // ExplosionBehavior component
 
     private Dictionary<Player, int> _bulletLevels = new Dictionary<Player, int>();
     public Dictionary<Player, int> BulletLevels
@@ -26,6 +27,12 @@ public class UpgradeSystem : MonoBehaviour
     {
         get => _missileLevels;
         private set => _missileLevels = value;
+    }
+    private Dictionary<Player, int> _explosionLevels = new Dictionary<Player, int>();
+    public Dictionary<Player, int> ExplosionLevels
+    {
+        get => _explosionLevels;
+        private set => _explosionLevels = value;
     }
     private Dictionary<Player, int> _healthLevels = new Dictionary<Player, int>();
 
@@ -136,12 +143,40 @@ public class UpgradeSystem : MonoBehaviour
         }
     }
 
+    public void UpgradeExplosion(Player p)
+    {
+        // is the player not registered with the upgrade system?
+        if (!IsRegistered(p))
+            // register the player with upgrade system
+            RegisterWithUpgradeSystem(p);
+        else
+        {
+            // cost is based on level
+            int upgradeCost = initialGoldCost + (_explosionLevels[p] * goldIncreasePerLevel);
+
+            // if the player can afford the upgrade
+            if (goldManager.CanAfford(p, upgradeCost))
+            {
+                // subtract cost from players gold
+                goldManager.SpendGold(p, upgradeCost);
+
+                // upgrade the players missile level
+                _explosionLevels[p]++;
+            }
+            else
+            {
+                Debug.Log("Not enough gold to upgrade bomb explosion.");
+            }
+        }
+    }
+
     // add player to all the level dict. with a level of 0
     private void RegisterWithUpgradeSystem(Player p)
     {
         _healthLevels[p] = 0;
         _bulletLevels[p] = 0;
         _missileLevels[p] = 0;
+         _explosionLevels[p] = 0;
     }
 
     // if the player isn't in any of the level dict.
@@ -150,7 +185,8 @@ public class UpgradeSystem : MonoBehaviour
         // if any of the dict. contain the player they are registered
         return _healthLevels.ContainsKey(p)
             || _missileLevels.ContainsKey(p)
-            || _bulletLevels.ContainsKey(p);
+            || _bulletLevels.ContainsKey(p)
+            || _explosionLevels.ContainsKey(p);
     }
 
     // take a new vehicle and upgrade its max hp to the players current lvl
@@ -215,6 +251,18 @@ public class UpgradeSystem : MonoBehaviour
         return _missileLevels[p];
     }
 
+    // returns player explosion lvl
+    public int GetPlayerExpLvl(Player p)
+    {
+        // if the player is not registered
+        if (!IsRegistered(p))
+            // register them
+            RegisterWithUpgradeSystem(p);
+
+        // return missile lvl for player
+        return _explosionLevels[p];
+    }
+
     // returns bonus damage to add to base bullet damage
     public float GetAddedBulletDamage(Player p, int dmg)
     {
@@ -234,6 +282,18 @@ public class UpgradeSystem : MonoBehaviour
 
         // create a multiplier with players lvl
         float mlt = (float)mslLvl / 10;
+
+        // return damage to be added to base damage
+        return dmg * mlt;
+    }
+
+    // returns bonus damage to add to base explpsion damage
+    public float GetAddedExplosionDamage(Player p, int dmg)
+    {
+        int expLvl = GetPlayerMslLvl(p);
+
+        // create a multiplier with players lvl
+        float mlt = (float)expLvl / 10;
 
         // return damage to be added to base damage
         return dmg * mlt;
