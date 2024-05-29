@@ -34,7 +34,6 @@ public class WorldBounds : MonoBehaviour
                 // extract how much time object has left
                 float t = g.Value.timeLeft;
 
-                Debug.Log(g);
                 // decrement the grace period by delta time
                 t -= Time.deltaTime;
 
