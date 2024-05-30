@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 //using Unity.Play.Publisher.Editor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlaneShoot : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PlaneShoot : MonoBehaviour
     private float bulletNextFireTime;
     private float missileNextFireTime;
 
+    // is the respective action being performed?
+    private bool isPrimaryFireActive = false;
+    private bool isSecondaryFireActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,22 +33,28 @@ public class PlaneShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= bulletNextFireTime) // Left mouse button
-        //if (Input.GetMouseButton(0))
-        {
-            ShootBullet();
-            bulletNextFireTime = Time.time + bulletCooldown;
-        }
+        // if primary fire active and  bullet cool down is done
+        if (isPrimaryFireActive && Time.time >= bulletNextFireTime)
+            PrimaryFire();
 
-        if (Input.GetMouseButtonDown(1) && Time.time >= missileNextFireTime) //Right mouse button
-        {
-            ShootMissile();
-            missileNextFireTime = Time.time + missileCooldown;
-        }
+        // if secondary fire active and missile cool down is done
+        if (isSecondaryFireActive && Time.time >= missileNextFireTime)
+            SecondaryFire();
     }
 
-void ShootBullet()
+    public void OnPrimaryFire(InputAction.CallbackContext ctx)
     {
+        if (ctx.performed)
+            isPrimaryFireActive = true;
+
+        if (ctx.canceled)
+            isPrimaryFireActive = false;
+    }
+
+    private void PrimaryFire()
+    {
+        bulletNextFireTime = Time.time + bulletCooldown;
+
         SpawnData bullet = new SpawnData();
         bullet.Prefab = bulletPrefab;
         bullet.Position = transform.position + transform.forward;
@@ -72,8 +83,19 @@ void ShootBullet()
         gCtrl.destroyEvent.Raise(this.gameObject, d);
     }
 
-  void ShootMissile()
+    public void OnSecondaryFire(InputAction.CallbackContext ctx)
     {
+        if (ctx.performed)
+            isSecondaryFireActive = true;
+
+        if (ctx.canceled)
+            isSecondaryFireActive = false;
+    }
+
+    private void SecondaryFire()
+    {
+        missileNextFireTime = Time.time + missileCooldown;
+
         SpawnData missile = new SpawnData();
         missile.Prefab = missilePrefab;
         missile.Position = transform.position + transform.forward;

@@ -35,6 +35,8 @@ public class PlaneActions : MonoBehaviour
     private bool applyPitch = false;
 
     public float forwardUpSplit = 0.5f;
+    public float _maxLinearVelocity = 1000f;
+    public float _maxAngularVelocity = 20f;
 
     void Start()
     {
@@ -44,7 +46,11 @@ public class PlaneActions : MonoBehaviour
         // get the rigid body of this plane
         rb = this.transform.GetComponent<Rigidbody>();
 
-        rb.maxLinearVelocity = 10000f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        rb.maxLinearVelocity = _maxLinearVelocity;
+        rb.maxAngularVelocity = _maxLinearVelocity;
     }
 
     void Update()
@@ -57,7 +63,6 @@ public class PlaneActions : MonoBehaviour
             // add new thrust
             rb.AddRelativeForce(Vector3.forward * (thrustAcceleration * forward) * Time.deltaTime);
             rb.AddRelativeForce(Vector3.up * (thrustAcceleration * upward) * Time.deltaTime);
-            Debug.Log(rb.GetAccumulatedForce());
         }
 
         // if the player is performing rotation action
@@ -117,6 +122,11 @@ public class PlaneActions : MonoBehaviour
         // grab user input
         float input = ctx.ReadValue<float>();
 
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
+
         // gives direction to scalar
         rollAcceleration = input * rollScalar;
     }
@@ -133,6 +143,10 @@ public class PlaneActions : MonoBehaviour
 
         // read in normalized input
         float input = ctx.ReadValue<float>();
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
 
         // gives direction to scalar
         pitchAcceleration = input * pitchScalar;
@@ -150,6 +164,11 @@ public class PlaneActions : MonoBehaviour
 
         // read in normalized input
         float input = ctx.ReadValue<float>();
+
+        if (input > 1)
+            input = 1;
+        else if (input < -1)
+            input = -1;
 
         // scale user input
         input *= yawScalar;

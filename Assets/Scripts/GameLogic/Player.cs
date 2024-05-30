@@ -274,16 +274,20 @@ public class Player : MonoBehaviour
             await SceneManager.LoadSceneAsync("BlueTeamMenu", LoadSceneMode.Additive);
     }
 
+    private async void HideOutOfBoundsUI()
+    {
+        if (SceneManager.GetSceneByBuildIndex(10).IsValid())
+            await SceneManager.UnloadSceneAsync("OutOfBoundsUI");
+    }
+
     private async void HideVehicleUI()
     {
         // if the vehicle was a boat and if the scene is loaded
-        if (CheckTag.IsBoat(GetSpawnedVehicle()) && SceneManager.GetSceneByBuildIndex(7).IsValid())
+        if (SceneManager.GetSceneByBuildIndex(7).IsValid())
             // remove boat UI
             await SceneManager.UnloadSceneAsync("BoatUI");
         // if the vehicle was a plane and if the scene is loaded
-        else if (
-            CheckTag.IsPlane(GetSpawnedVehicle()) && SceneManager.GetSceneByBuildIndex(8).IsValid()
-        )
+        else if (SceneManager.GetSceneByBuildIndex(8).IsValid())
             // remove the plane UI
             await SceneManager.UnloadSceneAsync("PlaneUI");
     }
@@ -313,6 +317,9 @@ public class Player : MonoBehaviour
     {
         // remove vehicle UI
         HideVehicleUI();
+
+        // if the player died out of bounds remove UI
+        HideOutOfBoundsUI();
 
         // remove the players camera
         yield return DetachCamera();

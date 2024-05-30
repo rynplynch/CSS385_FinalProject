@@ -6,11 +6,15 @@ public class LoadResources : LoadListener
     // list with all Objects in resource folder
     UnityEngine.Object[] allPrefabs;
 
-    void Start(){
+    void Start()
+    {
         // grab all the prefabs in the prefab folder
-        try{
+        try
+        {
             allPrefabs = Resources.LoadAll("Prefabs") as UnityEngine.Object[];
-        } catch(UnityException e){
+        }
+        catch (UnityException e)
+        {
             throw e;
         }
 
@@ -21,7 +25,8 @@ public class LoadResources : LoadListener
         Response.AddListener(FindPrefab);
     }
 
-    public void FindPrefab(GameObject caller, SpawnData d){
+    public void FindPrefab(GameObject caller, SpawnData d)
+    {
         // safety check for cast success
         if (d != null)
         {

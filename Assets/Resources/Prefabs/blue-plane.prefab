@@ -701,7 +701,19 @@ MonoBehaviour:
     m_ActionId: 0bce3659-68c7-4fbf-aff0-17a12a0b76ae
     m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3873065125598356562}
+        m_TargetAssemblyTypeName: PlaneShoot, Assembly-CSharp
+        m_MethodName: OnPrimaryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c52dcb5f-d9d3-4331-a9d8-c47ac2a71440
     m_ActionName: Plane/ShootLeft
   - m_PersistentCalls:

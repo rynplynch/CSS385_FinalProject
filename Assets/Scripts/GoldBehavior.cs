@@ -29,9 +29,19 @@ public class GoldBehavior : MonoBehaviour
 
             // if colliding with a vehicle
             if (v)
-                // Add gold to the player who spawned the vehicle
-                FindFirstObjectByType<GoldManagerScript>()
-                    .AddGold(v.SpawnedBy.GetComponent<Player>(), value);
+            {
+                // who spawned this vehicle?
+                GameObject creator = v.SpawnedBy;
+
+                if (creator)
+                {
+                    Player p = creator.GetComponent<Player>();
+
+                    // Add gold to the player who spawned the vehicle
+                    FindFirstObjectByType<GoldManagerScript>()
+                        .AddGold(p, value);
+                }
+            }
 
             // Destroy the gold object
             gCtrl.destroyEvent.Raise(this.gameObject, new DestoryData(this.gameObject, 0f));
