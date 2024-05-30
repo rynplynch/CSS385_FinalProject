@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 5419572935170473606}
   - component: {fileID: 1624862448753305244}
   - component: {fileID: 7165681016269790929}
+  - component: {fileID: 2412896212864049631}
   m_Layer: 0
   m_Name: red-plane-bot
   m_TagString: red-plane-bot
@@ -841,11 +842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b9515b67b22ac65bb9edfa5e904f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  turnSpeed: 5
-  detectionRange: 100
-  bulletPrefab: {fileID: 7797213561299971884, guid: 94e0d96268f5b04428d16e8553ce3631, type: 3}
-  missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
 --- !u!64 &7165681016269790929
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -868,6 +864,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2412896212864049631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469031685919532651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec80830435b37584a83a4810a65fae44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  turnSpeed: 50
+  detectionRange: 25
+  bulletPrefab: {fileID: 5583429841924730313, guid: e510c7667521d3a4c915171b95137a90, type: 3}
+  missilePrefab: {fileID: 7797213561299971884, guid: aebe6a6fc85491c4f94ed787a58fdafd, type: 3}
 --- !u!1 &4865017830758665161
 GameObject:
   m_ObjectHideFlags: 0

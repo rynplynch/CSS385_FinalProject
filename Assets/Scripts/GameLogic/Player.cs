@@ -94,15 +94,18 @@ public class Player : MonoBehaviour
     // save reference to this player instance inside spawned game object
     private IEnumerator SetPlayerReference(SpawnData o)
     {
-        // grab the vehicle component from the just spawned boat/plane
-        Vehicle v = o.Reference.gameObject.GetComponent<Vehicle>();
+        if (o.Reference)
+        {
+            // grab the vehicle component from the just spawned boat/plane
+            Vehicle v = o.Reference.gameObject.GetComponent<Vehicle>();
 
-        if (!v)
-            v = o.Reference.gameObject.GetComponentInChildren<Vehicle>();
-        // set the spawned by reference
-        v.SpawnedBy = this.gameObject;
+            if (!v)
+                v = o.Reference.gameObject.GetComponentInChildren<Vehicle>();
+            // set the spawned by reference
+            v.SpawnedBy = this.gameObject;
 
-        yield return null;
+            yield return null;
+        }
     }
 
     // sets the spawn point inside the spawn data

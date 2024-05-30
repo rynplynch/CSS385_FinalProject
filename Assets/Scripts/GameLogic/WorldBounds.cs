@@ -168,13 +168,15 @@ public class WorldBounds : MonoBehaviour
     // displays the boat UI
     private async void HideBoatUIAsync()
     {
-        await SceneManager.UnloadSceneAsync("BoatUI");
+        if (SceneManager.GetSceneByName("BoatUI").isLoaded)
+            await SceneManager.UnloadSceneAsync("BoatUI");
     }
 
     // displays the plane UI
     private async void HidePlaneUIAsync()
     {
-        await SceneManager.UnloadSceneAsync("PlaneUI");
+        if (SceneManager.GetSceneByName("PlaneUI").isLoaded)
+            await SceneManager.UnloadSceneAsync("PlaneUI");
     }
 
     // get how much time an object has left

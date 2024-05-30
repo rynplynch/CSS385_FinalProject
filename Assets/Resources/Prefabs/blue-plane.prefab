@@ -702,7 +702,7 @@ MonoBehaviour:
     m_ActionName: 'Plane/ShowPlayerMenu[/Keyboard/tab]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3873065125598356562}
+      - m_Target: {fileID: 1796556524523479016}
         m_TargetAssemblyTypeName: PlaneShoot, Assembly-CSharp
         m_MethodName: OnPrimaryFire
         m_Mode: 0
@@ -796,6 +796,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4d1769b8-ebcb-4b75-9dba-fb17f89180ad
     m_ActionName: 'Boat/UpgradeExplosion[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796556524523479016}
+        m_TargetAssemblyTypeName: PlaneShoot, Assembly-CSharp
+        m_MethodName: OnSecondaryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b3852824-ecc1-4cc7-91cb-84a14e973441
+    m_ActionName: 'Plane/SecondaryFire[/Mouse/rightButton,/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Plane
@@ -818,6 +834,8 @@ MonoBehaviour:
   yawScalar: 0.5
   pitchScalar: 0.5
   forwardUpSplit: 0.5
+  _maxLinearVelocity: 1000
+  _maxAngularVelocity: 20
 --- !u!64 &6832413960670442227
 MeshCollider:
   m_ObjectHideFlags: 0
