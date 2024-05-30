@@ -24,10 +24,11 @@ Team vs. Team game. Defeat the other team using either ship or plane! Reduce the
 
 # Current Published Build
 
-[FinalProject - Unity Play](https://play.unity.com/mg/other/finalproject-10)
+[SeasAndSkies - WebGL](https://play.unity.com/p/css385_finalproject/)
+Note: best in full screen
 
 # Trailer
-[FinalProject - Unity Play](https://youtu.be/Dri9PZ5LetM)
+[SeasAndSkies - Trailer](https://youtu.be/Dri9PZ5LetM)
 
 <a id="org6d60286"></a>
 
