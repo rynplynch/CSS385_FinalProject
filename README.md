@@ -5,6 +5,10 @@ Seas and Skies
 # Authors
 John Aylward, Ethan Humrich, Jason Tran  and Ryan Lynch
 
+# Website
+
+[SeasAndSkies - Website](https://rynplynch.github.io/CSS385_FinalProject/) https://rynplynch.github.io/CSS385_FinalProject/
+
 # Unity Version
 2023.2.2014f
 
@@ -24,11 +28,11 @@ Team vs. Team game. Defeat the other team using either ship or plane! Reduce the
 
 # Current Published Build
 
-[SeasAndSkies - WebGL](https://play.unity.com/p/css385_finalproject/)
+[SeasAndSkies - WebGL](https://play.unity.com/p/css385_finalproject/) https://play.unity.com/p/css385_finalproject/
 Note: best in full screen
 
 # Trailer
-[SeasAndSkies - Trailer](https://youtu.be/Dri9PZ5LetM)
+[SeasAndSkies - Trailer](https://youtu.be/Dri9PZ5LetM) https://youtu.be/Dri9PZ5LetM
 
 <a id="org6d60286"></a>
 
