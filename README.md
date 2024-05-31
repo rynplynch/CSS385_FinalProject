@@ -5,6 +5,10 @@ Seas and Skies
 # Authors
 John Aylward, Ethan Humrich, Jason Tran  and Ryan Lynch
 
+# Website
+
+[SeasAndSkies - Trailer](https://rynplynch.github.io/CSS385_FinalProject/)
+
 # Unity Version
 2023.2.2014f
 
